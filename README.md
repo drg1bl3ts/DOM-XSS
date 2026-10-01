@@ -148,3 +148,7 @@ already linked inline in `sources.html` / `sinks.html` / the labs themselves.
 
 **Historical credit, not cited as current fact**
 - Stefano Di Paola & Giorgio Maone's [DOMXSS wiki](https://github.com/wisec/domxsswiki/wiki) (circa 2011-2013) originated the "sources and sinks" framing this whole hub is built around, and its [jQuery sinks page](https://github.com/wisec/domxsswiki/wiki/jQuery-sinks) specifically. No longer maintained — every claim drawn from it was re-verified against something current (above) or tested directly in a browser before being written down here.
+
+## License
+
+[MIT](LICENSE)
