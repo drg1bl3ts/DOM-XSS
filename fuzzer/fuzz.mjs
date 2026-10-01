@@ -1,5 +1,15 @@
 // Tiny DOM XSS fuzzer. It opens each payload in a real (headless) Chromium
-// and reports which ones make the page show an alert/confirm/prompt box.
+// and reports which ones make the page show an alert/confirm/prompt box,
+// or call print().
+//
+// Why check print() too? Chrome 92+ (July 2021) blocks alert/confirm/prompt
+// from cross-origin iframes, a response to malicious ads abusing alert() to
+// trap visitors. print() isn't blocked the same way, so PortSwigger's cheat
+// sheet (the source of ../payloads/) now uses print() as its general PoC
+// function in several entries, not just inside iframes. See PortSwigger's
+// own writeup: https://portswigger.net/research/alert-is-dead-long-live-print
+// Without checking for it, those payloads would silently look like misses
+// here even when they work.
 //
 // Why not ffuf? The server sends the same static page for every payload, and the
 // bug happens later in the browser. Only a browser can see it.
@@ -14,7 +24,9 @@
 //
 // Limits:
 //   - Payloads that need a click (labs 04 and 09) are not clicked, so they will not show as hits.
-//   - It only detects dialogs (alert, confirm, prompt). A payload that does something else is a miss.
+//   - It only detects alert/confirm/prompt dialogs and print() calls. A payload
+//     that proves itself some other way (changing the page title, making a
+//     network request, etc.) is still a miss here.
 
 import { spawn } from "node:child_process";
 import { readFileSync, mkdtempSync, rmSync } from "node:fs";
@@ -55,35 +67,66 @@ function send(method, params = {}) {
   socket.send(JSON.stringify({ id: ++nextId, method, params }));
 }
 
-// ---- 4. Count dialogs ----
-let dialogCount = 0;
+// ---- 4. Watch for alert/confirm/prompt, and set up a print() trap ----
+// alert/confirm/prompt show up as a real browser event we can listen for.
+// print() doesn't (headless Chrome has no print UI to show), so instead we
+// overwrite window.print before the page's own scripts run, and just check
+// afterwards whether anything called it.
+let dialogType = null;
 socket.onmessage = message => {
   const data = JSON.parse(message.data);
   if (data.method === "Page.javascriptDialogOpening") {
-    dialogCount++;
+    dialogType = data.params.type; // "alert", "confirm", or "prompt"
     send("Page.handleJavaScriptDialog", { accept: true }); // close it so the page keeps going
   }
 };
 send("Page.enable");
+send("Runtime.enable");
+send("Page.addScriptToEvaluateOnNewDocument", {
+  source: "window.__fuzzerPrintCalled = false; window.print = () => { window.__fuzzerPrintCalled = true; };",
+});
+await sleep(200); // let the setup command above land before the first navigation
 
 // ---- 5. Try every payload ----
 const hits = [];
 console.log(`Trying ${payloads.length} payloads against ${urlTemplate}\n`);
 
 for (const payload of payloads) {
-  dialogCount = 0;
+  dialogType = null;
   const url = urlTemplate.replace("FUZZ", encodeURIComponent(payload));
   send("Page.navigate", { url });
   await sleep(waitMs);
 
-  if (dialogCount > 0) {
-    hits.push(payload);
-    console.log("HIT  ", payload);
+  // Read back whether print() was called on this page load, then reset it.
+  nextId++;
+  const printCheckId = nextId;
+  socket.send(JSON.stringify({
+    id: printCheckId,
+    method: "Runtime.evaluate",
+    params: { expression: "window.__fuzzerPrintCalled && (window.__fuzzerPrintCalled = false, true)" },
+  }));
+  const printResult = await new Promise(resolve => {
+    const original = socket.onmessage;
+    socket.onmessage = message => {
+      const data = JSON.parse(message.data);
+      if (data.id === printCheckId) {
+        socket.onmessage = original;
+        resolve(Boolean(data.result?.result?.value));
+      } else {
+        original(message);
+      }
+    };
+  });
+
+  const signal = dialogType ?? (printResult ? "print()" : null);
+  if (signal) {
+    hits.push({ payload, signal });
+    console.log(`HIT [${signal}]`, payload);
   }
 }
 
 // ---- 6. Print the summary and clean up ----
-console.log(`\n${hits.length} of ${payloads.length} payloads fired a dialog.`);
+console.log(`\n${hits.length} of ${payloads.length} payloads fired a dialog or called print().`);
 chromium.kill();
 rmSync(profileDir, { recursive: true, force: true });
 process.exit(0);
