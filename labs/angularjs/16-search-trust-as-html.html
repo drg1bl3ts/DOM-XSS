@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Lab 16: location.search to ng-bind-html with $sce.trustAsHtml</title>
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+  <nav><a href="../../index.html">&larr; Back to hub</a></nav>
+  <h1>Lab 16: Bio (AngularJS)</h1>
+  <p class="tags"><span>Source: location.search</span><span class="sink">Sink: $sce.trustAsHtml</span><span>AngularJS 1.8.3</span></p>
+
+  <section class="lab" ng-app="lab" ng-controller="Main">
+    <form method="get" action="">
+      <label>Bio: <input name="bio"></label>
+      <button>Save</button>
+    </form>
+    <div class="output" ng-bind-html="bio"></div>
+  </section>
+
+  <section class="notes">
+    <h2>What is happening</h2>
+    <p>
+      The controller reads <code>bio</code> from the URL and wraps it in
+      <code>$sce.trustAsHtml()</code>. The <code>ng-bind-html</code> directive then inserts it as HTML.
+    </p>
+    <h2>Why trustAsHtml is a sink</h2>
+    <p>
+      AngularJS has a security service called <code>$sce</code>. By default,
+      <code>ng-bind-html</code> refuses to show a raw string. <code>trustAsHtml</code> tells Angular
+      "I checked this, it is safe", which switches the protection off for that value.
+      Here nobody checked. In modern Angular the same idea is called
+      <code>bypassSecurityTrustHtml</code>.
+    </p>
+    <details>
+      <summary>Payload</summary>
+      <pre><code>&lt;img src=x onerror=alert(1)&gt;</code></pre>
+    </details>
+    <details>
+      <summary>Fix</summary>
+      <p>Do not trust user data. Use <code>ngSanitize</code> (see <a href="17-search-ngsanitize-safe.html">lab 17</a>) or show it as text with <code>{{ bio }}</code> or <code>ng-bind</code>.</p>
+    </details>
+  </section>
+
+  <script src="../../lib/angular-1.8.3.min.js"></script>
+  <script src="16-search-trust-as-html.js"></script>
+</body>
+</html>

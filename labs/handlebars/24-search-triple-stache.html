@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Lab 24: location.search to Handlebars triple-stache</title>
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+  <nav><a href="../../index.html">&larr; Back to hub</a></nav>
+  <h1>Lab 24: Bio (Handlebars)</h1>
+  <p class="tags"><span>Source: location.search</span><span class="sink">Sink: {{{ }}} (triple-stache)</span><span>Handlebars 4.7</span></p>
+
+  <section class="lab">
+    <form action="">
+      <label>Bio: <input name="bio"></label>
+      <button>Save</button>
+    </form>
+    <div id="output" class="output"></div>
+  </section>
+
+  <section class="notes">
+    <h2>What is happening</h2>
+    <p>
+      The template is <code>&lt;p&gt;{{{ bio }}}&lt;/p&gt;</code>, compiled by Handlebars and
+      rendered into the page with <code>innerHTML</code>.
+    </p>
+    <h2>Why {{{ }}} is a sink</h2>
+    <p>
+      Handlebars has two kinds of placeholder. Double braces, <code>{{ bio }}</code>, HTML-encode
+      the value, same as everywhere else in this hub that's marked safe. Triple braces,
+      <code>{{{ bio }}}</code>, are Handlebars' own escape hatch: "unescaped", meaning insert this
+      exactly as given. It is one extra brace between safe and vulnerable.
+    </p>
+    <p>
+      Mustache.js, the template engine Handlebars describes itself as "largely compatible" with,
+      uses the identical <code>{{{ }}}</code> convention for the same reason, so this lab covers
+      both.
+    </p>
+    <details>
+      <summary>Payload</summary>
+      <pre><code>&lt;img src=x onerror=alert(1)&gt;</code></pre>
+    </details>
+    <details>
+      <summary>Fix</summary>
+      <pre><code>Handlebars.compile("&lt;p&gt;{{ bio }}&lt;/p&gt;")</code></pre>
+      <p>Drop to double braces unless you specifically need to render trusted HTML.</p>
+    </details>
+    <p>
+      This hub originally shipped Handlebars 4.7.8, which three real CVEs affect — including
+      <a href="https://www.sentinelone.com/vulnerability-database/cve-2026-33937/">CVE-2026-33937</a>,
+      a critical (9.8) remote code execution bug — all fixed in 4.7.9, since upgraded to here.
+      None of them are reachable through this lab's own code (they need an attacker-controlled
+      compiled template, not just template data), but a dependency with a public critical RCE has
+      no business sitting in a repo meant to teach security.
+    </p>
+  </section>
+
+  <script src="../../lib/handlebars-4.7.9.min.js"></script>
+  <script src="24-search-triple-stache.js"></script>
+</body>
+</html>

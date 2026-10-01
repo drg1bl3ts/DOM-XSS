@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>DOM XSS Sources</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav><a href="index.html">&larr; Back to hub</a></nav>
+  <h1>Sources</h1>
+  <p>
+    A <b>source</b> is any place JavaScript reads data that an attacker can influence.
+    Treat all of them as untrusted.
+  </p>
+
+  <table>
+    <tr><th>Source</th><th>What it is</th><th>How an attacker controls it</th><th>Lab</th></tr>
+    <tr>
+      <td><code>location.search</code></td>
+      <td>The query string, <code>?a=1&amp;b=2</code></td>
+      <td>Send the victim a link with a crafted query. Use <code>URLSearchParams</code> to read it.</td>
+      <td><a href="labs/01-search-innerhtml.html">01</a>, <a href="labs/02-search-document-write.html">02</a>, <a href="labs/04-search-anchor-href.html">04</a>, <a href="labs/08-search-iframe-srcdoc.html">08</a>, <a href="labs/09-search-location-href.html">09</a>, <a href="labs/10-search-settimeout.html">10</a>, <a href="labs/jquery/11-search-html.html">11</a>, <a href="labs/jquery/12-search-append.html">12</a>, <a href="labs/jquery/14-search-attr-href.html">14</a>, <a href="labs/angularjs/15-search-template-injection.html">15</a>, <a href="labs/angularjs/16-search-trust-as-html.html">16</a>, <a href="labs/angularjs/17-search-ngsanitize-safe.html">17</a>, <a href="http://localhost:4200/?lab=18" target="_blank">18</a>, <a href="http://localhost:4200/?lab=19" target="_blank">19</a>, <a href="http://localhost:4200/?lab=20" target="_blank">20</a>, <a href="http://localhost:4200/?lab=21" target="_blank">21</a>, <a href="labs/react/22-search-dangerously-set-innerhtml.html">22</a>, <a href="labs/vue/23-search-v-html.html">23</a>, <a href="labs/handlebars/24-search-triple-stache.html">24</a>, <a href="labs/lodash/25-search-template-interpolate.html">25</a>, <a href="labs/knockout/26-search-html-binding.html">26</a>, <a href="labs/alpine/27-search-x-html.html">27</a>, <a href="labs/34-search-rawtext-consuming-tag.html">34</a>, <a href="labs/jquery/35-trusted-types-safe.html">35</a></td>
+    </tr>
+    <tr>
+      <td><code>location.hash</code></td>
+      <td>Everything after <code>#</code></td>
+      <td>Same as above. The hash is never sent to the server, so the server cannot filter or log it.</td>
+      <td><a href="labs/03-hash-eval.html">03</a>, <a href="labs/jquery/13-hash-selector-legacy.html">13</a></td>
+    </tr>
+    <tr>
+      <td><code>location.pathname</code>, <code>location.href</code>, <code>document.URL</code>, <code>document.documentURI</code>, <code>document.baseURI</code></td>
+      <td>The path, or the whole URL, in slightly different forms</td>
+      <td>Put the payload in the path or anywhere in the URL. All five tend to carry the same data, so check whichever one the code actually reads.</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td><code>document.referrer</code></td>
+      <td>The URL of the page that linked here</td>
+      <td>
+        Link from a page whose URL contains the payload. Browsers percent-encode this string
+        (<code>&lt;</code> becomes <code>%3C</code>, and so on), so code that dumps it straight
+        into <code>innerHTML</code> is usually safe by accident. The bug shows up when code pulls
+        a parameter back out of it with something like <code>URLSearchParams</code>, which
+        decodes as it reads.
+      </td>
+      <td><a href="labs/30-referrer-innerhtml.html">30</a></td>
+    </tr>
+    <tr>
+      <td><code>window.name</code></td>
+      <td>A string that survives navigation</td>
+      <td>An attacker's page sets it, then navigates to the victim page.</td>
+      <td><a href="labs/05-window-name-innerhtml.html">05</a></td>
+    </tr>
+    <tr>
+      <td><code>document.cookie</code></td>
+      <td>Cookies visible to JavaScript</td>
+      <td>Set a cookie through another bug (for example a sibling subdomain), or a server response the app doesn't control.</td>
+      <td><a href="labs/29-cookie-innerhtml.html">29</a></td>
+    </tr>
+    <tr>
+      <td><code>history.pushState()</code> / <code>replaceState()</code>, the <b>state object</b>, <code>popstate</code></td>
+      <td>The SPA-routing API that rewrites the URL without a reload</td>
+      <td>
+        These calls change <code>location.href</code>/<code>search</code> in place, so any code
+        further down that reads <code>location</code> on a route change sees whatever an
+        attacker-influenced route pushed, with no page load to notice:
+        <code>history.pushState({}, '', '?x=&lt;img onerror=alert(1)&gt;')</code> and now
+        <code>location.search</code> holds that string. The <b>state object</b> itself (the first
+        argument) is also a source: if an attacker can influence it, a <code>popstate</code>
+        handler reading it back is reading attacker data.
+      </td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td><code>localStorage</code>, <code>sessionStorage</code>, <code>IndexedDB</code>, Web SQL (<code>Database</code>, Safari)</td>
+      <td>Data saved by the site</td>
+      <td>The value was user input earlier. All four give <b>stored</b> DOM XSS: the payload fires on every visit, not just once.</td>
+      <td><a href="labs/06-localstorage-innerhtml.html">06</a></td>
+    </tr>
+    <tr>
+      <td><code>postMessage</code> (<code>event.data</code>)</td>
+      <td>Messages between windows</td>
+      <td>Any window with a reference to the page can send one. Check <code>event.origin</code>.</td>
+      <td><a href="labs/07-postmessage-innerhtml.html">07</a></td>
+    </tr>
+    <tr>
+      <td><code>WebSocket</code> messages (<code>ws.onmessage</code>, <code>event.data</code>)</td>
+      <td>Messages from a WebSocket server</td>
+      <td>Same shape as <code>postMessage</code>, just a different channel: whatever the server (or anyone who can inject into that connection) sends becomes <code>event.data</code>. See <a href="labs/07-postmessage-innerhtml.html">lab 07</a> for the same pattern.</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td><code>fetch</code> / <code>XMLHttpRequest</code> responses</td>
+      <td>Data from an API</td>
+      <td>Usually second-order: the API returns something a user stored earlier.</td>
+      <td>-</td>
+    </tr>
+  </table>
+
+  <p>
+    Researched against
+    <a href="https://portswigger.net/web-security/cross-site-scripting/dom-based">PortSwigger's DOM-based XSS tutorial</a>
+    and <a href="https://developer.mozilla.org/en-US/docs/Web/API/History_API">MDN</a>
+    (for the History API, kept current as browsers change). The overall "sources and sinks"
+    framing used throughout this hub originates with Stefano Di Paola &amp; Giorgio Maone's
+    DOMXSS wiki (circa 2011-2013) — credit where it's due, but that wiki is no longer maintained,
+    so it isn't cited here as a source of current fact, and claims that could have gone stale were
+    re-checked against the maintained references above or verified directly in this hub's own
+    browser. Current as of this write-up.
+  </p>
+</body>
+</html>

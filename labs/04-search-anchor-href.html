@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Lab 04: location.search to a.href</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <nav><a href="../index.html">&larr; Back to hub</a></nav>
+  <h1>Lab 04: Back link</h1>
+  <p class="tags"><span>Source: location.search</span><span class="sink">Sink: a.href</span></p>
+
+  <section class="lab">
+    <p>Try <code>04-search-anchor-href.html?returnUrl=../index.html</code></p>
+    <a id="back" href="#">Go back</a>
+  </section>
+
+  <section class="notes">
+    <h2>What is happening</h2>
+    <p>
+      The script copies <code>returnUrl</code> from <code>location.search</code> into the
+      <code>href</code> of a link. This needs one click from the victim.
+    </p>
+    <h2>Why href is a sink</h2>
+    <p>
+      An <code>href</code> can hold a <code>javascript:</code> URL. Clicking the link runs that
+      code in the page's origin. This is the same idea as the <code>src</code> of an iframe or
+      the <code>action</code> of a form.
+    </p>
+    <details>
+      <summary>Payload</summary>
+      <pre><code>04-search-anchor-href.html?returnUrl=javascript:alert(1)</code></pre>
+      <p>Then click "Go back".</p>
+    </details>
+    <details>
+      <summary>Fix</summary>
+      <p>Only allow URLs with a safe scheme:</p>
+      <pre><code>const url = new URL(returnUrl, location.href);
+if (url.protocol === "http:" || url.protocol === "https:") {
+  back.href = url.href;
+}</code></pre>
+    </details>
+  </section>
+
+  <script src="04-search-anchor-href.js"></script>
+</body>
+</html>

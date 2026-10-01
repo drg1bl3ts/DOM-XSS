@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Lab 34: mXSS via raw-text element confusion ("consuming tag")</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <nav><a href="../index.html">&larr; Back to hub</a></nav>
+  <h1>Lab 34: Bio, filtered by a naive filter</h1>
+  <p class="tags"><span>Source: location.search</span><span class="sink">Sink: innerHTML (naive filter)</span><span>mXSS family</span></p>
+
+  <section class="lab">
+    <form action="">
+      <label>Bio: <input name="bio" size="60"></label>
+      <button>Save</button>
+    </form>
+    <div id="profile" class="output"></div>
+    <p id="filtered-view" class="output"></p>
+  </section>
+
+  <section class="notes">
+    <h2>What is happening</h2>
+    <p>
+      The filter here blocks anything matching <code>&lt;(script|img|svg|iframe)\b</code> as the
+      <b>first tag</b> in the string, a quick denylist someone might reach for without thinking
+      too hard about it. It then inserts whatever gets past that check with <code>innerHTML</code>.
+    </p>
+    <h2>The payload</h2>
+    <pre><code>&lt;noscript&gt;&lt;img title="&lt;/noscript&gt;&lt;img src=x onerror=alert(1)&gt;"&gt;&lt;/noscript&gt;</code></pre>
+    <p>
+      Read as text, this looks like one harmless element, <code>&lt;noscript&gt;</code>, containing
+      one <code>&lt;img&gt;</code> whose <code>title</code> attribute happens to contain some
+      literal angle brackets. That's exactly how the filter above reads it too: first tag is
+      <code>noscript</code>, not on the denylist, let it through.
+    </p>
+    <h2>That is not how the browser reads it</h2>
+    <p>
+      <code>&lt;noscript&gt;</code>, like <code>&lt;style&gt;</code>, <code>&lt;script&gt;</code>,
+      <code>&lt;iframe&gt;</code>, <code>&lt;xmp&gt;</code>, <code>&lt;title&gt;</code>,
+      <code>&lt;textarea&gt;</code>, <code>&lt;noembed&gt;</code>, and <code>&lt;noframes&gt;</code>,
+      has a special content model in the HTML spec: everything inside is <b>raw text</b>, not
+      markup. The browser does not know or care that <code>title="</code> looks like it opened a
+      quoted attribute. It just scans forward for the literal next <code>&lt;/noscript&gt;</code>,
+      finds it immediately, and ends the element right there, <i>regardless of where it appears</i>.
+      Everything after that, <code>&lt;img src=x onerror=alert(1)&gt;"&gt;</code>, is parsed as
+      ordinary markup: a real <code>&lt;img&gt;</code> tag with a real <code>onerror</code>
+      attribute, something the filter above never saw.
+    </p>
+    <p>
+      PortSwigger's cheat sheet lists this family under names like "noscript consuming tag" and
+      "style consuming tag" — the element consumes everything up to that embedded fake closing
+      tag, no matter how deeply it looks nested in the source text.
+    </p>
+    <h2>This is mXSS, with a caveat</h2>
+    <p>
+      <code>&lt;noscript&gt;</code>'s raw-text behaviour above is exactly the mechanism behind real,
+      named mutation XSS vulnerabilities: Mozilla's HTML-sanitizing library Bleach had this as a
+      CVE (<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1615315">CVE-2020-6802</a>,
+      "mutation xss in &lt;noscript&gt; handling"), and so did the browser's own
+      <code>DOMParser</code> API
+      (<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1528997">CVE-2021-23974</a>,
+      "potential XSS via noscript tags parsed by DOMParser APIs"). The pattern in both: something
+      that <i>checks</i> untrusted HTML parses <code>&lt;noscript&gt;</code> one way, and whatever
+      finally <i>inserts</i> it parses that same markup a different way, with no shared
+      understanding of the raw-text rule between the two.
+    </p>
+    <p>
+      We tested that exact divergence directly in this browser, rather than assume it still holds.
+      <code>DOMParser</code> here genuinely does treat <code>&lt;noscript&gt;</code> differently
+      from <code>innerHTML</code>: it parses this payload's content as an ordinary quoted
+      attribute, not raw text, matching the CVE's premise. But a sanitizer that uses
+      <code>DOMParser</code> to check untrusted HTML has to <b>serialize its cleaned result back
+      into a string</b> before handing it to the real sink, and that serialization step
+      HTML-encodes the <code>&lt;</code>/<code>&gt;</code> characters our payload needs — so by
+      the time this particular string reaches a real <code>innerHTML</code> assignment, there's no
+      literal closing tag left to consume, and nothing survives the round trip. The divergence is
+      real and verified; this specific payload doesn't happen to be the one that survives it.
+    </p>
+    <p>
+      What <i>this lab</i> demonstrates end to end, fully verified, is the simpler half of that
+      story: the raw-text mechanism itself defeats a filter that pattern-matches text instead of
+      parsing it as real HTML. That's true on its own, with no sanitizer or second parse involved
+      at all, which is also why it was straightforward to confirm firing in a real browser.
+    </p>
+    <details>
+      <summary>Fix</summary>
+      <p>
+        Don't pattern-match HTML as text. Parse it properly and inspect the result, the way
+        <a href="28-search-dompurify-safe.html">lab 28</a>'s DOMPurify does, or avoid HTML entirely
+        with <code>textContent</code>.
+      </p>
+    </details>
+  </section>
+
+  <script src="34-search-rawtext-consuming-tag.js"></script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<h1>Lab 18: Bio, safe by default (modern Angular)</h1>
+<p class="tags"><span>Source: location.search</span><span class="sink">Sink: [innerHTML] (sanitized)</span><span>Angular 22</span></p>
+
+<section class="lab">
+  <form action="">
+    <input type="hidden" name="lab" value="18">
+    <label>Bio: <input name="bio"></label>
+    <button>Save</button>
+  </form>
+  <div class="output" [innerHTML]="bio()"></div>
+</section>
+
+<section class="notes">
+  <h2>What is happening</h2>
+  <p>
+    The template binds <code>bio()</code> to <code>[innerHTML]</code>. Modern Angular runs
+    every <code>[innerHTML]</code> value through its built-in <code>DomSanitizer</code>
+    automatically, so dangerous parts are stripped before the DOM ever sees them.
+    This is different from AngularJS: there, <code>ng-bind-html</code> refused the value
+    completely unless you called <code>$sce.trustAsHtml()</code> or loaded <code>ngSanitize</code>.
+  </p>
+  <h2>Try to break it</h2>
+  <p>Submit <code>&lt;b&gt;bold&lt;/b&gt; &lt;img src=x onerror=alert(1)&gt;</code>. The bold text stays, the <code>onerror</code> is gone.</p>
+  <details>
+    <summary>Why this matters</summary>
+    <p>
+      This safe default is exactly why real bugs in Angular apps almost always come from a
+      developer turning the protection off on purpose. See <a href="?lab=19">lab 19</a>.
+    </p>
+  </details>
+</section>

@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Simulated search results page</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <nav><a href="../index.html">&larr; Back to hub</a></nav>
+  <p>
+    This stands in for a search engine's results page, or any page whose own URL carries a
+    search term in its query string. Its only job is to link to the real lab.
+  </p>
+  <p id="shown-query" class="output"></p>
+  <p><a href="30-referrer-innerhtml.html">Continue to the site &rarr;</a></p>
+  <script>
+    const q = new URLSearchParams(location.search).get("q");
+    document.getElementById("shown-query").textContent = "This page's own query string: " + location.search;
+  </script>
+</body>
+</html>

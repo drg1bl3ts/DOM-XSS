@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Lab 22: location.search to dangerouslySetInnerHTML</title>
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+  <nav><a href="../../index.html">&larr; Back to hub</a></nav>
+  <h1>Lab 22: Bio (React)</h1>
+  <p class="tags"><span>Source: location.search</span><span class="sink">Sink: dangerouslySetInnerHTML</span><span>React 18</span></p>
+
+  <section class="lab">
+    <form action="">
+      <label>Bio: <input name="bio"></label>
+      <button>Save</button>
+    </form>
+    <div id="root" class="output"></div>
+  </section>
+
+  <section class="notes">
+    <h2>What is happening</h2>
+    <p>
+      This page uses plain React, no build step, no JSX: just <code>React.createElement</code>
+      calls, loaded straight from local copies of the React and ReactDOM scripts.
+    </p>
+    <p>
+      Normally React treats everything you give it as text. A line like
+      <code>React.createElement('p', null, bio)</code> is always safe, no matter what
+      <code>bio</code> contains, because React calls <code>textContent</code> under the hood,
+      the same as the fix in <a href="../01-search-innerhtml.html">lab 01</a>.
+      <code>dangerouslySetInnerHTML</code> is the one prop that turns this off.
+    </p>
+    <h2>Why dangerouslySetInnerHTML is a sink</h2>
+    <p>
+      It takes an object <code>{ __html: string }</code> and sets the element's real
+      <code>innerHTML</code> to that string, parsed as HTML. React's own
+      <a href="https://react.dev/reference/react-dom/components/common#dangerously-setting-the-inner-html">docs</a>
+      say the awkward name and the extra wrapper object are deliberate, "to make the security risk
+      explicit" — their own example of the danger is an untrusted <code>post.content</code> string
+      containing exactly the kind of <code>onerror</code> payload used throughout this hub.
+      Verified directly: it still doesn't run <code>&lt;script&gt;</code> tags, for the same reason
+      plain <code>innerHTML</code> doesn't.
+    </p>
+    <details>
+      <summary>Payload</summary>
+      <pre><code>&lt;img src=x onerror=alert(1)&gt;</code></pre>
+    </details>
+    <details>
+      <summary>Fix</summary>
+      <pre><code>React.createElement('div', { className: 'output' }, bio)</code></pre>
+      <p>Pass the string as a normal child instead of through <code>dangerouslySetInnerHTML</code>.</p>
+    </details>
+  </section>
+
+  <script src="../../lib/react-18.3.1.production.min.js"></script>
+  <script src="../../lib/react-dom-18.3.1.production.min.js"></script>
+  <script src="22-search-dangerously-set-innerhtml.js"></script>
+</body>
+</html>

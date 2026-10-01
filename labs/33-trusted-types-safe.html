@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Lab 33: Trusted Types blocks the sink</title>
+  <meta http-equiv="Content-Security-Policy" content="require-trusted-types-for 'script'">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <nav><a href="../index.html">&larr; Back to hub</a></nav>
+  <h1>Lab 33: Bio, with Trusted Types enforced (safe)</h1>
+  <p class="tags"><span>Source: location.search</span><span class="sink">Sink: innerHTML (blocked by Trusted Types)</span></p>
+
+  <section class="lab">
+    <form action="">
+      <label>Bio: <input name="bio"></label>
+      <button>Save</button>
+    </form>
+    <div id="profile" class="output"></div>
+    <p id="status" class="output"></p>
+  </section>
+
+  <section class="notes">
+    <h2>What is happening</h2>
+    <p>
+      This page has the exact same vulnerable-looking line as
+      <a href="01-search-innerhtml.html">lab 01</a>: <code>profile.innerHTML = bio</code>, a raw
+      string, no sanitizing. But its <code>Content-Security-Policy</code> includes
+      <code>require-trusted-types-for 'script'</code>. Submit the usual payload and look at the
+      status line: the assignment itself throws, and nothing is ever inserted.
+    </p>
+    <h2>Why this is different from CSP's script-src</h2>
+    <p>
+      <a href="31-csp-blocks-innerhtml.html">Lab 31</a>'s CSP let the <code>innerHTML</code>
+      assignment succeed, then stopped the <i>result</i> (the inline <code>onerror</code>) from
+      running. Trusted Types works earlier: with it required, browsers only accept a plain string
+      for <code>innerHTML</code>, <code>src</code>, and a handful of other sinks if the page has no
+      policy for them, or a specific object (a <code>TrustedHTML</code>) in place of a string if it
+      does. No policy means no plain strings allowed, full stop, so the line throws before the
+      browser's HTML parser ever sees the payload. That closes the gap <a href="32-csp-dangling-markup.html">lab 32</a> showed:
+      no HTML is parsed from an unchecked string at all, so there's no attribute left dangling to exploit.
+    </p>
+    <details>
+      <summary>Try this</summary>
+      <pre><code>&lt;img src=x onerror=alert(1)&gt;</code></pre>
+      <p>The status line below the form shows the real <code>TypeError</code> the browser throws.</p>
+    </details>
+    <h2>How you'd actually use innerHTML on a page like this</h2>
+    <p>
+      Define a policy that only accepts a string you've sanitized, and use the policy to create the
+      value instead of a plain string:
+    </p>
+    <pre><code>const policy = trustedTypes.createPolicy('default', {
+  createHTML: (dirty) => DOMPurify.sanitize(dirty)
+});
+profile.innerHTML = policy.createHTML(bio); // a TrustedHTML, not a string</code></pre>
+    <p>
+      This is DOMPurify from <a href="28-search-dompurify-safe.html">lab 28</a> again, now paired
+      with a browser-enforced guarantee that nothing else on the page can skip the sanitizing step,
+      even by accident.
+    </p>
+  </section>
+
+  <script src="33-trusted-types-safe.js"></script>
+</body>
+</html>

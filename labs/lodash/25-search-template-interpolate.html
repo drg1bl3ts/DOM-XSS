@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Lab 25: location.search to Lodash _.template</title>
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+  <nav><a href="../../index.html">&larr; Back to hub</a></nav>
+  <h1>Lab 25: Bio (Lodash)</h1>
+  <p class="tags"><span>Source: location.search</span><span class="sink">Sink: _.template with &lt;%= %&gt;</span><span>Lodash 4.17</span></p>
+
+  <section class="lab">
+    <form action="">
+      <label>Bio: <input name="bio"></label>
+      <button>Save</button>
+    </form>
+    <div id="output" class="output"></div>
+  </section>
+
+  <section class="notes">
+    <h2>What is happening</h2>
+    <p>
+      <code>_.template()</code> compiles a string with embedded placeholders into a function that
+      builds HTML. The template here is
+      <code>&lt;p&gt;&lt;%= bio %&gt;&lt;/p&gt;</code>, and the result is written with
+      <code>innerHTML</code>.
+    </p>
+    <h2>Why &lt;%= %&gt; is a sink</h2>
+    <p>
+      Lodash templates have three delimiters, and their names are easy to mix up:
+      <code>&lt;%- %&gt;</code> "escape" HTML-encodes the value, which is the safe one, despite
+      sounding like it might strip the escaping instead of adding it.
+      <code>&lt;%= %&gt;</code> "interpolate" inserts the value exactly as given, with no
+      encoding at all. <code>&lt;% %&gt;</code> "evaluate" runs raw JavaScript inside the
+      template. Verified directly against the library in this hub, not from memory: it's worth
+      checking the actual behaviour of a templating engine's delimiters before trusting your
+      recollection of which one is which, since (as happened while writing this lab) it's an easy
+      pair to swap.
+    </p>
+    <details>
+      <summary>Payload</summary>
+      <pre><code>&lt;img src=x onerror=alert(1)&gt;</code></pre>
+    </details>
+    <details>
+      <summary>Fix</summary>
+      <pre><code>_.template("&lt;p&gt;&lt;%- bio %&gt;&lt;/p&gt;")</code></pre>
+      <p>Use <code>&lt;%- %&gt;</code> instead, which HTML-encodes the value.</p>
+    </details>
+    <p>
+      This hub originally shipped Lodash 4.17.21, which
+      <a href="https://github.com/lodash/lodash/wiki/Changelog">CVE-2026-4800</a> affects: a
+      different <code>_.template</code> bug, code injection through the <code>imports</code>
+      option, fixed in 4.18.0 and since upgraded to here. This lab doesn't use
+      <code>imports</code>, so it isn't the same bug as the one above, but there's no reason to
+      ship the vulnerable version regardless.
+    </p>
+  </section>
+
+  <script src="../../lib/lodash-4.18.1.min.js"></script>
+  <script src="25-search-template-interpolate.js"></script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Lab 12: location.search to jQuery .append()</title>
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+  <nav><a href="../../index.html">&larr; Back to hub</a></nav>
+  <h1>Lab 12: Comment list (jQuery)</h1>
+  <p class="tags"><span>Source: location.search</span><span class="sink">Sink: $.append()</span><span>jQuery 4.0.0</span></p>
+
+  <section class="lab">
+    <form method="get">
+      <label>Comment: <input name="comment"></label>
+      <button>Add</button>
+    </form>
+    <ul id="comments"></ul>
+  </section>
+
+  <section class="notes">
+    <h2>What is happening</h2>
+    <p>
+      The script builds a string of HTML, <code>&lt;li&gt;YOUR INPUT&lt;/li&gt;</code>, and passes
+      it to <code>.append()</code>.
+    </p>
+    <h2>Why .append() is a sink</h2>
+    <p>
+      Many jQuery methods accept HTML strings, not only <code>.html()</code>:
+      <code>.append()</code>, <code>.prepend()</code>, <code>.after()</code>, <code>.before()</code>,
+      <code>.wrap()</code>, <code>.replaceWith()</code>. If you pass a string, it is parsed as HTML.
+    </p>
+    <details>
+      <summary>Payload</summary>
+      <pre><code>&lt;img src=x onerror=alert(1)&gt;</code></pre>
+    </details>
+    <details>
+      <summary>Fix</summary>
+      <p>Build the element, then set its text:</p>
+      <pre><code>$("#comments").append($("&lt;li&gt;").text(comment));</code></pre>
+    </details>
+  </section>
+
+  <script src="../../lib/jquery-4.0.0.min.js"></script>
+  <script src="12-search-append.js"></script>
+</body>
+</html>

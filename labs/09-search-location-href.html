@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Lab 09: location.search to location.href</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <nav><a href="../index.html">&larr; Back to hub</a></nav>
+  <h1>Lab 09: Leaving the site</h1>
+  <p class="tags"><span>Source: location.search</span><span class="sink">Sink: location.href</span></p>
+
+  <section class="lab">
+    <p>Try <code>09-search-location-href.html?goto=../index.html</code></p>
+    <button id="continue">Continue</button>
+  </section>
+
+  <section class="notes">
+    <h2>What is happening</h2>
+    <p>
+      Clicking the button sends the browser to the URL in the <code>goto</code> parameter by
+      assigning it to <code>location.href</code>. This is a redirect feature.
+    </p>
+    <h2>Why location is a sink</h2>
+    <p>
+      Assigning a <code>javascript:</code> URL to <code>location.href</code> runs that code in the
+      current page. A redirect to an <code>https:</code> URL on another site is an open redirect, which is a
+      lesser bug. The <code>javascript:</code> scheme turns it into XSS.
+    </p>
+    <details>
+      <summary>Payload</summary>
+      <pre><code>09-search-location-href.html?goto=javascript:alert(1)</code></pre>
+      <p>Then click "Continue".</p>
+    </details>
+    <details>
+      <summary>Fix</summary>
+      <pre><code>const url = new URL(goto, location.href);
+if (url.origin === location.origin) {
+  location.href = url.href;
+}</code></pre>
+    </details>
+  </section>
+
+  <script src="09-search-location-href.js"></script>
+</body>
+</html>

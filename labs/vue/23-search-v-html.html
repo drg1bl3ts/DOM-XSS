@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Lab 23: location.search to v-html</title>
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+  <nav><a href="../../index.html">&larr; Back to hub</a></nav>
+  <h1>Lab 23: Bio (Vue)</h1>
+  <p class="tags"><span>Source: location.search</span><span class="sink">Sink: v-html</span><span>Vue 3</span></p>
+
+  <section class="lab" id="app">
+    <form action="">
+      <label>Bio: <input name="bio"></label>
+      <button>Save</button>
+    </form>
+    <div class="output" v-html="bio"></div>
+  </section>
+
+  <section class="notes">
+    <h2>What is happening</h2>
+    <p>
+      Vue's normal way to show text, <code>{{ bio }}</code>, always HTML-encodes the value, the
+      same safe behaviour as AngularJS's <code>{{ }}</code> when it isn't being compiled as a
+      template (see <a href="../angularjs/15-search-template-injection.html">lab 15</a> for what
+      happens when it is). <code>v-html</code> is the directive that turns that protection off
+      for one element and inserts the string as real HTML instead.
+    </p>
+    <h2>Why v-html is a sink</h2>
+    <p>
+      Vue's own docs say outright, in a dedicated "Security Note": "Dynamically rendering arbitrary
+      HTML on your website can be very dangerous because it can easily lead to XSS attacks. Only
+      use <code>v-html</code> on trusted content and never on user-provided content." It exists
+      for cases like rendering HTML from a trusted CMS, not for user input.
+    </p>
+    <details>
+      <summary>Payload</summary>
+      <pre><code>&lt;img src=x onerror=alert(1)&gt;</code></pre>
+    </details>
+    <details>
+      <summary>Fix</summary>
+      <pre><code>&lt;div class="output"&gt;{{ bio }}&lt;/div&gt;</code></pre>
+      <p>Use normal interpolation. If you truly need to render HTML, sanitize it first with a library like DOMPurify.</p>
+    </details>
+  </section>
+
+  <script src="../../lib/vue-3.5.13.global.prod.js"></script>
+  <script src="23-search-v-html.js"></script>
+</body>
+</html>

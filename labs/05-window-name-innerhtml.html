@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Lab 05: window.name to innerHTML</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <nav><a href="../index.html">&larr; Back to hub</a></nav>
+  <h1>Lab 05: Welcome banner</h1>
+  <p class="tags"><span>Source: window.name</span><span class="sink">Sink: innerHTML</span></p>
+
+  <section class="lab">
+    <div id="banner" class="output"></div>
+    <p>
+      Simulate an attacker page that sets <code>window.name</code> and then sends you here:
+    </p>
+    <input id="attacker-input" size="40" value="&lt;img src=x onerror=alert(1)&gt;">
+    <button id="attack">Set window.name and reload</button>
+  </section>
+
+  <section class="notes">
+    <h2>What is happening</h2>
+    <p>
+      The script shows <code>window.name</code> in a banner using <code>innerHTML</code>.
+    </p>
+    <h2>Why window.name is a source</h2>
+    <p>
+      <code>window.name</code> survives navigation, even across different sites. An attacker's
+      page can set <code>window.name = "..."</code> and then redirect to the victim page.
+      The victim page reads the attacker's value. The URL looks clean because nothing is in it.
+    </p>
+    <details>
+      <summary>Payload</summary>
+      <pre><code>&lt;img src=x onerror=alert(1)&gt;</code></pre>
+      <p>Press the button above, or run <code>window.name = "..."</code> in the console and reload.</p>
+    </details>
+    <details>
+      <summary>Fix</summary>
+      <pre><code>banner.textContent = window.name;</code></pre>
+      <p>Better still: do not trust <code>window.name</code> for anything.</p>
+    </details>
+  </section>
+
+  <script src="05-window-name-innerhtml.js"></script>
+</body>
+</html>

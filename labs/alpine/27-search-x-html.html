@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Lab 27: location.search to Alpine x-html</title>
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+  <nav><a href="../../index.html">&larr; Back to hub</a></nav>
+  <h1>Lab 27: Bio (Alpine.js)</h1>
+  <p class="tags"><span>Source: location.search</span><span class="sink">Sink: x-html</span><span>Alpine.js 3.14</span></p>
+
+  <section class="lab" x-data="bioData()">
+    <form action="">
+      <label>Bio: <input name="bio"></label>
+      <button>Save</button>
+    </form>
+    <div class="output" x-html="bio"></div>
+  </section>
+
+  <section class="notes">
+    <h2>What is happening</h2>
+    <p>
+      Alpine is a single script tag added to otherwise plain HTML, no build step, which is why
+      it's turned up in a lot of apps that are too small to justify React or Vue. Its normal text
+      binding, <code>x-text</code>, is safe. <code>x-html</code> is the directive that sets
+      <code>innerHTML</code> instead.
+    </p>
+    <h2>Why x-html is a sink</h2>
+    <p>
+      Alpine's own <a href="https://alpinejs.dev/directives/html">docs</a> say outright: "Only use
+      on trusted content and never on user-provided content. Dynamically rendering HTML from third
+      parties can easily lead to XSS vulnerabilities." Same shape as Vue's <code>v-html</code> and
+      Knockout's <code>html</code> binding in <a href="../vue/23-search-v-html.html">lab 23</a> and
+      <a href="../knockout/26-search-html-binding.html">lab 26</a>: a small, declarative framework
+      gives you one named escape hatch out of its default text safety, and the bug is always using
+      it on data that didn't need it.
+    </p>
+    <details>
+      <summary>Payload</summary>
+      <pre><code>&lt;img src=x onerror=alert(1)&gt;</code></pre>
+    </details>
+    <details>
+      <summary>Fix</summary>
+      <pre><code>x-text="bio"</code></pre>
+    </details>
+  </section>
+
+  <script src="../../lib/alpine-3.14.3.min.js" defer></script>
+  <script src="27-search-x-html.js"></script>
+</body>
+</html>

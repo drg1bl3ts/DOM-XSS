@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Lab 01: location.search to innerHTML</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <nav><a href="../index.html">&larr; Back to hub</a></nav>
+  <h1>Lab 01: Greeting</h1>
+  <p class="tags"><span>Source: location.search</span><span class="sink">Sink: innerHTML</span></p>
+
+  <section class="lab">
+    <form method="get">
+      <label>Your name: <input name="name"></label>
+      <button>Greet me</button>
+    </form>
+    <p id="greeting" class="output"></p>
+  </section>
+
+  <section class="notes">
+    <h2>What is happening</h2>
+    <p>
+      The form sends <code>?name=...</code> in the URL. The script reads it from
+      <code>location.search</code> (the source) and writes it into the page with
+      <code>innerHTML</code> (the sink). The browser treats your input as HTML, not text.
+    </p>
+    <h2>Why innerHTML is a sink</h2>
+    <p>
+      <code>innerHTML</code> parses a string as HTML. Any tag in it becomes a real element.
+      <code>&lt;script&gt;</code> tags inserted this way do <b>not</b> run, but event handlers
+      like <code>onerror</code> do.
+    </p>
+    <details>
+      <summary>Payload</summary>
+      <pre><code>&lt;img src=x onerror=alert(1)&gt;</code></pre>
+      <p>The image fails to load, so <code>onerror</code> fires.</p>
+    </details>
+    <details>
+      <summary>Fix</summary>
+      <pre><code>greeting.textContent = "Hello, " + name;</code></pre>
+      <p><code>textContent</code> treats the value as plain text, never as HTML.</p>
+    </details>
+  </section>
+
+  <script src="01-search-innerhtml.js"></script>
+</body>
+</html>

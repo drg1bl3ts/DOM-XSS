@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Lab 29: document.cookie to innerHTML</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <nav><a href="../index.html">&larr; Back to hub</a></nav>
+  <h1>Lab 29: Welcome back</h1>
+  <p class="tags"><span>Source: document.cookie</span><span class="sink">Sink: innerHTML</span></p>
+
+  <section class="lab">
+    <p id="banner" class="output"></p>
+    <p>Simulate a cookie an attacker got set some other way (see below), then reload:</p>
+    <input id="attacker-input" size="40" value="&lt;img src=x onerror=alert(1)&gt;">
+    <button id="set-cookie">Set lastViewedItem cookie and reload</button>
+  </section>
+
+  <section class="notes">
+    <h2>What is happening</h2>
+    <p>
+      The script reads a <code>lastViewedItem</code> cookie and shows it in a banner with
+      <code>innerHTML</code>. Reload after setting the cookie to see it fire.
+    </p>
+    <h2>Why document.cookie is a source</h2>
+    <p>
+      A cookie value is only as trustworthy as whatever set it, and cookies get set from more
+      places than you might expect: a server response header, a sibling subdomain
+      (<code>sub.example.com</code> can set a cookie for <code>.example.com</code> that
+      <code>www.example.com</code> will also read), or occasionally JavaScript on the page itself
+      storing something a user typed. If any of those paths lets an attacker influence the value,
+      and this page trusts it blindly, it's the same bug as every other source in this hub.
+    </p>
+    <details>
+      <summary>Payload</summary>
+      <pre><code>&lt;img src=x onerror=alert(1)&gt;</code></pre>
+      <p>Press the button above, or run <code>document.cookie = "lastViewedItem=..."</code> in the console and reload.</p>
+    </details>
+    <details>
+      <summary>Fix</summary>
+      <pre><code>banner.textContent = "Welcome back, we see you last viewed: " + lastViewedItem;</code></pre>
+    </details>
+  </section>
+
+  <script src="29-cookie-innerhtml.js"></script>
+</body>
+</html>

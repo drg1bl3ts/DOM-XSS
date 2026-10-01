@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Lab 30: document.referrer to innerHTML</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <nav><a href="../index.html">&larr; Back to hub</a></nav>
+  <h1>Lab 30: "You came from..."</h1>
+  <p class="tags"><span>Source: document.referrer</span><span class="sink">Sink: innerHTML</span></p>
+
+  <section class="lab">
+    <p id="banner" class="output">No referrer, or it wasn't carrying a search term.</p>
+    <p>
+      Start from the
+      <a href="30-referrer-attacker.html?q=%3Cimg+src%3Dx+onerror%3Dalert(1)%3E">simulated search results page</a>
+      and click through from there, rather than loading this page directly.
+    </p>
+  </section>
+
+  <section class="notes">
+    <h2>What is happening</h2>
+    <p>
+      This page shows a "you came from a search for ___" banner, a real pattern some sites use for
+      analytics or personalization. It builds that banner from a <code>q</code> parameter it finds
+      inside <code>document.referrer</code>: the URL of whatever page linked here.
+    </p>
+    <h2>Why document.referrer needs decoding first, and that's the trap</h2>
+    <p>
+      Browsers percent-encode <code>document.referrer</code>, so a raw
+      <code>innerHTML = document.referrer</code> would just insert harmless, encoded text; you'd
+      see <code>%3Cimg...%3E</code> on the page, not a real tag. The bug shows up one step later:
+      <code>URLSearchParams</code> (used here to pull <code>q</code> out of the referrer URL)
+      <b>decodes</b> its values automatically. That decode step is what turns the inert, encoded
+      referrer back into a live payload.
+    </p>
+    <details>
+      <summary>Payload</summary>
+      <p>
+        Already linked above: a page at
+        <code>?q=&lt;img src=x onerror=alert(1)&gt;</code> that links to this one. Click through
+        from there rather than editing this page's own URL, since this bug reads the
+        <i>previous</i> page's address, not this one's.
+      </p>
+    </details>
+    <details>
+      <summary>Fix</summary>
+      <pre><code>banner.textContent = "You came from a search for: " + q;</code></pre>
+    </details>
+  </section>
+
+  <script src="30-referrer-innerhtml.js"></script>
+</body>
+</html>

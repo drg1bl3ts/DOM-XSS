@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>DOM XSS Practice Hub</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>DOM XSS Practice Hub</h1>
+  <p>
+    <b>DOM XSS</b> happens when JavaScript takes data from an attacker-controllable
+    <b>source</b> and passes it to a dangerous <b>sink</b> without making it safe.
+    The server is not involved. The bug is entirely in the browser.
+  </p>
+  <p>
+    These pages are <b>intentionally vulnerable</b>. Run them locally only.
+    Read the <a href="sources.html">sources</a> and <a href="sinks.html">sinks</a> notes first,
+    or jump straight into a lab.
+  </p>
+
+  <h2>Reference</h2>
+  <ul>
+    <li><a href="sources.html">Sources</a>: where attacker data comes from</li>
+    <li><a href="sinks.html">Sinks</a>: where that data becomes code</li>
+  </ul>
+
+  <h3>Where you'll actually find these</h3>
+  <p>
+    These patterns aren't tied to one kind of site. The same bug shows up wherever the page has
+    that <i>shape</i>, whether it's a shop, a bank, or a blog.
+  </p>
+  <table>
+    <tr><th>Where on the page</th><th>Sites where this shows up</th><th>What's usually going on</th><th>Try</th></tr>
+    <tr>
+      <td>Search box, "no results for ___"</td>
+      <td>E-commerce, docs sites, blogs, almost anything with a search feature</td>
+      <td>The query is echoed back into the page with <code>innerHTML</code> or a template engine</td>
+      <td><a href="labs/01-search-innerhtml.html">01</a>, <a href="labs/handlebars/24-search-triple-stache.html">24</a>, <a href="labs/lodash/25-search-template-interpolate.html">25</a></td>
+    </tr>
+    <tr>
+      <td>Login page, "session expired" link, post-checkout redirect</td>
+      <td>Banking, SaaS logins, anywhere with an auth flow</td>
+      <td>A <code>returnUrl</code> / <code>redirect</code> / <code>next</code> / <code>callbackUrl</code> query param goes straight into <code>location.href</code> or a link's <code>href</code></td>
+      <td><a href="labs/04-search-anchor-href.html">04</a>, <a href="labs/09-search-location-href.html">09</a></td>
+    </tr>
+    <tr>
+      <td>Profile page: display name, bio, "about me"</td>
+      <td>Social apps, SaaS dashboards, gaming platforms, forums</td>
+      <td>Saved once, then rendered for every visitor with <code>innerHTML</code> / <code>v-html</code> / <code>dangerouslySetInnerHTML</code>, i.e. <b>stored</b> XSS</td>
+      <td><a href="labs/06-localstorage-innerhtml.html">06</a>, <a href="labs/react/22-search-dangerously-set-innerhtml.html">22</a>, <a href="labs/vue/23-search-v-html.html">23</a></td>
+    </tr>
+    <tr>
+      <td>Any embedded iframe: chat widget, share button, payment form, ad</td>
+      <td>Sites that embed third-party widgets, which is most sites</td>
+      <td>The parent page and the iframe talk over <code>postMessage</code>, often with no check on who sent it</td>
+      <td><a href="labs/07-postmessage-innerhtml.html">07</a></td>
+    </tr>
+    <tr>
+      <td>The URL after the <code>#</code></td>
+      <td>Single-page apps: webmail, admin dashboards, banking portals built in Angular/React/Vue</td>
+      <td>The client-side router reads <code>location.hash</code> to decide what to show, no page load involved</td>
+      <td><a href="labs/03-hash-eval.html">03</a>, <a href="labs/jquery/13-hash-selector-legacy.html">13</a></td>
+    </tr>
+    <tr>
+      <td>"Save draft", "continue later", recently-viewed items</td>
+      <td>Blogs, CMS admin, e-commerce</td>
+      <td>The data sits in <code>localStorage</code> and gets rendered back on your next visit</td>
+      <td><a href="labs/06-localstorage-innerhtml.html">06</a></td>
+    </tr>
+    <tr>
+      <td>Report titles, saved views, anything built from a template behind the scenes</td>
+      <td>Internal admin tools, legacy enterprise software</td>
+      <td>Still commonly built with Handlebars/Mustache or Lodash templates, which don't auto-escape the way newer frameworks do by default</td>
+      <td><a href="labs/handlebars/24-search-triple-stache.html">24</a>, <a href="labs/lodash/25-search-template-interpolate.html">25</a></td>
+    </tr>
+  </table>
+  <p>
+    Checked against real reports, not just theory:
+    a <a href="https://github.com/homarr-labs/homarr/security/advisories/GHSA-79pg-554g-rw82">CVE-level redirect-param bug</a> (Homarr, <code>callbackUrl</code>),
+    <a href="https://labs.detectify.com/writeups/postmessage-xss-on-a-million-sites/">postMessage XSS affecting a share button used on over a million sites</a> (Detectify),
+    and <a href="https://portswigger.net/web-security/cross-site-scripting/dom-based">PortSwigger's own search-bar DOM XSS walkthroughs</a>.
+  </p>
+
+  <h2>Labs</h2>
+  <table>
+    <tr><th>Lab</th><th>Source</th><th>Sink</th></tr>
+    <tr><td><a href="labs/01-search-innerhtml.html">01</a></td><td>location.search</td><td>innerHTML</td></tr>
+    <tr><td><a href="labs/02-search-document-write.html">02</a></td><td>location.search</td><td>document.write</td></tr>
+    <tr><td><a href="labs/03-hash-eval.html">03</a></td><td>location.hash</td><td>eval</td></tr>
+    <tr><td><a href="labs/04-search-anchor-href.html">04</a></td><td>location.search</td><td>a.href</td></tr>
+    <tr><td><a href="labs/05-window-name-innerhtml.html">05</a></td><td>window.name</td><td>innerHTML</td></tr>
+    <tr><td><a href="labs/06-localstorage-innerhtml.html">06</a></td><td>localStorage</td><td>innerHTML</td></tr>
+    <tr><td><a href="labs/07-postmessage-innerhtml.html">07</a></td><td>postMessage</td><td>innerHTML</td></tr>
+    <tr><td><a href="labs/08-search-iframe-srcdoc.html">08</a></td><td>location.search</td><td>iframe.srcdoc</td></tr>
+    <tr><td><a href="labs/09-search-location-href.html">09</a></td><td>location.search</td><td>location.href</td></tr>
+    <tr><td><a href="labs/10-search-settimeout.html">10</a></td><td>location.search</td><td>setTimeout (string)</td></tr>
+  </table>
+
+  <h2>jQuery labs</h2>
+  <table>
+    <tr><th>Lab</th><th>Source</th><th>Sink</th><th>jQuery</th></tr>
+    <tr><td><a href="labs/jquery/11-search-html.html">11</a></td><td>location.search</td><td>.html()</td><td>4.0.0</td></tr>
+    <tr><td><a href="labs/jquery/12-search-append.html">12</a></td><td>location.search</td><td>.append()</td><td>4.0.0</td></tr>
+    <tr><td><a href="labs/jquery/13-hash-selector-legacy.html">13</a></td><td>location.hash</td><td>$(selector)</td><td>1.6.1 (legacy)</td></tr>
+    <tr><td><a href="labs/jquery/14-search-attr-href.html">14</a></td><td>location.search</td><td>.attr("href")</td><td>4.0.0</td></tr>
+  </table>
+
+  <h2>AngularJS labs</h2>
+  <table>
+    <tr><th>Lab</th><th>Source</th><th>Sink</th></tr>
+    <tr><td><a href="labs/angularjs/15-search-template-injection.html">15</a></td><td>location.search</td><td>{{ }} template injection</td></tr>
+    <tr><td><a href="labs/angularjs/16-search-trust-as-html.html">16</a></td><td>location.search</td><td>$sce.trustAsHtml</td></tr>
+    <tr><td><a href="labs/angularjs/17-search-ngsanitize-safe.html">17</a></td><td>location.search</td><td>ng-bind-html + ngSanitize (safe)</td></tr>
+  </table>
+
+  <h2>Modern Angular labs</h2>
+  <p>
+    These run as a separate Angular CLI app, not a static file, so they only work while its dev
+    server is running (see the README). Start it, then use these links.
+  </p>
+  <table>
+    <tr><th>Lab</th><th>Source</th><th>Sink</th></tr>
+    <tr><td><a href="http://localhost:4200/?lab=18" target="_blank">18</a></td><td>location.search</td><td>[innerHTML] (sanitized, safe)</td></tr>
+    <tr><td><a href="http://localhost:4200/?lab=19" target="_blank">19</a></td><td>location.search</td><td>DomSanitizer.bypassSecurityTrustHtml</td></tr>
+    <tr><td><a href="http://localhost:4200/?lab=20" target="_blank">20</a></td><td>location.search</td><td>DomSanitizer.bypassSecurityTrustUrl</td></tr>
+    <tr><td><a href="http://localhost:4200/?lab=21" target="_blank">21</a></td><td>location.search</td><td>ElementRef.nativeElement.innerHTML</td></tr>
+  </table>
+
+  <h2>More framework labs</h2>
+  <p>Same style as jQuery and AngularJS above: a local script tag, no build step.</p>
+  <table>
+    <tr><th>Lab</th><th>Source</th><th>Sink</th><th>Library</th></tr>
+    <tr><td><a href="labs/react/22-search-dangerously-set-innerhtml.html">22</a></td><td>location.search</td><td>dangerouslySetInnerHTML</td><td>React 18</td></tr>
+    <tr><td><a href="labs/vue/23-search-v-html.html">23</a></td><td>location.search</td><td>v-html</td><td>Vue 3</td></tr>
+    <tr><td><a href="labs/handlebars/24-search-triple-stache.html">24</a></td><td>location.search</td><td>{{{ }}} (triple-stache)</td><td>Handlebars 4.7</td></tr>
+    <tr><td><a href="labs/lodash/25-search-template-interpolate.html">25</a></td><td>location.search</td><td>_.template &lt;%= %&gt;</td><td>Lodash 4.17</td></tr>
+    <tr><td><a href="labs/knockout/26-search-html-binding.html">26</a></td><td>location.search</td><td>data-bind="html: ..."</td><td>Knockout 3.5</td></tr>
+    <tr><td><a href="labs/alpine/27-search-x-html.html">27</a></td><td>location.search</td><td>x-html</td><td>Alpine.js 3.14</td></tr>
+  </table>
+
+  <h2>Mitigations</h2>
+  <p>
+    These labs stop asking "does the payload fire" and start asking "what actually stops it."
+    Each is the real, working sink from an earlier lab with one specific defense added.
+  </p>
+  <table>
+    <tr><th>Lab</th><th>Mitigation</th><th>What it shows</th></tr>
+    <tr><td><a href="labs/28-search-dompurify-safe.html">28</a></td><td>DOMPurify</td><td>Sanitizing untrusted HTML before <code>innerHTML</code>, instead of avoiding HTML entirely (safe)</td></tr>
+    <tr><td><a href="labs/31-csp-blocks-innerhtml.html">31</a></td><td>Content-Security-Policy</td><td>A real CSP blocking the classic <code>onerror</code> payload (safe, for this payload)</td></tr>
+    <tr><td><a href="labs/32-csp-dangling-markup.html">32</a></td><td>CSP's blind spot</td><td>The same CSP doing nothing against dangling markup injection, which steals data with no script at all</td></tr>
+    <tr><td><a href="labs/33-trusted-types-safe.html">33</a></td><td>Trusted Types</td><td>The browser refusing the <code>innerHTML</code> assignment outright, closing the gap lab 32 found (safe)</td></tr>
+    <tr><td><a href="labs/jquery/35-trusted-types-safe.html">35</a></td><td>Trusted Types + jQuery 4.0</td><td>A library has to be built for Trusted Types too — jQuery 3.x fails to even load under it (safe)</td></tr>
+  </table>
+
+  <h2>More sources</h2>
+  <table>
+    <tr><th>Lab</th><th>Source</th><th>Sink</th></tr>
+    <tr><td><a href="labs/29-cookie-innerhtml.html">29</a></td><td>document.cookie</td><td>innerHTML</td></tr>
+    <tr><td><a href="labs/30-referrer-innerhtml.html">30</a></td><td>document.referrer</td><td>innerHTML</td></tr>
+  </table>
+
+  <h2>Mutation XSS (mXSS)</h2>
+  <table>
+    <tr><th>Lab</th><th>Source</th><th>Sink</th><th>Technique</th></tr>
+    <tr><td><a href="labs/34-search-rawtext-consuming-tag.html">34</a></td><td>location.search</td><td>innerHTML (naive filter)</td><td>Raw-text element confusion ("consuming tag"), the mechanism behind real mXSS CVEs</td></tr>
+  </table>
+</body>
+</html>

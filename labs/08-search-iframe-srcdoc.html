@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Lab 08: location.search to iframe.srcdoc</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <nav><a href="../index.html">&larr; Back to hub</a></nav>
+  <h1>Lab 08: Preview frame</h1>
+  <p class="tags"><span>Source: location.search</span><span class="sink">Sink: iframe.srcdoc</span></p>
+
+  <section class="lab">
+    <form method="get">
+      <label>Title: <input name="title"></label>
+      <button>Preview</button>
+    </form>
+    <iframe id="preview" width="100%" height="100"></iframe>
+  </section>
+
+  <section class="notes">
+    <h2>What is happening</h2>
+    <p>
+      The script builds a tiny HTML document from <code>title</code> and assigns it to the
+      <code>srcdoc</code> of an iframe.
+    </p>
+    <h2>Why srcdoc is a sink</h2>
+    <p>
+      <code>srcdoc</code> is a whole HTML document. It is parsed like a normal page, so
+      <code>&lt;script&gt;</code> tags <b>do</b> run, unlike with <code>innerHTML</code>.
+      The frame shares the parent's origin, so its code can reach the parent page, cookies and storage.
+    </p>
+    <details>
+      <summary>Payload</summary>
+      <pre><code>&lt;script&gt;alert(parent.location.href)&lt;/script&gt;</code></pre>
+      <p>The <code>parent</code> access shows the frame is same-origin with the page.</p>
+    </details>
+    <details>
+      <summary>Fix</summary>
+      <p>Put the text into the frame as text, or add a <code>sandbox</code> attribute with no <code>allow-scripts</code>:</p>
+      <pre><code>preview.sandbox = "";
+preview.srcdoc = "&lt;h1&gt;" + escapeHtml(title) + "&lt;/h1&gt;";</code></pre>
+    </details>
+  </section>
+
+  <script src="08-search-iframe-srcdoc.js"></script>
+</body>
+</html>

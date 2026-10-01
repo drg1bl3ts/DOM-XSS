@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Lab 06: localStorage to innerHTML</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <nav><a href="../index.html">&larr; Back to hub</a></nav>
+  <h1>Lab 06: Saved nickname</h1>
+  <p class="tags"><span>Source: localStorage</span><span class="sink">Sink: innerHTML</span></p>
+
+  <section class="lab">
+    <label>Nickname: <input id="nickname"></label>
+    <button id="save">Save</button>
+    <p id="profile" class="output"></p>
+  </section>
+
+  <section class="notes">
+    <h2>What is happening</h2>
+    <p>
+      Save a nickname and it is stored in <code>localStorage</code>. Every time the page loads,
+      it reads the value back and shows it with <code>innerHTML</code>. Reload after saving.
+    </p>
+    <h2>Why storage is a source</h2>
+    <p>
+      Storage feels safe because "we put it there". But the value came from a user, so it is
+      still untrusted. This is <b>stored DOM XSS</b>: the payload fires on every visit, not just
+      once. Cookies and <code>sessionStorage</code> work the same way.
+    </p>
+    <details>
+      <summary>Payload</summary>
+      <pre><code>&lt;img src=x onerror=alert(1)&gt;</code></pre>
+    </details>
+    <details>
+      <summary>Fix</summary>
+      <pre><code>profile.textContent = "Hi, " + nickname;</code></pre>
+    </details>
+    <p>To reset the lab, run <code>localStorage.clear()</code> in the console.</p>
+  </section>
+
+  <script src="06-localstorage-innerhtml.js"></script>
+</body>
+</html>

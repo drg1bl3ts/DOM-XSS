@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Lab 03: location.hash to eval</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <nav><a href="../index.html">&larr; Back to hub</a></nav>
+  <h1>Lab 03: URL calculator</h1>
+  <p class="tags"><span>Source: location.hash</span><span class="sink">Sink: eval</span></p>
+
+  <section class="lab">
+    <p>Put a sum after the <code>#</code> in the URL, for example <code>03-hash-eval.html#2+2</code>, then reload.</p>
+    <p>Result: <b id="result" class="output"></b></p>
+  </section>
+
+  <section class="notes">
+    <h2>What is happening</h2>
+    <p>
+      The script reads <code>location.hash</code> (everything after <code>#</code>) and gives it
+      to <code>eval()</code> to do the maths. Whatever you put there runs as JavaScript.
+    </p>
+    <h2>Why eval is a sink</h2>
+    <p>
+      <code>eval</code> executes a string as code. There is no HTML involved, so there is no
+      escaping trick. Any input that reaches it is code execution.
+    </p>
+    <h2>Good to know</h2>
+    <p>
+      The hash never goes to the server, so server-side filters and logs cannot see it.
+      That makes it a favourite source for DOM XSS.
+    </p>
+    <details>
+      <summary>Payload</summary>
+      <pre><code>03-hash-eval.html#alert(1)</code></pre>
+    </details>
+    <details>
+      <summary>Fix</summary>
+      <p>Never eval input. Parse it instead, and reject anything that is not what you expect:</p>
+      <pre><code>const match = expression.match(/^(\d+)\+(\d+)$/);
+result.textContent = match ? Number(match[1]) + Number(match[2]) : "Invalid";</code></pre>
+    </details>
+  </section>
+
+  <script src="03-hash-eval.js"></script>
+</body>
+</html>

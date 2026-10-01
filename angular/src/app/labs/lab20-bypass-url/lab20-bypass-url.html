@@ -1,0 +1,28 @@
+<h1>Lab 20: Back link (modern Angular)</h1>
+<p class="tags"><span>Source: location.search</span><span class="sink">Sink: bypassSecurityTrustUrl</span><span>Angular 22</span></p>
+
+<section class="lab">
+  <p>Try <code>?lab=20&amp;returnUrl=http://localhost:8000/index.html</code></p>
+  <a [href]="returnUrl">Go back</a>
+</section>
+
+<section class="notes">
+  <h2>What is happening</h2>
+  <p>
+    By default, Angular blocks <code>javascript:</code> URLs in a bound <code>[href]</code> and
+    replaces them with a harmless value. <code>bypassSecurityTrustUrl()</code> turns that check
+    off for this one value, the same way <code>bypassSecurityTrustHtml</code> did for HTML in
+    <a href="?lab=19">lab 19</a>.
+  </p>
+  <details>
+    <summary>Payload</summary>
+    <pre><code>?lab=20&amp;returnUrl=javascript:alert(1)</code></pre>
+    <p>Then click "Go back".</p>
+  </details>
+  <details>
+    <summary>Fix</summary>
+    <pre><code>const url = new URL(raw, location.href);
+this.returnUrl = (url.protocol === 'http:' || url.protocol === 'https:') ? url.href : '#';
+// no bypass needed, Angular allows plain http(s) strings in [href] already</code></pre>
+  </details>
+</section>

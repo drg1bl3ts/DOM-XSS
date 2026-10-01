@@ -1,0 +1,38 @@
+<h1>Lab 21: Bio via raw DOM access (modern Angular)</h1>
+<p class="tags"><span>Source: location.search</span><span class="sink">Sink: ElementRef.nativeElement.innerHTML</span><span>Angular 22</span></p>
+
+<section class="lab">
+  <form action="">
+    <input type="hidden" name="lab" value="21">
+    <label>Bio: <input name="bio"></label>
+    <button>Save</button>
+  </form>
+  <div class="output" #box></div>
+</section>
+
+<section class="notes">
+  <h2>What is happening</h2>
+  <p>
+    The component grabs a real DOM reference with <code>@ViewChild</code> and sets
+    <code>.innerHTML</code> on it directly, the exact same plain-JavaScript sink as
+    <a href="../../labs/01-search-innerhtml.html">lab 01</a> at the start of this hub.
+  </p>
+  <h2>Why this matters</h2>
+  <p>
+    Angular's automatic sanitizing only covers Angular's own bindings: <code>[innerHTML]</code>,
+    <code>[href]</code>, and a few others written in a template. It cannot protect code that
+    reaches into the DOM directly through <code>ElementRef</code>, <code>Renderer2</code> used
+    unsafely, or a native browser API. A framework's safety net only covers the doors it built;
+    a component that goes around the template layer is on its own again, exactly like plain
+    JavaScript.
+  </p>
+  <details>
+    <summary>Payload</summary>
+    <pre><code>&lt;img src=x onerror=alert(1)&gt;</code></pre>
+  </details>
+  <details>
+    <summary>Fix</summary>
+    <pre><code>this.box.nativeElement.textContent = bio;</code></pre>
+    <p>Or better, avoid <code>ElementRef.nativeElement</code> for content and use a normal template binding instead, so Angular's sanitizer is back in the loop.</p>
+  </details>
+</section>

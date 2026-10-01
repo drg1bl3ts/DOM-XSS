@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Lab 35: jQuery 4.0 and Trusted Types</title>
+  <meta http-equiv="Content-Security-Policy" content="require-trusted-types-for 'script'">
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+  <nav><a href="../../index.html">&larr; Back to hub</a></nav>
+  <h1>Lab 35: Bio, jQuery 4.0 under Trusted Types (safe)</h1>
+  <p class="tags"><span>Source: location.search</span><span class="sink">Sink: $.html() (blocked by Trusted Types)</span><span>jQuery 4.0.0</span></p>
+
+  <section class="lab">
+    <form action="">
+      <label>Bio: <input name="bio"></label>
+      <button>Save</button>
+    </form>
+    <div id="profile" class="output"></div>
+    <p id="status" class="output"></p>
+  </section>
+
+  <section class="notes">
+    <h2>What is happening</h2>
+    <p>
+      Same vulnerable-looking line as <a href="11-search-html.html">lab 11</a>:
+      <code>$("#profile").html(bio)</code>, a raw string, no sanitizing. This page's
+      <code>Content-Security-Policy</code> requires Trusted Types for scripts, same as
+      <a href="../33-trusted-types-safe.html">lab 33</a>. Submit the usual payload and the status
+      line shows the assignment throwing instead of succeeding.
+    </p>
+    <h2>jQuery had to catch up to this</h2>
+    <p>
+      This only works because jQuery 4.0 (released very recently) added Trusted Types support.
+      Verified directly, side by side: loading jQuery 3.7.1 — the version used elsewhere in this
+      hub until this lab was built — on a page with this exact same CSP doesn't just leave
+      <code>.html()</code> unprotected, it <b>fails to load at all</b>. Its own internal
+      feature-detection code assigns a raw string to <code>innerHTML</code> while jQuery is still
+      setting itself up, before anything of yours has run, and that throws under enforcement, so
+      <code>window.jQuery</code> is never defined. jQuery 4.0's own code was updated to avoid that,
+      which is what makes a page like this one possible at all.
+    </p>
+    <details>
+      <summary>Payload</summary>
+      <pre><code>&lt;img src=x onerror=alert(1)&gt;</code></pre>
+      <p>The status line shows the real <code>TypeError</code> the browser throws.</p>
+    </details>
+    <h2>The lesson</h2>
+    <p>
+      Trusted Types doesn't just protect your own code, it protects you from your dependencies'
+      code too, but only if those dependencies were built to expect it. An older, still-very-common
+      version of one of the most widely used libraries on the web couldn't even load on a page that
+      enforces it. If you're rolling out Trusted Types on a real site, check every library you load,
+      not just your own sinks.
+    </p>
+  </section>
+
+  <script src="../../lib/jquery-4.0.0.min.js"></script>
+  <script src="35-trusted-types-safe.js"></script>
+</body>
+</html>

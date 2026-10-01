@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Lab 31: CSP blocks the classic payload</title>
+  <meta http-equiv="Content-Security-Policy" content="script-src 'self'">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <nav><a href="../index.html">&larr; Back to hub</a></nav>
+  <h1>Lab 31: Bio, with a Content-Security-Policy (safe, for this payload)</h1>
+  <p class="tags"><span>Source: location.search</span><span class="sink">Sink: innerHTML (mitigated by CSP)</span></p>
+
+  <section class="lab">
+    <form action="">
+      <label>Bio: <input name="bio"></label>
+      <button>Save</button>
+    </form>
+    <div id="profile" class="output"></div>
+  </section>
+
+  <section class="notes">
+    <h2>What is happening</h2>
+    <p>
+      This page has the exact same vulnerable code as <a href="01-search-innerhtml.html">lab 01</a>:
+      <code>bio</code> goes straight into <code>innerHTML</code>, no sanitizing at all. The only
+      difference is the <code>Content-Security-Policy</code> on this page, visible in the
+      <code>&lt;meta&gt;</code> tag at the top of the file:
+      <code>script-src 'self'</code>.
+    </p>
+    <h2>Try the usual payload</h2>
+    <p>Submit <code>&lt;img src=x onerror=alert(1)&gt;</code>, the same one that works on lab 01. Nothing happens here.</p>
+    <h2>Why it's blocked</h2>
+    <p>
+      An <code>onerror</code> attribute is, as far as the browser is concerned, inline script.
+      <code>script-src 'self'</code> means "only run script from this page's own origin," and
+      inline script doesn't come from a URL at all, so it's refused unless the policy explicitly
+      allows it with <code>'unsafe-inline'</code>, a hash, or a nonce. Open the browser console
+      and you'll see the actual CSP violation message Chrome prints when it blocks this.
+      The same policy blocks a <code>javascript:</code> URL in an <code>href</code>, and blocks
+      <code>eval()</code> too unless <code>'unsafe-eval'</code> is added.
+    </p>
+    <h2>This isn't a full fix</h2>
+    <p>
+      CSP is blocking <i>this specific</i> technique, not the underlying bug: the string is still
+      inserted as real HTML with no sanitizing. <a href="32-csp-dangling-markup.html">Lab 32</a>
+      shows a technique this exact policy does nothing about. Treat CSP as a strong extra layer,
+      not a replacement for fixing the sink.
+    </p>
+  </section>
+
+  <script src="31-csp-blocks-innerhtml.js"></script>
+</body>
+</html>

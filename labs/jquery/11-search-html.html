@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Lab 11: location.search to jQuery .html()</title>
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+  <nav><a href="../../index.html">&larr; Back to hub</a></nav>
+  <h1>Lab 11: Greeting (jQuery)</h1>
+  <p class="tags"><span>Source: location.search</span><span class="sink">Sink: $.html()</span><span>jQuery 4.0.0</span></p>
+
+  <section class="lab">
+    <form method="get">
+      <label>Your name: <input name="name"></label>
+      <button>Greet me</button>
+    </form>
+    <p id="greeting" class="output"></p>
+  </section>
+
+  <section class="notes">
+    <h2>What is happening</h2>
+    <p>
+      Same bug as lab 01, written with jQuery. <code>.html(value)</code> sets
+      <code>innerHTML</code> under the hood, so the value is parsed as HTML.
+    </p>
+    <h2>Why .html() is a sink</h2>
+    <p>
+      jQuery does one extra thing: it finds <code>&lt;script&gt;</code> tags in the string and
+      runs them itself. So unlike plain <code>innerHTML</code>, script tags work here.
+    </p>
+    <details>
+      <summary>Payload</summary>
+      <pre><code>&lt;img src=x onerror=alert(1)&gt;</code></pre>
+    </details>
+    <details>
+      <summary>Fix</summary>
+      <pre><code>$("#greeting").text("Hello, " + name);</code></pre>
+      <p><code>.text()</code> is the jQuery version of <code>textContent</code>.</p>
+    </details>
+  </section>
+
+  <script src="../../lib/jquery-4.0.0.min.js"></script>
+  <script src="11-search-html.js"></script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Lab 10: location.search to setTimeout</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <nav><a href="../index.html">&larr; Back to hub</a></nav>
+  <h1>Lab 10: Delayed message</h1>
+  <p class="tags"><span>Source: location.search</span><span class="sink">Sink: setTimeout (string)</span></p>
+
+  <section class="lab">
+    <form method="get">
+      <label>Message: <input name="msg"></label>
+      <button>Show in 1 second</button>
+    </form>
+    <p id="out" class="output"></p>
+  </section>
+
+  <section class="notes">
+    <h2>What is happening</h2>
+    <p>
+      The script builds a line of JavaScript as a string,
+      <code>showMessage('YOUR INPUT')</code>, and hands it to <code>setTimeout</code>. After a
+      second the browser runs that string as code.
+    </p>
+    <h2>Why setTimeout is a sink</h2>
+    <p>
+      When <code>setTimeout</code> (or <code>setInterval</code>) gets a <b>string</b>, it works like
+      <code>eval</code>. <code>new Function(string)</code> is the same. Your input sits inside
+      quotes, so the trick is to close the quote, add your own code, then comment out the rest.
+    </p>
+    <details>
+      <summary>Payload</summary>
+      <pre><code>');alert(1);//</code></pre>
+      <p>The code becomes <code>showMessage('');alert(1);//')</code>.</p>
+    </details>
+    <details>
+      <summary>Fix</summary>
+      <p>Pass a function, never a string:</p>
+      <pre><code>setTimeout(function () { showMessage(msg); }, 1000);</code></pre>
+    </details>
+  </section>
+
+  <script src="10-search-settimeout.js"></script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Lab 07: postMessage to innerHTML</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <nav><a href="../index.html">&larr; Back to hub</a></nav>
+  <h1>Lab 07: Message board</h1>
+  <p class="tags"><span>Source: postMessage</span><span class="sink">Sink: innerHTML</span></p>
+
+  <section class="lab">
+    <div id="board" class="output">No messages yet.</div>
+    <p>Simulate another window sending a message:</p>
+    <input id="message" size="40" value="&lt;img src=x onerror=alert(1)&gt;">
+    <button id="send">Send message</button>
+  </section>
+
+  <section class="notes">
+    <h2>What is happening</h2>
+    <p>
+      The page listens for <code>message</code> events and puts <code>event.data</code> into the
+      board with <code>innerHTML</code>. It never checks who sent the message.
+    </p>
+    <h2>Why postMessage is a source</h2>
+    <p>
+      Any window that has a reference to this one (an iframe, a popup, or the page that opened
+      it) can call <code>postMessage</code> on it. Without an <code>event.origin</code> check,
+      any website can feed data to this handler.
+    </p>
+    <details>
+      <summary>Payload</summary>
+      <pre><code>&lt;img src=x onerror=alert(1)&gt;</code></pre>
+      <p>A real attacker would embed this page in an iframe and call <code>postMessage</code> on it.</p>
+    </details>
+    <details>
+      <summary>Fix</summary>
+      <p>Check the origin, and use <code>textContent</code>:</p>
+      <pre><code>if (event.origin !== "https://trusted.example") return;
+board.textContent = event.data;</code></pre>
+    </details>
+  </section>
+
+  <script src="07-postmessage-innerhtml.js"></script>
+</body>
+</html>

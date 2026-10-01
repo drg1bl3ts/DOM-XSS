@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Lab 13: location.hash to $() (legacy jQuery)</title>
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+  <nav><a href="../../index.html">&larr; Back to hub</a></nav>
+  <h1>Lab 13: Scroll to section (legacy jQuery)</h1>
+  <p class="tags"><span>Source: location.hash</span><span class="sink">Sink: $(selector)</span><span>jQuery 1.6.1</span></p>
+
+  <section class="lab">
+    <p>Try <code>13-hash-selector-legacy.html#intro</code> and reload.</p>
+    <h3 id="intro">Intro</h3>
+    <p id="status" class="output"></p>
+  </section>
+
+  <section class="notes">
+    <h2>What is happening</h2>
+    <p>
+      The script passes <code>location.hash</code> straight to <code>$()</code> to find the section
+      named in the URL. This is a very common pattern: <code>$(location.hash)</code>.
+    </p>
+    <h2>Why $() is a sink</h2>
+    <p>
+      <code>$()</code> does two jobs: find elements from a selector, or <b>create elements from an HTML
+      string</b>. jQuery guesses which one by looking at the string.
+      jQuery 1.6.1, used in this lab, decided "this is HTML" for any string containing
+      <code>&lt;...&gt;</code>, even if it started with <code>#</code>. So a hash like
+      <code>#&lt;img ...&gt;</code> created an element. Confirmed directly: trying the same string
+      in 1.7.2 and 1.9.0 instead throws a selector syntax error, so the fix landed somewhere
+      between 1.6.1 and 1.7.2 — tracked as
+      <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2012-6708">CVE-2012-6708</a>.
+    </p>
+    <p>
+      As of jQuery's own <a href="https://jquery.com/upgrade-guide/1.9/">1.9 upgrade guide</a>, a
+      string is only ever treated as HTML if it <b>starts</b> with <code>&lt;</code>, full stop, so
+      this exact bug is gone for good from 1.9 on. Old jQuery still turns up in legacy apps, so
+      look for the library version when you test a real site.
+    </p>
+    <details>
+      <summary>Payload</summary>
+      <pre><code>13-hash-selector-legacy.html#&lt;img src=x onerror=alert(1)&gt;</code></pre>
+      <p>Reload after changing the hash, because the script only runs once on load.</p>
+    </details>
+    <details>
+      <summary>Fix</summary>
+      <ul>
+        <li>Upgrade jQuery.</li>
+        <li>Check the hash first: <code>if (/^#[\w-]+$/.test(location.hash)) { ... }</code></li>
+      </ul>
+    </details>
+  </section>
+
+  <script src="../../lib/jquery-1.6.1.min.js"></script>
+  <script src="13-hash-selector-legacy.js"></script>
+</body>
+</html>

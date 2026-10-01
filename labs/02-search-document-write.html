@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Lab 02: location.search to document.write</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <nav><a href="../index.html">&larr; Back to hub</a></nav>
+  <h1>Lab 02: Search results</h1>
+  <p class="tags"><span>Source: location.search</span><span class="sink">Sink: document.write</span></p>
+
+  <section class="lab">
+    <form method="get">
+      <label>Search: <input name="q"></label>
+      <button>Search</button>
+    </form>
+    <!-- document.write puts its output right where the script sits -->
+    <div class="output">
+      <script src="02-search-document-write.js"></script>
+    </div>
+  </section>
+
+  <section class="notes">
+    <h2>What is happening</h2>
+    <p>
+      The script reads <code>q</code> from <code>location.search</code> and passes it to
+      <code>document.write()</code>. The output is inserted into the page at the spot where the
+      script tag sits, and the browser parses it as HTML.
+    </p>
+    <h2>Why document.write is a sink</h2>
+    <p>
+      Like <code>innerHTML</code>, it turns a string into live HTML. It runs while the page is
+      still loading, so it is common in old code and ad or analytics snippets.
+    </p>
+    <details>
+      <summary>Payload</summary>
+      <pre><code>&lt;img src=x onerror=alert(1)&gt;</code></pre>
+      <p>
+        Unlike <code>innerHTML</code>, <code>document.write</code> also runs
+        <code>&lt;script&gt;alert(1)&lt;/script&gt;</code> when the page is loading.
+      </p>
+    </details>
+    <details>
+      <summary>Fix</summary>
+      <p>Do not use <code>document.write</code>. Build an element and set <code>textContent</code>:</p>
+      <pre><code>const p = document.createElement("p");
+p.textContent = "You searched for: " + query;
+document.body.append(p);</code></pre>
+    </details>
+  </section>
+</body>
+</html>

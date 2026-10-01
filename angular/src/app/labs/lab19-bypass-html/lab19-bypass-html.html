@@ -1,0 +1,37 @@
+<h1>Lab 19: Bio (modern Angular)</h1>
+<p class="tags"><span>Source: location.search</span><span class="sink">Sink: bypassSecurityTrustHtml</span><span>Angular 22</span></p>
+
+<section class="lab">
+  <form action="">
+    <input type="hidden" name="lab" value="19">
+    <label>Bio: <input name="bio"></label>
+    <button>Save</button>
+  </form>
+  <div class="output" [innerHTML]="bio"></div>
+</section>
+
+<section class="notes">
+  <h2>What is happening</h2>
+  <p>
+    Same idea as <a href="?lab=18">lab 18</a>, except the component wraps the value in
+    <code>sanitizer.bypassSecurityTrustHtml()</code> before handing it to <code>[innerHTML]</code>.
+    That call tells Angular "trust me, I already checked this string." Nobody did.
+  </p>
+  <h2>Why bypassSecurityTrust* is a sink</h2>
+  <p>
+    Angular's <code>DomSanitizer</code> has four of these: <code>bypassSecurityTrustHtml</code>,
+    <code>Style</code>, <code>Url</code>, <code>ResourceUrl</code>, and <code>Script</code>.
+    They exist for real cases, like showing HTML from a trusted CMS or a WYSIWYG editor's own
+    output. The bug is calling one of them on data that came from a user or the URL.
+    In real code, search for <code>bypassSecurityTrust</code> the way you would search for
+    <code>eval</code>; it is a short, grep-able list of every place the sanitizer was turned off.
+  </p>
+  <details>
+    <summary>Payload</summary>
+    <pre><code>&lt;img src=x onerror=alert(1)&gt;</code></pre>
+  </details>
+  <details>
+    <summary>Fix</summary>
+    <p>Do not bypass. Let the default sanitizer run, like <a href="?lab=18">lab 18</a>, or sanitize the value yourself with a trusted library before this point.</p>
+  </details>
+</section>

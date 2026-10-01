@@ -1,0 +1,20 @@
+<nav class="top"><a [href]="hubHref">&larr; Back to hub</a></nav>
+
+@switch (activeLab()) {
+  @case ('18') { <app-lab18-innerhtml-sanitized /> }
+  @case ('19') { <app-lab19-bypass-html /> }
+  @case ('20') { <app-lab20-bypass-url /> }
+  @case ('21') { <app-lab21-nativeelement-innerhtml /> }
+  @default {
+    <h1>Modern Angular labs</h1>
+    <p>These are separate pages from the rest of the hub because Angular needs a build step.
+      Each link below does a real page load, so the label at the end of the URL becomes the
+      source these labs read from.</p>
+    <ul class="lab-list">
+      <li><a href="?lab=18">Lab 18</a> &mdash; [innerHTML], sanitized by default (safe)</li>
+      <li><a href="?lab=19">Lab 19</a> &mdash; DomSanitizer.bypassSecurityTrustHtml()</li>
+      <li><a href="?lab=20">Lab 20</a> &mdash; DomSanitizer.bypassSecurityTrustUrl()</li>
+      <li><a href="?lab=21">Lab 21</a> &mdash; ElementRef.nativeElement.innerHTML</li>
+    </ul>
+  }
+}

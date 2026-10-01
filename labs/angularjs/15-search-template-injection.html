@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Lab 15: location.search to AngularJS template</title>
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+  <nav><a href="../../index.html">&larr; Back to hub</a></nav>
+  <h1>Lab 15: Greeting (AngularJS)</h1>
+  <p class="tags"><span>Source: location.search</span><span class="sink">Sink: AngularJS expression</span><span>AngularJS 1.8.3</span></p>
+
+  <section class="lab">
+    <form method="get" action="">
+      <label>Your name: <input name="name"></label>
+      <button>Greet me</button>
+    </form>
+    <p id="greeting" class="output"></p>
+  </section>
+
+  <section class="notes">
+    <h2>What is happening</h2>
+    <p>
+      The script puts your name on the page with <b><code>textContent</code></b>, the safe way from lab 01.
+      Then AngularJS starts up and scans the page for <code>{{ ... }}</code>. Your input is now
+      part of an Angular template, and Angular runs whatever is inside the braces.
+    </p>
+    <h2>Why this is a sink</h2>
+    <p>
+      This is <b>client-side template injection</b>. No HTML is injected, so HTML encoding does not help.
+      The danger is the <code>{{ }}</code> itself. Angular expressions can reach the
+      <code>Function</code> constructor, and from there run any JavaScript.
+    </p>
+    <p>
+      AngularJS 1.5 and older had an expression "sandbox" that tried to block exactly this. It was
+      broken and re-broken for years — see
+      <a href="https://portswigger.net/research/dom-based-angularjs-sandbox-escapes">PortSwigger's
+      own research on AngularJS sandbox escapes</a> for how many different ways researchers found
+      around it. The Angular team eventually agreed it was never a real security boundary and
+      <b>removed it entirely in 1.6</b>, partly for the performance cost of maintaining it. On 1.6
+      and newer, the simple payload below works with no sandbox to get around at all.
+    </p>
+    <details>
+      <summary>Payload</summary>
+      <pre><code>{{constructor.constructor('alert(1)')()}}</code></pre>
+    </details>
+    <details>
+      <summary>Fix</summary>
+      <ul>
+        <li>Never let user input end up inside an element Angular will compile.</li>
+        <li>Add <code>ng-non-bindable</code> to elements that show user data. Angular skips them.</li>
+        <li>Upgrade. The real fix is moving off AngularJS, which is end of life.</li>
+      </ul>
+    </details>
+  </section>
+
+  <script src="../../lib/angular-1.8.3.min.js"></script>
+  <script src="15-search-template-injection.js"></script>
+</body>
+</html>

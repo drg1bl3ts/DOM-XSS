@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Lab 14: location.search to jQuery .attr()</title>
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+  <nav><a href="../../index.html">&larr; Back to hub</a></nav>
+  <h1>Lab 14: Back link (jQuery)</h1>
+  <p class="tags"><span>Source: location.search</span><span class="sink">Sink: $.attr("href")</span><span>jQuery 4.0.0</span></p>
+
+  <section class="lab">
+    <p>Try <code>14-search-attr-href.html?returnUrl=../../index.html</code></p>
+    <a id="back" href="#">Go back</a>
+  </section>
+
+  <section class="notes">
+    <h2>What is happening</h2>
+    <p>
+      Lab 04 again, with jQuery. <code>.attr("href", value)</code> sets the attribute, and the
+      link runs <code>javascript:</code> URLs when clicked.
+    </p>
+    <h2>Why .attr() is a sink</h2>
+    <p>
+      jQuery does not check the value. The risky attributes are the same as in plain JS:
+      <code>href</code>, <code>src</code>, <code>action</code>, <code>formaction</code>, and any
+      <code>on...</code> event attribute.
+    </p>
+    <details>
+      <summary>Payload</summary>
+      <pre><code>14-search-attr-href.html?returnUrl=javascript:alert(1)</code></pre>
+      <p>Then click "Go back".</p>
+    </details>
+    <details>
+      <summary>Fix</summary>
+      <pre><code>const url = new URL(returnUrl, location.href);
+if (url.protocol === "http:" || url.protocol === "https:") {
+  $("#back").attr("href", url.href);
+}</code></pre>
+    </details>
+  </section>
+
+  <script src="../../lib/jquery-4.0.0.min.js"></script>
+  <script src="14-search-attr-href.js"></script>
+</body>
+</html>
