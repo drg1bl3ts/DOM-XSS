@@ -46,13 +46,6 @@ style.css         shared styling
 lib/              local copies of every library used below: jQuery (4.0.0 and
                    the vulnerable 1.6.1), AngularJS 1.8.3 + angular-sanitize,
                    React 18, Vue 3, Handlebars, Lodash, Knockout, Alpine.js
-payloads/         wordlists extracted from PortSwigger's XSS cheat sheet
-                   (https://portswigger.net/web-security/cross-site-scripting/cheat-sheet);
-                   lab 34 was built from a payload in here. print-payloads.txt
-                   is every alert/confirm/prompt payload (from PortSwigger and
-                   SecLists) converted to print(), for testing contexts where
-                   alert() is blocked — see "Testing a lab's payloads" below
-fuzzer/           a small script to try a wordlist against one lab in a real browser
 labs/             one source + one sink per lab
   NN-name.html    the widget, plus notes, payload and fix
   NN-name.js      the vulnerable code (SOURCE and SINK are commented)
@@ -78,31 +71,6 @@ alongside 11-14, since it's jQuery-specific.
 2. Mark the `SOURCE` and `SINK` lines in the `.js` (or `.ts`) file with comments.
 3. Fill in the notes in the `.html` file: what happens, why it is a sink, payload, fix.
 4. Add a row to the table in `index.html`, and link it from `sources.html` and `sinks.html`.
-
-## Testing a lab's payloads
-
-`fuzzer/fuzz.mjs` opens a lab in headless Chromium once per line of a wordlist
-and reports which ones make the page pop an `alert`/`confirm`/`prompt`, or call
-`print()`. See the comment at the top of that file for usage. It needs
-`chromium` on the PATH and the hub's server (and, for labs 18-21, `ng serve`)
-already running.
-
-A payload-matching tool like ffuf will not work here: every lab returns the
-same static response regardless of payload, since the bug is client-side. Only
-something that runs a real browser can tell a hit from a miss.
-
-**Why check for `print()` at all?** Chrome 92+ blocks `alert`/`confirm`/`prompt`
-from cross-origin iframes (a response to malicious ads abusing them), so
-PortSwigger's cheat sheet — and anyone testing a real cross-origin-iframe XSS —
-uses `print()` as the PoC function instead; see
-[PortSwigger's writeup](https://portswigger.net/research/alert-is-dead-long-live-print).
-None of this hub's own labs run in a cross-origin iframe, so `alert()` works
-fine for testing the labs themselves — `print-payloads.txt` exists for testing
-that scenario elsewhere, built by converting every plain `alert`/`confirm`/
-`prompt` payload in `xss-payloads.txt` plus the non-duplicate ones from
-[SecLists](https://github.com/danielmiessler/SecLists)'s XSS wordlists into a
-`print()` call (obfuscated payloads built to evade a keyword filter, like
-`self['a'+'lert']`, are left alone rather than mangled).
 
 ## Sources and sinks reference
 
@@ -142,9 +110,7 @@ Documents and pages actually cited while building this hub, beyond what's
 already linked inline in `sources.html` / `sinks.html` / the labs themselves.
 
 **Official docs and APIs**
-- [PortSwigger — DOM-based XSS](https://portswigger.net/web-security/cross-site-scripting/dom-based) and its [XSS cheat sheet](https://portswigger.net/web-security/cross-site-scripting/cheat-sheet) (source of the `payloads/` wordlists and lab 34)
-- [PortSwigger — "alert() is dead, long live print()"](https://portswigger.net/research/alert-is-dead-long-live-print) — why `print-payloads.txt` exists
-- [SecLists](https://github.com/danielmiessler/SecLists), `Fuzzing/XSS/robot-friendly/` — additional source for `print-payloads.txt`, checked directly against a local copy rather than assumed to contain `print()` payloads already (it didn't: 0 out of 16,519 lines, confirmed by grep)
+- [PortSwigger — DOM-based XSS](https://portswigger.net/web-security/cross-site-scripting/dom-based) and its [XSS cheat sheet](https://portswigger.net/web-security/cross-site-scripting/cheat-sheet) (source of lab 34)
 - [MDN — `document.domain`](https://developer.mozilla.org/en-US/docs/Web/API/Document/domain), [History API](https://developer.mozilla.org/en-US/docs/Web/API/History_API), [Trusted Types API](https://developer.mozilla.org/en-US/docs/Web/API/Trusted_Types_API)
 - [jQuery API docs](https://api.jquery.com/), the [jQuery 1.9 upgrade guide](https://jquery.com/upgrade-guide/1.9/), and the [jQuery 4.0 upgrade guide](https://jquery.com/upgrade-guide/4.0/) (Trusted Types support, behind lab 35)
 - [React — `dangerouslySetInnerHTML`](https://react.dev/reference/react-dom/components/common#dangerously-setting-the-inner-html)

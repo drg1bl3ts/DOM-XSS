@@ -1,8 +1,6 @@
-# This repo isn't git-initialized yet, but keep this ready for when it is.
-
-# Everything useful from this PDF is already extracted into payloads/*.txt.
-# At 44MB it's not worth baking into git history.
-payloads/cheat-sheet.pdf
+# Personal offensive tooling, not part of the public practice hub.
+scanner/
+payloads/
 
 # OS cruft
 .DS_Store
